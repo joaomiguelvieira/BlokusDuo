@@ -108,4 +108,8 @@ void *getNextDoublyLinkedListIterator(DoublyLinkedListIterator *iterator) {
     return iterator->node->object;
 }
 
-void *resetDoublyLinkedListIterator
+void *resetDoublyLinkedListIterator(DoublyLinkedListIterator *iterator) {
+    iterator->node = iterator->list->head;
+
+    return iterator->node;
+}
