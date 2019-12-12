@@ -8,4 +8,6 @@ typedef struct Position_ {
     int x, y;
 } Position;
 
+Position *newPosition(int x, int y);
+
 #endif

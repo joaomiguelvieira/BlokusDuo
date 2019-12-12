@@ -23,5 +23,6 @@ typedef struct DoublyLinkedList_ {
 DoublyLinkedList *newDoublyLinkedList();
 void deleteDoublyLinkedList(DoublyLinkedList *list, void (*deleteObject)(void *object));
 void removeFromDoublyLinkedList(DoublyLinkedList *list, void *object);
+void insertAtHeadDoublyLinkedList(DoublyLinkedList *list, void *object);
 
 #endif

@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#define PLAYER_1 1
-#define PLAYER_2 2
+#define PLAYER_ID_1 1
+#define PLAYER_ID_2 2
 
 typedef struct Player_ {
     int player_id;
