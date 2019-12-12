@@ -1,8 +1,24 @@
-//
-// Created by joaovieira on 12/10/19.
-//
+#ifndef DOUBLYLINKEDLIST_H
+#define DOUBLYLINKEDLIST_H
 
-#ifndef MCTS_TICTACTOE_C_DOUBLYLINKEDLIST_H
-#define MCTS_TICTACTOE_C_DOUBLYLINKEDLIST_H
+/**
+ * DoublyLinkedListNode
+ */
+typedef struct DoublyLinkedListNode_ {
+    struct DoublyLinkedListNode_ *previous, *next;
+    void *object;
+} DoublyLinkedListNode;
 
-#endif //MCTS_TICTACTOE_C_DOUBLYLINKEDLIST_H
+/**
+ * DoublyLinkedList
+ */
+typedef struct DoublyLinkedList_ {
+    DoublyLinkedListNode *head, *tail;
+    int count;
+} DoublyLinkedList;
+
+DoublyLinkedList *newDoublyLinkedList();
+void deleteDoublyLinkedList(DoublyLinkedList *list, void (*deleteObject)(void *object));
+void removeFromDoublyLinkedList(DoublyLinkedList *list, void *object);
+
+#endif

@@ -6,11 +6,6 @@
 /**
  * DoublyLinkedListNode
  */
-typedef struct DoublyLinkedListNode_ {
-    struct DoublyLinkedListNode_ *previous, *next;
-    void *object;
-} DoublyLinkedListNode;
-
 DoublyLinkedListNode *newDoublyLinkedListNode(void *object) {
     DoublyLinkedListNode *node = (DoublyLinkedListNode *) malloc(sizeof(DoublyLinkedListNode));
     assert(node != (DoublyLinkedListNode *) NULL);
@@ -21,37 +16,32 @@ DoublyLinkedListNode *newDoublyLinkedListNode(void *object) {
 }
 
 void deleteDoublyLinkedListNode(DoublyLinkedListNode *node, void (*deleteObject)(void *object)) {
-    deleteObject(node->object);
+    if (deleteObject != NULL)
+        deleteObject(node->object);
+
     free(node);
 }
 
 /**
  * DoublyLinkedList
  */
-typedef struct DoublyLinkedList_ {
-    DoublyLinkedListNode *head, *tail;
-    void (*deleteObject)(void *object);
-    int count;
-} DoublyLinkedList;
-
-DoublyLinkedList *newDoublyLinkedList(void (*deleteObject)(void *object)) {
+DoublyLinkedList *newDoublyLinkedList() {
     DoublyLinkedList *list = (DoublyLinkedList *) malloc(sizeof(DoublyLinkedList));
     assert(list != (DoublyLinkedList *) NULL);
 
     list->head = (DoublyLinkedListNode *) NULL;
     list->tail = (DoublyLinkedListNode *) NULL;
-    list->deleteObject = deleteObject;
     list->count = 0;
 
     return list;
 }
 
-void deleteDoublyLinkedList(DoublyLinkedList *list) {
+void deleteDoublyLinkedList(DoublyLinkedList *list, void (*deleteObject)(void *object)) {
     DoublyLinkedListNode *node = list->head;
 
     while(node) {
         DoublyLinkedListNode *next_node = node->next;
-        deleteDoublyLinkedListNode(node, list->deleteObject);
+        deleteDoublyLinkedListNode(node, deleteObject);
         node = next_node;
     }
 }
@@ -66,6 +56,7 @@ void insertAtHeadDoublyLinkedList(DoublyLinkedList *list, void *object) {
         list->head->previous = node;
 
     list->head = node;
+    list->count++;
 }
 
 void insertAtTailDoublyLinkedList(DoublyLinkedList *list, void *object) {
@@ -78,38 +69,19 @@ void insertAtTailDoublyLinkedList(DoublyLinkedList *list, void *object) {
         list->tail->next = node;
 
     list->tail = node;
+    list->count++;
 }
 
-/**
- * DoublyLinkedListIterator
- */
-typedef struct DoublyLinkedListIterator_ {
-    DoublyLinkedList *list;
-    DoublyLinkedListNode *node;
-} DoublyLinkedListIterator;
+void removeFromDoublyLinkedList(DoublyLinkedList *list, void *object) {
+    for (DoublyLinkedListNode *node = list->head; node != (DoublyLinkedListNode *) NULL; node = node->next) {
+        if (node->object == object) {
+            if (node->previous != (DoublyLinkedListNode *) NULL)
+                node->previous->next = node->next;
 
-DoublyLinkedListIterator *newDoublyLinkedListIterator(DoublyLinkedList *list) {
-    DoublyLinkedListIterator *iterator = (DoublyLinkedListIterator *) malloc(sizeof(DoublyLinkedListIterator));
-    assert(iterator != (DoublyLinkedListIterator *) NULL);
+            if (node->next != (DoublyLinkedListNode *) NULL)
+                node->next->previous = node->previous;
 
-    iterator->list = list;
-
-    return iterator;
-}
-
-void deleteDoublyLinkedListIterator(DoublyLinkedListIterator *iterator) {
-    free(iterator);
-}
-
-void *getNextDoublyLinkedListIterator(DoublyLinkedListIterator *iterator) {
-    if (iterator->node != (DoublyLinkedListNode *) NULL)
-        iterator->node = iterator->node->next;
-
-    return iterator->node->object;
-}
-
-void *resetDoublyLinkedListIterator(DoublyLinkedListIterator *iterator) {
-    iterator->node = iterator->list->head;
-
-    return iterator->node;
+            deleteDoublyLinkedListNode(node, NULL);
+        }
+    }
 }
