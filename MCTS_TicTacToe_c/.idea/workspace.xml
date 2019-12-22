@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="MCTS_TicTacToe_c" targetName="MCTS_TicTacToe_c" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c67fecdf-448a-46b2-9c11-4e18610c1cc2" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1UnbC5lKv89QEOkeyBfAkWOGY0E" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager">
+    <configuration name="MCTS_TicTacToe_c" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MCTS_TicTacToe_c" TARGET_NAME="MCTS_TicTacToe_c" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MCTS_TicTacToe_c" RUN_TARGET_NAME="MCTS_TicTacToe_c">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c67fecdf-448a-46b2-9c11-4e18610c1cc2" name="Default Changelist" comment="" />
+      <created>1575995175865</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575995175865</updated>
+      <workItem from="1575995177344" duration="3875000" />
+      <workItem from="1576058691628" duration="2817000" />
+      <workItem from="1576160325075" duration="12615000" />
+    </task>
+    <task id="LOCAL-00001" summary="Updated DoublyLinkedList.c">
+      <created>1576160456338</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1576160456338</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Updated Tree.c and DoublyLinkedList.c">
+      <created>1576168753656</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1576168753656</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Developing">
+      <created>1576173387402</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576173387402</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Developing">
+      <created>1576176287855</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576176287855</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated DoublyLinkedList.c" />
+    <MESSAGE value="Updated Tree.c and DoublyLinkedList.c" />
+    <MESSAGE value="Developing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Developing" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="524" y="131" width="861" height="818" key="CommitChangelistDialog2" timestamp="1576176287782">
+      <screen x="0" y="28" width="1920" height="1018" />
+    </state>
+    <state x="524" y="131" width="861" height="818" key="CommitChangelistDialog2/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1576176287782" />
+    <state width="1872" height="263" key="GridCell.Tab.0.bottom" timestamp="1576259007620">
+      <screen x="0" y="28" width="1920" height="1018" />
+    </state>
+    <state width="1872" height="263" key="GridCell.Tab.0.bottom/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1576259007620" />
+    <state width="1872" height="263" key="GridCell.Tab.0.center" timestamp="1576259007620">
+      <screen x="0" y="28" width="1920" height="1018" />
+    </state>
+    <state width="1872" height="263" key="GridCell.Tab.0.center/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1576259007620" />
+    <state width="1872" height="263" key="GridCell.Tab.0.left" timestamp="1576259007620">
+      <screen x="0" y="28" width="1920" height="1018" />
+    </state>
+    <state width="1872" height="263" key="GridCell.Tab.0.left/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1576259007620" />
+    <state width="1872" height="263" key="GridCell.Tab.0.right" timestamp="1576259007620">
+      <screen x="0" y="28" width="1920" height="1018" />
+    </state>
+    <state width="1872" height="263" key="GridCell.Tab.0.right/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1576259007620" />
+    <state x="555" y="273" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1576176294841">
+      <screen x="0" y="28" width="1920" height="1018" />
+    </state>
+    <state x="555" y="273" width="800" height="535" key="Vcs.Push.Dialog.v2/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1576176294841" />
+    <state x="626" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1576160325347">
+      <screen x="0" y="28" width="1920" height="1018" />
+    </state>
+    <state x="626" y="364" key="com.intellij.ide.util.TipDialog/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1576160325347" />
+    <state x="677" y="177" width="556" height="726" key="refactoring.ChangeSignatureDialog" timestamp="1575996286612">
+      <screen x="0" y="28" width="1920" height="1018" />
+    </state>
+    <state x="677" y="177" width="556" height="726" key="refactoring.ChangeSignatureDialog/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575996286612" />
+    <state x="623" y="251" key="search.everywhere.popup" timestamp="1575995286307">
+      <screen x="0" y="28" width="1920" height="1018" />
+    </state>
+    <state x="623" y="251" key="search.everywhere.popup/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575995286307" />
+  </component>
+</project>
