@@ -65,7 +65,7 @@ class MonteCarloTreeSearch:
         return winner_node.state.board
 
     def back_propagation(self, node_to_explore, player):
-        temp_node = node_to_explore
+        temp_node = deepcopy(node_to_explore)
         while temp_node is not None:
             temp_node.state.visits += 1
             if temp_node.state.player == player:

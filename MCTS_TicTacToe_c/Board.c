@@ -11,7 +11,7 @@ void deleteBoard(Board *board) {
     free(board);
 }
 
-Board *copyBoard(Board *board) {
+Board *cloneBoard(Board *board) {
     Board *new_board = (Board *) malloc(sizeof(Board));
     assert(new_board != (Board *) NULL);
 
@@ -22,6 +22,14 @@ Board *copyBoard(Board *board) {
     new_board->moves = board->moves;
 
     return new_board;
+}
+
+void copyBoard(Board *board1, Board *board2) {
+    for (int i = 0; i < BOARD_SIZE; i++)
+        for (int j = 0; j < BOARD_SIZE; j++)
+            board2->board[i][j] = board1->board[i][j];
+
+    board2->moves = board1->moves;
 }
 
 void performMoveBoard(Board *board, Player *player, Position *position) {
@@ -79,4 +87,14 @@ int checkStatusBoard(Board *board) {
         return winner;
 
     return getEmptyPositionsBoard(board)->count ? BOARD_IN_PROGRESS : BOARD_DRAW;
+}
+
+void printBoard(Board *board) {
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        for (int j = 0; j < BOARD_SIZE; ++j) {
+            printf("%d ", board->board[i][j]);
+        }
+
+        printf("\n");
+    }
 }

@@ -5,6 +5,7 @@
 
 #include <stdlib.h>
 #include <assert.h>
+#include <stdio.h>
 
 #include "Position.h"
 #include "Player.h"
@@ -17,5 +18,18 @@ typedef struct Board_ {
     int board[BOARD_SIZE][BOARD_SIZE];
     int moves;
 } Board;
+
+Board *newBoard();
+void deleteBoard(Board *board);
+
+void copyBoard(Board *board1, Board *board2);
+Board *cloneBoard(Board *board);
+
+DoublyLinkedList *getEmptyPositionsBoard(Board *board);
+void performMoveBoard(Board *board, Player *player, Position *position);
+
+int checkStatusBoard(Board *board);
+
+void printBoard(Board *board);
 
 #endif

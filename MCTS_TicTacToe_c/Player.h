@@ -11,4 +11,8 @@ typedef struct Player_ {
     int player_id;
 } Player;
 
+Player *newPlayer();
+int getOpponentPlayer(int player);
+void deletePlayer(Player *player);
+
 #endif
