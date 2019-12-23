@@ -1,7 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af419a5c-1c45-4636-93b4-5425e01c2a08" name="Default Changelist" comment="" />
+    <list default="true" id="af419a5c-1c45-4636-93b4-5425e01c2a08" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Board.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Board.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/MonteCarloTreeSearch.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/MonteCarloTreeSearch.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Node.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Node.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Position.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Position.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/State.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/State.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Tree.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Tree.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/UCT.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/UCT.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/baeldung/algorithms/mcts/tests/TicTacToe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/.idea/MCTS_TicTacToe_c.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/Board.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/Board.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/DoublyLinkedList.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/DoublyLinkedList.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/MCTS.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/MCTS.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/Player.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/Player.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/Position.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/Position.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/State.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/State.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/TimeInterval.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/TimeInterval.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/Tree.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/Tree.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/UCT.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/UCT.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_c/main.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MCTS_TicTacToe_java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MCTS_TicTacToe_java.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/baeldung/algorithms/mcts/montecarlo/MonteCarloTreeSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/baeldung/algorithms/mcts/montecarlo/MonteCarloTreeSearch.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +71,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
@@ -47,7 +94,20 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MCTSUnitTest">
+  <component name="RunManager" selected="Application.TicTacToe (1)">
+    <configuration name="TicTacToe (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.baeldung.algorithms.mcts.tests.TicTacToe" />
+      <module name="MCTS_TicTacToe_java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.baeldung.algorithms.mcts.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TicTacToe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TicTacToe" />
       <module name="MCTS_TicTacToe_java" />
@@ -63,17 +123,27 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="PACKAGE_NAME" value="com.baeldung.algorithms.mcts.tests" />
       <option name="MAIN_CLASS_NAME" value="com.baeldung.algorithms.mcts.tests.MCTSUnitTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.TicTacToe" />
+      <item itemvalue="JUnit.MCTSUnitTest" />
+      <item itemvalue="Application.TicTacToe (1)" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MCTSUnitTest" />
+        <item itemvalue="Application.TicTacToe (1)" />
         <item itemvalue="Application.TicTacToe" />
+        <item itemvalue="JUnit.MCTSUnitTest" />
       </list>
     </recent_temporary>
   </component>
@@ -101,6 +171,8 @@
       <updated>1575992878460</updated>
       <workItem from="1575992879740" duration="2507000" />
       <workItem from="1576168907038" duration="2959000" />
+      <workItem from="1577026725724" duration="178000" />
+      <workItem from="1577031324924" duration="15707000" />
     </task>
     <servers />
   </component>
@@ -112,29 +184,55 @@
       <screen x="0" y="28" width="1920" height="1018" />
     </state>
     <state x="555" y="198" width="820" height="684" key="#Project_Structure/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575992885121" />
-    <state width="1872" height="263" key="GridCell.Tab.0.bottom" timestamp="1575993816806">
-      <screen x="0" y="28" width="1920" height="1018" />
+    <state x="304" y="165" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577031988313">
+      <screen x="0" y="23" width="1680" height="960" />
     </state>
+    <state x="304" y="165" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031988313" />
+    <state x="577" y="294" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1577031986994">
+      <screen x="0" y="23" width="1680" height="960" />
+    </state>
+    <state x="577" y="294" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031986994" />
+    <state x="689" y="410" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1577031385021">
+      <screen x="0" y="23" width="1680" height="960" />
+    </state>
+    <state x="689" y="410" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031385021" />
+    <state width="1638" height="258" key="GridCell.Tab.0.bottom" timestamp="1577050575504">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1577050575504" />
+    <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.23.1680.960@0.23.1680.960" timestamp="1577032039267" />
     <state width="1872" height="263" key="GridCell.Tab.0.bottom/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state width="1872" height="263" key="GridCell.Tab.0.center" timestamp="1575993816806">
-      <screen x="0" y="28" width="1920" height="1018" />
+    <state width="1638" height="258" key="GridCell.Tab.0.center" timestamp="1577050575503">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1638" height="258" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1577050575503" />
+    <state width="1638" height="258" key="GridCell.Tab.0.center/0.23.1680.960@0.23.1680.960" timestamp="1577032039266" />
     <state width="1872" height="263" key="GridCell.Tab.0.center/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state width="1872" height="263" key="GridCell.Tab.0.left" timestamp="1575993816806">
-      <screen x="0" y="28" width="1920" height="1018" />
+    <state width="1638" height="258" key="GridCell.Tab.0.left" timestamp="1577050575502">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1638" height="258" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1577050575502" />
+    <state width="1638" height="258" key="GridCell.Tab.0.left/0.23.1680.960@0.23.1680.960" timestamp="1577032039265" />
     <state width="1872" height="263" key="GridCell.Tab.0.left/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state width="1872" height="263" key="GridCell.Tab.0.right" timestamp="1575993816806">
-      <screen x="0" y="28" width="1920" height="1018" />
+    <state width="1638" height="258" key="GridCell.Tab.0.right" timestamp="1577050575503">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1638" height="258" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1577050575503" />
+    <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.960@0.23.1680.960" timestamp="1577032039266" />
     <state width="1872" height="263" key="GridCell.Tab.0.right/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state x="2546" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1576168906031">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="548" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1577031325700">
+      <screen x="0" y="23" width="1680" height="960" />
     </state>
+    <state x="548" y="349" key="com.intellij.ide.util.TipDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031325700" />
     <state x="2546" y="367" key="com.intellij.ide.util.TipDialog/0.28.1920.1018/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576168906031" />
-    <state x="641" y="431" width="628" height="218" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1575993804262">
-      <screen x="0" y="28" width="1920" height="1018" />
+    <state x="561" y="403" width="550" height="212" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1577031393848">
+      <screen x="0" y="23" width="1680" height="960" />
     </state>
+    <state x="561" y="403" width="550" height="212" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1680.960@0.23.1680.960" timestamp="1577031393848" />
     <state x="641" y="431" width="628" height="218" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993804262" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1577033020131">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1577033020131" />
   </component>
 </project>

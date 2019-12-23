@@ -105,5 +105,4 @@ public class MonteCarloTreeSearch {
 
         return boardStatus;
     }
-
 }
