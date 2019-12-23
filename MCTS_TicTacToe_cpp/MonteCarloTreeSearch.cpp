@@ -23,6 +23,7 @@ Board *MonteCarloTreeSearch::findNextMove(Board *board, int playerNo) {
     rootNode->getState()->setBoard(board);
     rootNode->getState()->setPlayerNo(opponent);
 
+    auto simulations = 0;
     do {
         // Phase 1 - Selection
         Node *promisingNode = selectPromisingNode(rootNode);
@@ -42,7 +43,11 @@ Board *MonteCarloTreeSearch::findNextMove(Board *board, int playerNo) {
 
         auto end = std::chrono::high_resolution_clock::now();
         elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+        simulations++;
     } while (elapsed < duration);
+
+    std::cout << "Simulations: " << simulations << "\n";
 
     Node *winnerNode = rootNode->getChildWithMaxScore();
     tree->setRoot(winnerNode);
@@ -99,4 +104,8 @@ void MonteCarloTreeSearch::backPropagation(Node *nodeToExplore, int playerNo) {
             tempNode->getState()->addScore(WIN_SCORE);
         tempNode = tempNode->getParent();
     }
+}
+
+void MonteCarloTreeSearch::setLevel(int i) {
+    level = i;
 }

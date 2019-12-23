@@ -118,3 +118,20 @@ void Board::printBoard() {
         std::cout << "\n";
     }
 }
+
+void Board::printStatus() {
+    switch (checkStatus()) {
+        case P1:
+            std::cout << "Player 1 wins\n";
+            break;
+        case P2:
+            std::cout << "Player 2 wins\n";
+            break;
+        case DRAW:
+            std::cout << "Game Draw\n";
+            break;
+        default:
+            std::cout << "Game In Progress\n";
+            break;
+    }
+}

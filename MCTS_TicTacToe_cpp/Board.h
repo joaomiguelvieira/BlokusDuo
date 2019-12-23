@@ -35,6 +35,8 @@ public:
     int getTotalMoves();
 
     void printBoard();
+
+    void printStatus();
 };
 
 

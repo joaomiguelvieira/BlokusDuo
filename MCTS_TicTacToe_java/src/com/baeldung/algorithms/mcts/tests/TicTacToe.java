@@ -13,16 +13,11 @@ public class TicTacToe {
         for (int i = 0; i < totalMoves; i++) {
             board = mcts.findNextMove(board, player);
 
-            //System.out.println("Player: " + player);
-            //board.printBoard();
-
             if (board.checkStatus() != -1) {
                 break;
             }
             player = 3 - player;
         }
         int winStatus = board.checkStatus();
-
-        System.out.println(winStatus);
     }
 }
