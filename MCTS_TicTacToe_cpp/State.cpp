@@ -5,6 +5,8 @@
 #include "State.h"
 #include "Board.h"
 #include <climits>
+#include <ctime>
+#include <cstdlib>
 
 State::State() {
     board = new Board();
