@@ -5,7 +5,8 @@
 #include "Node.h"
 #include "State.h"
 #include <ctime>
-#include <stdlib.h>
+#include <cstdlib>
+#include <algorithm>
 
 Node::Node() {
     state = new State();
