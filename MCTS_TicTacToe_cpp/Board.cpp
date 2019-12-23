@@ -100,7 +100,7 @@ int Board::checkForWin(const int *row) {
 }
 
 std::list<Position *> *Board::getEmptyPositions() {
-
+    return emptyPositions;
 }
 
 void Board::performMove(int player, Position *p) {
