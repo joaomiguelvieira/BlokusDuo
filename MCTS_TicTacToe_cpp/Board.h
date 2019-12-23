@@ -15,6 +15,7 @@ private:
 protected:
     int **boardValues;
     int totalMoves;
+    std::list<Position *> *emptyPositions;
 public:
     static constexpr int DEFAULT_BOARD_SIZE = 3;
     static constexpr int IN_PROGRESS = -1;

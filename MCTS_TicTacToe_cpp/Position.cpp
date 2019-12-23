@@ -24,3 +24,8 @@ void Position::setX(int x) {
 void Position::setY(int y) {
     this->y = y;
 }
+
+Position::Position(Position *position) {
+    x = position->getX();
+    y = position->getY();
+}

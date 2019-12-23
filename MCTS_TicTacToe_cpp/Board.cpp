@@ -7,12 +7,15 @@
 #include "Position.h"
 
 Board::Board() {
+    emptyPositions = new std::list<Position *>();
+
     boardValues = new int*[DEFAULT_BOARD_SIZE];
     for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
         boardValues[i] = new int[DEFAULT_BOARD_SIZE];
 
         for (int j = 0; j < DEFAULT_BOARD_SIZE; ++j) {
             boardValues[i][j] = 0;
+            emptyPositions->push_back(new Position(i, j));
         }
     }
 
@@ -57,13 +60,11 @@ int Board::checkStatus() {
 }
 
 Board::Board(Board *board) {
+    emptyPositions = new std::list<Position *>();
+
     boardValues = new int*[DEFAULT_BOARD_SIZE];
     for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
         boardValues[i] = new int[DEFAULT_BOARD_SIZE];
-
-        for (int j = 0; j < DEFAULT_BOARD_SIZE; ++j) {
-            boardValues[i][j] = 0;
-        }
     }
 
     for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
@@ -71,6 +72,9 @@ Board::Board(Board *board) {
             boardValues[i][j] = board->getBoardValues()[i][j];
         }
     }
+
+    for (auto & emptyPosition : *board->getEmptyPositions())
+        emptyPositions->push_back(new Position(emptyPosition));
 
     totalMoves = board->getTotalMoves();
 }
@@ -96,21 +100,13 @@ int Board::checkForWin(const int *row) {
 }
 
 std::list<Position *> *Board::getEmptyPositions() {
-    auto emptyPositions = new std::list<Position *>();
 
-    for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
-        for (int j = 0; j < DEFAULT_BOARD_SIZE; ++j) {
-            if (!boardValues[i][j])
-                emptyPositions->push_back(new Position(i, j));
-        }
-    }
-
-    return emptyPositions;
 }
 
 void Board::performMove(int player, Position *p) {
     totalMoves++;
     boardValues[p->getX()][p->getY()] = player;
+    emptyPositions->remove_if([p](Position *emptyPosition)->bool{return emptyPosition->getX() == p->getX() && emptyPosition->getY() == p->getY();});
 }
 
 int Board::getTotalMoves() {
@@ -150,4 +146,9 @@ Board::~Board() {
     }
 
     delete [] boardValues;
+
+    for (auto & emptyPosition : *emptyPositions)
+        delete emptyPosition;
+
+    delete emptyPositions;
 }
