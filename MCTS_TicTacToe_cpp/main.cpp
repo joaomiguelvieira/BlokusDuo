@@ -22,8 +22,8 @@ int main() {
 
     assert(winStatus == Board::DRAW);
 
-    //delete board;
-    //delete mcts;
+    delete board;
+    delete mcts;
 
     return 0;
 }

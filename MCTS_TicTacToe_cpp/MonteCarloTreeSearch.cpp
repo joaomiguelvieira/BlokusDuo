@@ -53,7 +53,7 @@ Board *MonteCarloTreeSearch::findNextMove(Board *board, int playerNo) {
 
     Node *winnerNode = rootNode->getChildWithMaxScore();
     auto winnerBoard = new Board(winnerNode->getState()->getBoard());
-    //delete tree;
+    delete tree;
     return winnerBoard;
 }
 

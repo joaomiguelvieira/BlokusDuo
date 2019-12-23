@@ -146,8 +146,8 @@ void Board::printStatus() {
 
 Board::~Board() {
     for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
-        delete boardValues[i];
+        delete [] boardValues[i];
     }
 
-    delete boardValues;
+    delete [] boardValues;
 }
