@@ -79,6 +79,8 @@ void MonteCarloTreeSearch::expandNode(Node *node) {
         newNode->getState()->setPlayerNo(node->getState()->getOpponent());
         node->getChildArray()->push_back(newNode);
     }
+
+    delete possibleStates;
 }
 
 int MonteCarloTreeSearch::simulateRandomPlayout(Node *node) {
