@@ -143,3 +143,11 @@ void Board::printStatus() {
             break;
     }
 }
+
+Board::~Board() {
+    for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
+        delete boardValues[i];
+    }
+
+    delete boardValues;
+}

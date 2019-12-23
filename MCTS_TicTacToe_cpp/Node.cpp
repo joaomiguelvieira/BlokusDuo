@@ -61,3 +61,27 @@ Node *Node::getChildWithMaxScore() {
         return node1->getState()->getVisitCount() < node2->getState()->getVisitCount();
     });
 }
+
+Node::~Node() {
+    delete state;
+    delete childArray;
+}
+
+void Node::deleteNodesDownwards() {
+    for (auto & child : *childArray)
+        child->deleteNodesDownwards();
+
+    delete this;
+}
+
+void Node::deleteNodesUpwards() {
+    Node *root = this;
+    while(root->parent)
+        root = root->parent;
+
+    parent->getChildArray()->remove(this);
+
+    root->deleteNodesDownwards();
+
+    parent = nullptr;
+}

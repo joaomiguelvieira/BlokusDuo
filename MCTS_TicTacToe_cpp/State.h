@@ -19,28 +19,20 @@ public:
     explicit State(State *state);
     explicit State(Board *board);
 
+    ~State();
+
     void setBoard(Board *pBoard);
     void setPlayerNo(int i);
     int getVisitCount();
-
     Board *getBoard();
-
     double getWinScore();
-
     int getPlayerNo();
-
     void setWinScore(int i);
-
     void togglePlayer();
-
     void randomPlay();
-
     void incrementVisit();
-
     void addScore(double i);
-
     std::list<State *> *getAllPossibleStates();
-
     int getOpponent();
 };
 

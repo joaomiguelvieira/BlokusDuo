@@ -52,8 +52,9 @@ Board *MonteCarloTreeSearch::findNextMove(Board *board, int playerNo) {
     std::cout << "Simulations: " << simulations << "\n";
 
     Node *winnerNode = rootNode->getChildWithMaxScore();
-    tree->setRoot(winnerNode);
-    return winnerNode->getState()->getBoard();
+    auto winnerBoard = new Board(winnerNode->getState()->getBoard());
+    delete tree;
+    return winnerBoard;
 }
 
 int MonteCarloTreeSearch::getMillisForCurrentLevel() {

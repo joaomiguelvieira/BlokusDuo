@@ -16,3 +16,7 @@ Node *Tree::getRoot() {
 void Tree::setRoot(Node *root) {
     this->root = root;
 }
+
+Tree::~Tree() {
+    root->deleteNodesDownwards();
+}

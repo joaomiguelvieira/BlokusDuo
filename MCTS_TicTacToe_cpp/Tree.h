@@ -14,8 +14,9 @@ private:
 public:
     Tree();
 
-    Node *getRoot();
+    ~Tree();
 
+    Node *getRoot();
     void setRoot(Node *root);
 };
 

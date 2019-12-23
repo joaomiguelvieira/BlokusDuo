@@ -7,8 +7,6 @@
 
 
 class Position {
-private:
-
 protected:
     int x, y;
 public:

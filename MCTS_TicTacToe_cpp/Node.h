@@ -19,15 +19,16 @@ public:
     explicit Node(State *state);
     explicit Node(Node *node);
 
+    ~Node();
+
     State *getState();
     std::list <Node *> *getChildArray();
     void setParent(Node *node);
-
     Node *getRandomChildNode();
-
     Node *getParent();
-
     Node *getChildWithMaxScore();
+    void deleteNodesDownwards();
+    void deleteNodesUpwards();
 };
 
 

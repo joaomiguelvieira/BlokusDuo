@@ -98,3 +98,7 @@ State::State(Board *board) {
 int State::getOpponent() {
     return 3 - playerNo;
 }
+
+State::~State() {
+    delete board;
+}

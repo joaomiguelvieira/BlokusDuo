@@ -25,6 +25,8 @@ public:
     Board();
     explicit Board(Board *board);
 
+    ~Board();
+
     int checkStatus();
     int **getBoardValues();
     static int checkForWin(const int *row);
