@@ -16,6 +16,8 @@ State::State() {
 }
 
 void State::setBoard(Board *pBoard) {
+    delete board;
+
     board = pBoard;
 }
 

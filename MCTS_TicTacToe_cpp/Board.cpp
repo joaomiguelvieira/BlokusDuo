@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <algorithm>
 #include "Board.h"
 #include "Position.h"
 
@@ -106,7 +107,10 @@ std::list<Position *> *Board::getEmptyPositions() {
 void Board::performMove(int player, Position *p) {
     totalMoves++;
     boardValues[p->getX()][p->getY()] = player;
-    emptyPositions->remove_if([p](Position *emptyPosition)->bool{return emptyPosition->getX() == p->getX() && emptyPosition->getY() == p->getY();});
+
+    auto playedPosition = std::find_if(emptyPositions->begin(), emptyPositions->end(), [p](Position *emptyPosition)->bool{return emptyPosition->getX() == p->getX() && emptyPosition->getY() == p->getY();});
+    delete *playedPosition;
+    emptyPositions->erase(playedPosition);
 }
 
 int Board::getTotalMoves() {
