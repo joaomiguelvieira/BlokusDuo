@@ -4,6 +4,7 @@
 
 #include "Node.h"
 #include "State.h"
+#include <ctime>
 
 Node::Node() {
     state = new State();
