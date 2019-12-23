@@ -7,6 +7,7 @@
 #include "UCT.h"
 #include <chrono>
 #include <iostream>
+#include <climits>
 
 MonteCarloTreeSearch::MonteCarloTreeSearch() {
     this->level = 3;
