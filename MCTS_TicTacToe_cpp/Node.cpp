@@ -63,6 +63,9 @@ Node *Node::getChildWithMaxScore() {
 }
 
 Node::~Node() {
+    for (auto & child : *childArray)
+        delete child;
+
     delete state;
     delete childArray;
 }

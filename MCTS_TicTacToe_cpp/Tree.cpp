@@ -18,5 +18,5 @@ void Tree::setRoot(Node *root) {
 }
 
 Tree::~Tree() {
-
+    delete root;
 }
