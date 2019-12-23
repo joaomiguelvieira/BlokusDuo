@@ -66,22 +66,3 @@ Node::~Node() {
     delete state;
     delete childArray;
 }
-
-void Node::deleteNodesDownwards() {
-    for (auto & child : *childArray)
-        child->deleteNodesDownwards();
-
-    delete this;
-}
-
-void Node::deleteNodesUpwards() {
-    Node *root = this;
-    while(root->parent)
-        root = root->parent;
-
-    parent->getChildArray()->remove(this);
-
-    root->deleteNodesDownwards();
-
-    parent = nullptr;
-}

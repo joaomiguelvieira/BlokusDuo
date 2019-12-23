@@ -98,9 +98,6 @@ int MonteCarloTreeSearch::simulateRandomPlayout(Node *node) {
         boardStatus = tempState->getBoard()->checkStatus();
     }
 
-    delete tempNode;
-    //tempNode->deleteNodesDownwards();
-
     return boardStatus;
 }
 
