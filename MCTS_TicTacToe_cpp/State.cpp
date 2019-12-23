@@ -10,6 +10,9 @@
 
 State::State() {
     board = new Board();
+    playerNo = 0;
+    visitCount = 0;
+    winScore = 0;
 }
 
 void State::setBoard(Board *pBoard) {
@@ -53,9 +56,9 @@ void State::togglePlayer() {
 
 void State::randomPlay() {
     auto availablePositions = board->getEmptyPositions();
-    int totalPossibilities = availablePositions->size();
+    int totalPossibilities = (int) availablePositions->size();
 
-    srand(time(nullptr));
+    srand((unsigned int) time(nullptr));
     int selectRandom = rand() % totalPossibilities;
 
     auto it = availablePositions->begin();
@@ -87,6 +90,9 @@ std::list<State *> *State::getAllPossibleStates() {
 
 State::State(Board *board) {
     this->board = new Board(board);
+    playerNo = 0;
+    visitCount = 0;
+    winScore = 0;
 }
 
 int State::getOpponent() {

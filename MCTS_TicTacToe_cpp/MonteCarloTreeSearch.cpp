@@ -10,7 +10,8 @@
 #include <climits>
 
 MonteCarloTreeSearch::MonteCarloTreeSearch() {
-    this->level = 3;
+    level = 3;
+    opponent = 0;
 }
 
 Board *MonteCarloTreeSearch::findNextMove(Board *board, int playerNo) {

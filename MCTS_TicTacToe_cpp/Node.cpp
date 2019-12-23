@@ -11,6 +11,7 @@
 Node::Node() {
     state = new State();
     childArray = new std::list<Node *>();
+    parent = nullptr;
 }
 
 State *Node::getState() {
@@ -24,6 +25,7 @@ std::list <Node *> *Node::getChildArray() {
 Node::Node(State *state) {
     this->state = state;
     childArray = new std::list<Node *>();
+    parent = nullptr;
 }
 
 void Node::setParent(Node *node) {
@@ -31,8 +33,8 @@ void Node::setParent(Node *node) {
 }
 
 Node *Node::getRandomChildNode() {
-    int noOfPossibleMoves = childArray->size();
-    srand(time(nullptr));
+    int noOfPossibleMoves = (int) childArray->size();
+    srand((unsigned int) time(nullptr));
     int selectRandom = rand() % noOfPossibleMoves;
 
     auto it = childArray->begin();

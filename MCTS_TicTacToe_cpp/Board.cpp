@@ -71,7 +71,7 @@ int **Board::getBoardValues() {
     return boardValues;
 }
 
-int Board::checkForWin(int *row) {
+int Board::checkForWin(const int *row) {
     bool isEqual = true;
     int previous = row[0];
     for (int i = 0; i < DEFAULT_BOARD_SIZE; i++) {

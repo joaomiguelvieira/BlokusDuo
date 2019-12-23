@@ -27,7 +27,7 @@ public:
 
     int checkStatus();
     int **getBoardValues();
-    int checkForWin(int *row);
+    static int checkForWin(const int *row);
     std::list<Position *> *getEmptyPositions();
 
     void performMove(int player, Position *p);

@@ -21,10 +21,10 @@ public:
     MonteCarloTreeSearch();
 
     Board *findNextMove(Board *board, int playerNo);
-    Node *selectPromisingNode(Node *rootNode);
-    void expandNode(Node *pNode);
+    static Node *selectPromisingNode(Node *rootNode);
+    static void expandNode(Node *pNode);
     int simulateRandomPlayout(Node *node);
-    void backPropagation(Node *nodeToExplore, int playerNo);
+    static void backPropagation(Node *nodeToExplore, int playerNo);
 
     void setLevel(int i);
 };
