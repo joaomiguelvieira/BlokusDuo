@@ -10,6 +10,10 @@ Board::Board() {
     boardValues = new int*[DEFAULT_BOARD_SIZE];
     for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
         boardValues[i] = new int[DEFAULT_BOARD_SIZE];
+
+        for (int j = 0; j < DEFAULT_BOARD_SIZE; ++j) {
+            boardValues[i][j] = 0;
+        }
     }
 
     totalMoves = 0;
@@ -56,6 +60,10 @@ Board::Board(Board *board) {
     boardValues = new int*[DEFAULT_BOARD_SIZE];
     for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
         boardValues[i] = new int[DEFAULT_BOARD_SIZE];
+
+        for (int j = 0; j < DEFAULT_BOARD_SIZE; ++j) {
+            boardValues[i][j] = 0;
+        }
     }
 
     for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
