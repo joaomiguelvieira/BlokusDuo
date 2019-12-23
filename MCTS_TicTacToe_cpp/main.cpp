@@ -1,7 +1,5 @@
 #include "MonteCarloTreeSearch.h"
 #include "Board.h"
-#include <cassert>
-#include <iostream>
 
 int main() {
     auto *mcts = new MonteCarloTreeSearch();
@@ -18,9 +16,7 @@ int main() {
         player = 3 - player;
     }
 
-    int winStatus = board->checkStatus();
-
-    assert(winStatus == Board::DRAW);
+    board->printStatus(); // game draw
 
     delete board;
     delete mcts;
