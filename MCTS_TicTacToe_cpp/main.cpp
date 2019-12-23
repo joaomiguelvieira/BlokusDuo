@@ -1,5 +1,6 @@
 #include "MonteCarloTreeSearch.h"
 #include "Board.h"
+#include <cassert>
 
 int main() {
     auto *mcts = new MonteCarloTreeSearch();
