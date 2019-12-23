@@ -90,6 +90,7 @@ int MonteCarloTreeSearch::simulateRandomPlayout(Node *node) {
 
     if (boardStatus == opponent) {
         tempNode->getParent()->getState()->setWinScore(INT_MIN);
+        delete tempNode;
         return boardStatus;
     }
     while (boardStatus == Board::IN_PROGRESS) {

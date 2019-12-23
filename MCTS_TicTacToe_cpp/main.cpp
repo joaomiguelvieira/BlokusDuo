@@ -16,10 +16,10 @@ int main() {
         player = 3 - player;
     }
 
-    board->printStatus(); // game draw
+    auto winStatus = board->checkStatus();
 
     delete board;
     delete mcts;
 
-    return 0;
+    return winStatus;
 }
