@@ -4,6 +4,7 @@
 
 #include "Tree.h"
 #include "Node.h"
+#include <cstdio>
 
 Tree::Tree() {
     root = new Node();
@@ -14,6 +15,13 @@ Node *Tree::getRoot() {
 }
 
 void Tree::setRoot(Node *root) {
+    auto parent = root->getParent();
+
+    if (parent)
+        parent->getChildArray()->remove_if([root](Node *child)->bool{return child == root;});
+
+    root->setParent(nullptr);
+    delete this->root;
     this->root = root;
 }
 

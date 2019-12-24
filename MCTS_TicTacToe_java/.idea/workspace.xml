@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af419a5c-1c45-4636-93b4-5425e01c2a08" name="Default Changelist" comment="" />
+    <list default="true" id="af419a5c-1c45-4636-93b4-5425e01c2a08" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/MonteCarloTreeSearch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/MonteCarloTreeSearch.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/MonteCarloTreeSearch.h" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/MonteCarloTreeSearch.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Tree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Tree.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MCTS_TicTacToe_java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MCTS_TicTacToe_java.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +41,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -48,22 +57,10 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TicTacToe (1)">
-    <configuration name="TicTacToe (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.baeldung.algorithms.mcts.tests.TicTacToe" />
-      <module name="MCTS_TicTacToe_java" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.baeldung.algorithms.mcts.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.TicTacToe">
     <configuration name="TicTacToe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TicTacToe" />
+      <option name="ALTERNATIVE_JRE_PATH" value="BUNDLED" />
+      <option name="MAIN_CLASS_NAME" value="com.baeldung.algorithms.mcts.tests.TicTacToe" />
       <module name="MCTS_TicTacToe_java" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -77,7 +74,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="PACKAGE_NAME" value="com.baeldung.algorithms.mcts.tests" />
       <option name="MAIN_CLASS_NAME" value="com.baeldung.algorithms.mcts.tests.MCTSUnitTest" />
@@ -90,12 +86,10 @@
     </configuration>
     <list>
       <item itemvalue="Application.TicTacToe" />
-      <item itemvalue="Application.TicTacToe (1)" />
       <item itemvalue="JUnit.MCTSUnitTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TicTacToe (1)" />
         <item itemvalue="Application.TicTacToe" />
         <item itemvalue="JUnit.MCTSUnitTest" />
       </list>
@@ -128,6 +122,9 @@
       <workItem from="1577026725724" duration="178000" />
       <workItem from="1577031324924" duration="15818000" />
       <workItem from="1577104066293" duration="1123000" />
+      <workItem from="1577172809509" duration="205000" />
+      <workItem from="1577173135448" duration="30000" />
+      <workItem from="1577181576173" duration="620000" />
     </task>
     <servers />
   </component>
@@ -139,53 +136,66 @@
       <screen x="0" y="28" width="1920" height="1018" />
     </state>
     <state x="555" y="198" width="820" height="684" key="#Project_Structure/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575992885121" />
-    <state x="304" y="165" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577031988313">
-      <screen x="0" y="23" width="1680" height="960" />
+    <state x="463" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577173164530">
+      <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state x="304" y="165" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031988313" />
-    <state x="577" y="294" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1577031986994">
-      <screen x="0" y="23" width="1680" height="960" />
+    <state x="463" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.28.2560.1018@0.28.2560.1018" timestamp="1577173164530" />
+    <state x="879" y="315" width="525" height="437" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1577172968451">
+      <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state x="577" y="294" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031986994" />
-    <state x="689" y="410" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1577031385021">
-      <screen x="0" y="23" width="1680" height="960" />
+    <state x="879" y="315" width="525" height="437" key="#com.intellij.ide.util.TreeClassChooserDialog/0.28.2560.1018@0.28.2560.1018" timestamp="1577172968451" />
+    <state x="1050" y="438" width="301" height="223" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1577172841426">
+      <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state x="689" y="410" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031385021" />
-    <state width="1638" height="258" key="GridCell.Tab.0.bottom" timestamp="1577105779880">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="1050" y="438" width="301" height="223" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.28.2560.1018@0.28.2560.1018" timestamp="1577172841426" />
+    <state width="1352" height="250" key="GridCell.Tab.0.bottom" timestamp="1577182249450">
+      <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1577105779880" />
     <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.23.1680.960@0.23.1680.960" timestamp="1577032039267" />
     <state width="1872" height="263" key="GridCell.Tab.0.bottom/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state width="1638" height="258" key="GridCell.Tab.0.center" timestamp="1577105779879">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1352" height="250" key="GridCell.Tab.0.bottom/0.28.2560.1018@0.28.2560.1018" timestamp="1577182249450" />
+    <state width="1352" height="250" key="GridCell.Tab.0.center" timestamp="1577182249449">
+      <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state width="1638" height="258" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1577105779879" />
     <state width="1638" height="258" key="GridCell.Tab.0.center/0.23.1680.960@0.23.1680.960" timestamp="1577032039266" />
     <state width="1872" height="263" key="GridCell.Tab.0.center/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state width="1638" height="258" key="GridCell.Tab.0.left" timestamp="1577105779879">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1352" height="250" key="GridCell.Tab.0.center/0.28.2560.1018@0.28.2560.1018" timestamp="1577182249449" />
+    <state width="1352" height="250" key="GridCell.Tab.0.left" timestamp="1577182249448">
+      <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state width="1638" height="258" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1577105779879" />
     <state width="1638" height="258" key="GridCell.Tab.0.left/0.23.1680.960@0.23.1680.960" timestamp="1577032039265" />
     <state width="1872" height="263" key="GridCell.Tab.0.left/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state width="1638" height="258" key="GridCell.Tab.0.right" timestamp="1577105779879">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1352" height="250" key="GridCell.Tab.0.left/0.28.2560.1018@0.28.2560.1018" timestamp="1577182249448" />
+    <state width="1352" height="250" key="GridCell.Tab.0.right" timestamp="1577182249449">
+      <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state width="1638" height="258" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1577105779879" />
     <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.960@0.23.1680.960" timestamp="1577032039266" />
     <state width="1872" height="263" key="GridCell.Tab.0.right/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state x="548" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1577104071123">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1352" height="250" key="GridCell.Tab.0.right/0.28.2560.1018@0.28.2560.1018" timestamp="1577182249449" />
+    <state x="835" y="366" key="com.intellij.ide.util.TipDialog" timestamp="1577181577463">
+      <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state x="548" y="349" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1577104071123" />
     <state x="548" y="349" key="com.intellij.ide.util.TipDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031325700" />
     <state x="2546" y="367" key="com.intellij.ide.util.TipDialog/0.28.1920.1018/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576168906031" />
-    <state x="561" y="403" width="550" height="212" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1577031393848">
-      <screen x="0" y="23" width="1680" height="960" />
+    <state x="835" y="366" key="com.intellij.ide.util.TipDialog/0.28.2560.1018@0.28.2560.1018" timestamp="1577181577463" />
+    <state x="855" y="431" width="550" height="212" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1577172928333">
+      <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state x="561" y="403" width="550" height="212" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1680.960@0.23.1680.960" timestamp="1577031393848" />
     <state x="641" y="431" width="628" height="218" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993804262" />
+    <state x="855" y="431" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.28.2560.1018@0.28.2560.1018" timestamp="1577172928333" />
+    <state x="1013" y="298" width="524" height="485" key="extract.method.dialog" timestamp="1577172901097">
+      <screen x="0" y="28" width="2560" height="1018" />
+    </state>
+    <state x="1013" y="298" width="524" height="485" key="extract.method.dialog/0.28.2560.1018@0.28.2560.1018" timestamp="1577172901097" />
     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1577033020131">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

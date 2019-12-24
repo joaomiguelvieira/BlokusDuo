@@ -8,25 +8,26 @@
 #include <ctime>
 #include "Board.h"
 #include "Node.h"
+#include "Tree.h"
 
 class MonteCarloTreeSearch {
 private:
     static constexpr int WIN_SCORE = 10;
 
     int level;
-    int opponent;
+    Tree *gameTree;
 
     int getMillisForCurrentLevel();
 public:
-    MonteCarloTreeSearch();
+    MonteCarloTreeSearch(Board *initialBoard, int initialPlayer);
 
-    Board *findNextMove(Board *board, int playerNo);
-    static Node *selectPromisingNode(Node *rootNode);
-    static void expandNode(Node *pNode);
+    ~MonteCarloTreeSearch();
+
+    Board *findNextMove();
+    Node *selectPromisingNode(Node *rootNode);
+    void expandNode(Node *pNode);
     int simulateRandomPlayout(Node *node);
-    static void backPropagation(Node *nodeToExplore, int playerNo);
-
-    void setLevel(int i);
+    void backPropagation(Node *nodeToExplore, int playerNo);
 };
 
 

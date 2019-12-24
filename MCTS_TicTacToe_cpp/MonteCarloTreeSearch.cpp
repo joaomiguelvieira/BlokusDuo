@@ -9,26 +9,22 @@
 #include <iostream>
 #include <climits>
 
-MonteCarloTreeSearch::MonteCarloTreeSearch() {
+MonteCarloTreeSearch::MonteCarloTreeSearch(Board *initialBoard, int initialPlayer) {
     level = 3;
-    opponent = 0;
+
+    gameTree = new Tree();
+    gameTree->getRoot()->getState()->setBoard(initialBoard);
+    gameTree->getRoot()->getState()->setPlayerNo(3 - initialPlayer);
 }
 
-Board *MonteCarloTreeSearch::findNextMove(Board *board, int playerNo) {
+Board *MonteCarloTreeSearch::findNextMove() {
     auto start = std::chrono::high_resolution_clock::now();
     long elapsed;
     long duration = 60 * getMillisForCurrentLevel();
 
-    opponent = 3 - playerNo;
-    auto tree = new Tree();
-    Node *rootNode = tree->getRoot();
-    rootNode->getState()->setBoard(board);
-    rootNode->getState()->setPlayerNo(opponent);
-
-    auto simulations = 0;
     do {
         // Phase 1 - Selection
-        Node *promisingNode = selectPromisingNode(rootNode);
+        Node *promisingNode = selectPromisingNode(gameTree->getRoot());
 
         // Phase 2 - Expansion
         if (promisingNode->getState()->getBoard()->checkStatus() == Board::IN_PROGRESS)
@@ -45,16 +41,13 @@ Board *MonteCarloTreeSearch::findNextMove(Board *board, int playerNo) {
 
         auto end = std::chrono::high_resolution_clock::now();
         elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-
-        simulations++;
     } while (elapsed < duration);
 
-    std::cout << "Simulations: " << simulations << "\n";
+    //std::cout << "Simulations: " << gameTree->getRoot()->getState()->getVisitCount() << "\n";
 
-    Node *winnerNode = rootNode->getChildWithMaxScore();
-    auto winnerBoard = new Board(winnerNode->getState()->getBoard());
-    delete tree;
-    return winnerBoard;
+    Node *winnerNode = gameTree->getRoot()->getChildWithMaxScore();
+    gameTree->setRoot(winnerNode);
+    return winnerNode->getState()->getBoard();
 }
 
 int MonteCarloTreeSearch::getMillisForCurrentLevel() {
@@ -88,6 +81,7 @@ int MonteCarloTreeSearch::simulateRandomPlayout(Node *node) {
     State *tempState = tempNode->getState();
     int boardStatus = tempState->getBoard()->checkStatus();
 
+    auto opponent = gameTree->getRoot()->getState()->getPlayerNo();
     if (boardStatus == opponent) {
         tempNode->getParent()->getState()->setWinScore(INT_MIN);
         delete tempNode;
@@ -114,6 +108,6 @@ void MonteCarloTreeSearch::backPropagation(Node *nodeToExplore, int playerNo) {
     }
 }
 
-void MonteCarloTreeSearch::setLevel(int i) {
-    level = i;
+MonteCarloTreeSearch::~MonteCarloTreeSearch() {
+    delete gameTree;
 }
