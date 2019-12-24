@@ -27,8 +27,6 @@ public:
     Node *getRandomChildNode();
     Node *getParent();
     Node *getChildWithMaxScore();
-    void deleteNodesDownwards();
-    void deleteNodesUpwards();
 };
 
 

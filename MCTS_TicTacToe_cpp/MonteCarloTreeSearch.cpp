@@ -6,7 +6,6 @@
 #include "Tree.h"
 #include "UCT.h"
 #include <chrono>
-#include <iostream>
 #include <climits>
 
 MonteCarloTreeSearch::MonteCarloTreeSearch(Board *initialBoard, int initialPlayer) {

@@ -4,7 +4,6 @@
 
 #include "Tree.h"
 #include "Node.h"
-#include <cstdio>
 
 Tree::Tree() {
     root = new Node();
