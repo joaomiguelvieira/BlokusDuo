@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af419a5c-1c45-4636-93b4-5425e01c2a08" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/MonteCarloTreeSearch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/MonteCarloTreeSearch.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/MonteCarloTreeSearch.h" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/MonteCarloTreeSearch.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Tree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/Tree.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_TicTacToe_cpp/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MCTS_TicTacToe_java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MCTS_TicTacToe_java.iml" afterDir="false" />
-    </list>
+    <list default="true" id="af419a5c-1c45-4636-93b4-5425e01c2a08" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,7 +116,7 @@
       <workItem from="1577104066293" duration="1123000" />
       <workItem from="1577172809509" duration="205000" />
       <workItem from="1577173135448" duration="30000" />
-      <workItem from="1577181576173" duration="620000" />
+      <workItem from="1577181576173" duration="1291000" />
     </task>
     <servers />
   </component>
@@ -151,34 +143,34 @@
     </state>
     <state x="689" y="410" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031385021" />
     <state x="1050" y="438" width="301" height="223" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.28.2560.1018@0.28.2560.1018" timestamp="1577172841426" />
-    <state width="1352" height="250" key="GridCell.Tab.0.bottom" timestamp="1577182249450">
+    <state width="1232" height="250" key="GridCell.Tab.0.bottom" timestamp="1577185800077">
       <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1577105779880" />
     <state width="1638" height="258" key="GridCell.Tab.0.bottom/0.23.1680.960@0.23.1680.960" timestamp="1577032039267" />
     <state width="1872" height="263" key="GridCell.Tab.0.bottom/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state width="1352" height="250" key="GridCell.Tab.0.bottom/0.28.2560.1018@0.28.2560.1018" timestamp="1577182249450" />
-    <state width="1352" height="250" key="GridCell.Tab.0.center" timestamp="1577182249449">
+    <state width="1232" height="250" key="GridCell.Tab.0.bottom/0.28.2560.1018@0.28.2560.1018" timestamp="1577185800077" />
+    <state width="1232" height="250" key="GridCell.Tab.0.center" timestamp="1577185800076">
       <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state width="1638" height="258" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1577105779879" />
     <state width="1638" height="258" key="GridCell.Tab.0.center/0.23.1680.960@0.23.1680.960" timestamp="1577032039266" />
     <state width="1872" height="263" key="GridCell.Tab.0.center/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state width="1352" height="250" key="GridCell.Tab.0.center/0.28.2560.1018@0.28.2560.1018" timestamp="1577182249449" />
-    <state width="1352" height="250" key="GridCell.Tab.0.left" timestamp="1577182249448">
+    <state width="1232" height="250" key="GridCell.Tab.0.center/0.28.2560.1018@0.28.2560.1018" timestamp="1577185800076" />
+    <state width="1232" height="250" key="GridCell.Tab.0.left" timestamp="1577185800072">
       <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state width="1638" height="258" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1577105779879" />
     <state width="1638" height="258" key="GridCell.Tab.0.left/0.23.1680.960@0.23.1680.960" timestamp="1577032039265" />
     <state width="1872" height="263" key="GridCell.Tab.0.left/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state width="1352" height="250" key="GridCell.Tab.0.left/0.28.2560.1018@0.28.2560.1018" timestamp="1577182249448" />
-    <state width="1352" height="250" key="GridCell.Tab.0.right" timestamp="1577182249449">
+    <state width="1232" height="250" key="GridCell.Tab.0.left/0.28.2560.1018@0.28.2560.1018" timestamp="1577185800072" />
+    <state width="1232" height="250" key="GridCell.Tab.0.right" timestamp="1577185800076">
       <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state width="1638" height="258" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1577105779879" />
     <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.960@0.23.1680.960" timestamp="1577032039266" />
     <state width="1872" height="263" key="GridCell.Tab.0.right/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
-    <state width="1352" height="250" key="GridCell.Tab.0.right/0.28.2560.1018@0.28.2560.1018" timestamp="1577182249449" />
+    <state width="1232" height="250" key="GridCell.Tab.0.right/0.28.2560.1018@0.28.2560.1018" timestamp="1577185800076" />
     <state x="835" y="366" key="com.intellij.ide.util.TipDialog" timestamp="1577181577463">
       <screen x="0" y="28" width="2560" height="1018" />
     </state>
