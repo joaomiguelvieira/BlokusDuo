@@ -1,0 +1,14 @@
+//
+// Created by joaovieira on 12/25/19.
+//
+
+#ifndef MCTS_BLOKUSDUO_CPP_MONTECARLOTREESEARCH_H
+#define MCTS_BLOKUSDUO_CPP_MONTECARLOTREESEARCH_H
+
+
+class MonteCarloTreeSearch {
+
+};
+
+
+#endif //MCTS_BLOKUSDUO_CPP_MONTECARLOTREESEARCH_H
