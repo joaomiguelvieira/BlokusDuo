@@ -87,62 +87,6 @@ void GamePiece::printGamePiece() {
 std::list<std::vector<GamePiece *> *> *GamePiece::getInitialSetOfGamePieces() {
     auto initialSetOfGamePieces = new std::list<std::vector<GamePiece *> *>();
 
-    /*struct OneSquareGamePiece {char codeName; int nAnchors; int squares[1][2], anchors[1][2];};
-    struct OneSquareGamePiece oneSquareGamePieces[] = {
-            {.codeName = 'a', .nAnchors = 1, .squares = {{ 0,  0}}, .anchors = {{ 0,  0}}}
-    };
-
-    struct TwoSquareGamePiece {char codeName; int nAnchors; int squares[2][2], anchors[2][2];};
-    struct TwoSquareGamePiece twoSquareGamePieces[] = {
-            {.codeName = 'b', .nAnchors = 2, .squares = {{ 0,  0}, { 0,  1}}, .anchors = {{ 0,  0}, { 0,  1}}}
-    };
-
-    struct ThreeSquareGamePiece {char codeName; int nAnchors; int squares[3][2], anchors[3][2];};
-    struct ThreeSquareGamePiece threeSquareGamePieces[] = {
-            {.codeName = 'c', .nAnchors = 2, .squares = {{ 0,  0}, { 0,  1}, { 0, -1}}, .anchors = {{ 0,  1}, { 0, -1}, { 0,  0}}},
-            {.codeName = 'd', .nAnchors = 3, .squares = {{ 0,  0}, { 0, -1}, { 1,  0}}, .anchors = {{ 0,  0}, { 0, -1}, { 1,  0}}}
-    };
-
-    struct FourSquareGamePiece {char codeName; int nAnchors; int squares[4][2], anchors[4][2];};
-    struct FourSquareGamePiece fourSquareGamePieces[] = {
-            {.codeName = 'e', .nAnchors = 2, .squares = {{ 0,  0}, { 0,  1}, { 0,  2}, { 0, -1}}, .anchors = {{ 0,  2}, { 0, -1}, { 0,  0}, { 0,  0}}},
-            {.codeName = 'f', .nAnchors = 3, .squares = {{ 0,  0}, { 0,  1}, {-1,  1}, { 0, -1}}, .anchors = {{ 0,  1}, {-1,  1}, { 0, -1}, { 0,  0}}},
-            {.codeName = 'g', .nAnchors = 3, .squares = {{ 0,  0}, { 0,  1}, { 0, -1}, { 1,  0}}, .anchors = {{ 0,  1}, { 1,  0}, { 0, -1}, { 0,  0}}},
-            {.codeName = 'h', .nAnchors = 4, .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}}, .anchors = {{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}}},
-            {.codeName = 'i', .nAnchors = 4, .squares = {{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}}, .anchors = {{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}}}
-    };
-
-    struct FiveSquareGamePiece {char codeName; int nAnchors; int squares[5][2], anchors[5][2];};
-    struct FiveSquareGamePiece fiveSquareGamePieces[] = {
-            {.codeName = 'j', .nAnchors = 2, .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, { 0,  2}}, .anchors = {{ 0, -2}, { 0,  2}, { 0,  0}, { 0,  0}, { 0,  0}}},
-            {.codeName = 'k', .nAnchors = 3, .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, {-1,  1}}, .anchors = {{ 0, -2}, { 0,  1}, {-1,  1}, { 0,  0}, { 0,  0}}},
-            {.codeName = 'l', .nAnchors = 4, .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, {-1,  0}, {-1,  1}}, .anchors = {{ 0, -2}, {-1,  0}, {-1,  1}, { 0,  0}, { 0,  0}}},
-            {.codeName = 'm', .nAnchors = 4, .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  0}, {-1,  1}}, .anchors = {{ 0, -1}, {-1,  0}, {-1,  1}, { 0,  1}, { 0,  0}}},
-            {.codeName = 'n', .nAnchors = 4, .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1, -1}, {-1,  1}}, .anchors = {{-1, -1}, { 0, -1}, {-1,  1}, { 0,  1}, { 0,  0}}},
-            {.codeName = 'o', .nAnchors = 3, .squares = {{ 0,  0}, { 0, -1}, { 1,  0}, { 0,  1}, { 0,  2}}, .anchors = {{ 0,  2}, { 1,  0}, { 0, -1}, { 0,  0}, { 0,  0}}},
-            {.codeName = 'p', .nAnchors = 3, .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  1}, { 1,  1}}, .anchors = {{ 0, -1}, {-1,  1}, { 1,  1}, { 0,  0}, { 0,  0}}},
-            {.codeName = 'q', .nAnchors = 3, .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 1,  0}, { 2,  0}}, .anchors = {{ 0,  0}, { 0, -2}, { 2,  0}, { 0,  0}, { 0,  0}}},
-            {.codeName = 'r', .nAnchors = 5, .squares = {{ 0,  0}, { 0, -1}, {-1, -1}, { 1,  0}, { 1,  1}}, .anchors = {{ 0,  0}, { 0, -1}, {-1, -1}, { 1,  0}, { 1,  1}}},
-            {.codeName = 's', .nAnchors = 4, .squares = {{ 0,  0}, { 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}}, .anchors = {{ 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}, { 0,  0}}},
-            {.codeName = 't', .nAnchors = 4, .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}}, .anchors = {{ 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}, { 0,  0}}},
-            {.codeName = 'u', .nAnchors = 4, .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}}, .anchors = {{ 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}, { 0,  0}}}
-    };
-
-    for (auto gamePiece : oneSquareGamePieces)
-        initialSetOfGamePieces->push_back(new GamePiece(gamePiece.codeName, 1, gamePiece.squares, gamePiece.nAnchors, gamePiece.anchors));
-
-    for (auto gamePiece : twoSquareGamePieces)
-        initialSetOfGamePieces->push_back(new GamePiece(gamePiece.codeName, 2, gamePiece.squares, gamePiece.nAnchors, gamePiece.anchors));
-
-    for (auto gamePiece : threeSquareGamePieces)
-        initialSetOfGamePieces->push_back(new GamePiece(gamePiece.codeName, 3, gamePiece.squares, gamePiece.nAnchors, gamePiece.anchors));
-
-    for (auto gamePiece : fourSquareGamePieces)
-        initialSetOfGamePieces->push_back(new GamePiece(gamePiece.codeName, 4, gamePiece.squares, gamePiece.nAnchors, gamePiece.anchors));
-
-    for (auto gamePiece : fiveSquareGamePieces)
-        initialSetOfGamePieces->push_back(new GamePiece(gamePiece.codeName, 5, gamePiece.squares, gamePiece.nAnchors, gamePiece.anchors));*/
-
     struct DefaultGamePiece {char codeName; std::vector<std::vector<int>> squares, anchors; std::vector<int> variants;};
     std::vector<struct DefaultGamePiece> defaultGamePieces = {
             {.codeName = 'a', .squares = {{ 0,  0}},                                         .anchors = {{ 0,  0}}                                        , .variants = {0}},
@@ -168,8 +112,17 @@ std::list<std::vector<GamePiece *> *> *GamePiece::getInitialSetOfGamePieces() {
             {.codeName = 'u', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}}, .anchors = {{ 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}, { 0,  0}}, .variants = {0}}
     };
 
-    for (const auto& gamePiece : defaultGamePieces)
-        initialSetOfGamePieces->push_back(new GamePiece(gamePiece.codeName, gamePiece.squares, gamePiece.anchors));
+    for (const auto& defaultGamePiece : defaultGamePieces) {
+        auto gamePiece = new std::vector<GamePiece *>();
+
+        for (const auto& transformation : defaultGamePiece.variants) {
+            auto variant = new GamePiece(defaultGamePiece.codeName, defaultGamePiece.squares, defaultGamePiece.anchors);
+            variant->transformPiece(transformation);
+            gamePiece->push_back(variant);
+        }
+
+        initialSetOfGamePieces->push_back(gamePiece);
+    }
 
     return initialSetOfGamePieces;
 }
@@ -190,4 +143,8 @@ void GamePiece::transformPiece(int transformation) {
 
 std::vector<Position *> *GamePiece::getSquares() {
     return squares;
+}
+
+std::vector<Position *> *GamePiece::getAnchors() {
+    return anchors;
 }

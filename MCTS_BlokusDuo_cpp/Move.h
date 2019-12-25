@@ -15,10 +15,10 @@ class Move {
 private:
     GamePiece *gamePiece;
     Position *center;
-    int transformation;
 public:
-    Move(GamePiece *gamePiece, Position *center, int transformation);
-    static bool verifyValidMove(Board *board, Player *player, GamePiece *gamePiece, Position *center, int transformation);
+    Move(GamePiece *gamePiece, Position *center);
+    static bool checkValidMove(Board *board, Player *player, GamePiece *gamePiece, Position *center);
+    static std::list<Move *> *getAllValidMoves(Board *board, Player *player);
 };
 
 

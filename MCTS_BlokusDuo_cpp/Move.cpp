@@ -4,49 +4,44 @@
 
 #include "Move.h"
 
-Move::Move(GamePiece *gamePiece, Position *center, int transformation) {
+Move::Move(GamePiece *gamePiece, Position *center) {
     this->gamePiece = gamePiece;
     this->center = center;
-    this->transformation = transformation;
 }
 
-// check for board limits, overlap and edge contact
-bool Move::verifyValidMove(Board *board, Player *player, GamePiece *gamePiece, Position *center, int transformation) {
-    auto tempGamePiece = gamePiece;
-    if (transformation) {
-        tempGamePiece = new GamePiece(gamePiece);
-        tempGamePiece->transformPiece(transformation);
-    }
-
-    auto validMode = true;
-    for (auto & square : *tempGamePiece->getSquares()) {
+bool Move::checkValidMove(Board *board, Player *player, GamePiece *gamePiece, Position *center) {
+    for (auto & square : *gamePiece->getSquares()) {
         auto x = square->getX() + center->getX();
         auto y = square->getY() + center->getY();
 
         // check for board limits
-        if (x < 0 || x >= board->getSize()[0] || y < 0 || y >= board->getSize()[1]) {
-            validMode = false;
-            break;
-        }
+        if (x < 0 || x >= board->getSize()[0] || y < 0 || y >= board->getSize()[1])
+            return false;
 
         // check for overlap
-        if (board->getBoard()[x][y] != 0) {
-            validMode = false;
-            break;
-        }
+        if (board->getBoard()[x][y])
+            return false;
 
         // check for edge contact
-        if ((x - 1 >= 0 && x - 1 < board->getSize()[0] && board->getBoard()[x - 1][y] == player->getPlayerId()) ||
-                (x + 1 >= 0 && x + 1 < board->getSize()[0] && board->getBoard()[x + 1][y] == player->getPlayerId()) ||
-                (y - 1 >= 0 && y - 1 < board->getSize()[1] && board->getBoard()[x][y - 1] == player->getPlayerId()) ||
-                (y + 1 >= 0 && y + 1 < board->getSize()[1] && board->getBoard()[x][y + 1] == player->getPlayerId())) {
-            validMode = false;
-            break;
+        if (board->hasEdgeContact(x, y, player->getPlayerId()))
+            return false;
+    }
+
+    return true;
+}
+
+std::list<Move *> *Move::getAllValidMoves(Board *board, Player *player) {
+    auto validMoves = new std::list<Move *>();
+
+    for (auto & boardAnchor : *board->getAllAnchors(player->getPlayerId())) {
+        for (auto & gamePiece : *player->getRemainingGamePieces()) {
+            for (auto & variant : *gamePiece) {
+                for (auto & anchor : *variant->getAnchors()) {
+
+                }
+            }
         }
     }
 
-    if (transformation)
-        delete tempGamePiece;
-
-    return validMode;
+    return validMoves;
 }

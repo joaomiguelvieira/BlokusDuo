@@ -31,6 +31,7 @@ public:
     static std::list<std::vector<GamePiece *> *> *getInitialSetOfGamePieces();
     char getCodeName();
     std::vector<Position *> *getSquares();
+    std::vector<Position *> *getAnchors();
     void transformPiece(int transformation);
 };
 
