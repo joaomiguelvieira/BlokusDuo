@@ -2,6 +2,7 @@
 // Created by joaovieira on 12/24/19.
 //
 
+#include <iostream>
 #include "Board.h"
 
 Board::Board() {
@@ -62,4 +63,14 @@ bool Board::hasEdgeContact(int x, int y, int playerId) {
     return (x - 1 >= 0 && board[x - 1][y] == playerId) || (x + 1 < size[0] && board[x + 1][y] == playerId) ||
            (y - 1 >= 0 && board[x][y - 1] == playerId) || (y + 1 < size[1] && board[x][y + 1] == playerId);
 
+}
+
+void Board::printBoard() {
+    for (int i = 0; i < size[0]; ++i) {
+        for (int j = 0; j < size[1]; ++j) {
+            std::cout << (board[j][i] == 0 ? ' ' : board[j][i]);
+        }
+
+        std::cout << "\n";
+    }
 }

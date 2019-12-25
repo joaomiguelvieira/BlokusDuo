@@ -23,10 +23,9 @@ public:
     int **getBoard();
     int *getSize();
     std::list<Position *> *getAllAnchors(int playerId);
-
     bool hasCornerContact(int x, int y, int playerId);
-
     bool hasEdgeContact(int x, int y, int playerId);
+    void printBoard();
 };
 
 
