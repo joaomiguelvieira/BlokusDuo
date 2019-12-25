@@ -16,6 +16,7 @@ public:
     int getX();
     int getY();
     void transformPosition(const int transformation[2][2]);
+    void subtract(Position *position);
 };
 
 

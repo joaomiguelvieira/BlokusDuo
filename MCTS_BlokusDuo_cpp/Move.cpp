@@ -6,7 +6,7 @@
 
 Move::Move(GamePiece *gamePiece, Position *center) {
     this->gamePiece = gamePiece;
-    this->center = center;
+    this->center = new Position(center);
 }
 
 bool Move::checkValidMove(Board *board, Player *player, GamePiece *gamePiece, Position *center) {
@@ -37,11 +37,19 @@ std::list<Move *> *Move::getAllValidMoves(Board *board, Player *player) {
         for (auto & gamePiece : *player->getRemainingGamePieces()) {
             for (auto & variant : *gamePiece) {
                 for (auto & anchor : *variant->getAnchors()) {
+                    auto center = Position(boardAnchor);
+                    center.subtract(anchor);
 
+                    if (checkValidMove(board, player, variant, &center))
+                        validMoves->push_back(new Move(variant, &center));
                 }
             }
         }
     }
 
     return validMoves;
+}
+
+Move::~Move() {
+    delete center;
 }

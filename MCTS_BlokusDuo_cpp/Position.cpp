@@ -29,3 +29,8 @@ void Position::transformPosition(const int (*transformation)[2]) {
     x = newX;
     y = newY;
 }
+
+void Position::subtract(Position *position) {
+    x -= position->x;
+    y -= position->y;
+}
