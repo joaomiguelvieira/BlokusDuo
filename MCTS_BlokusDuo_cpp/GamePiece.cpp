@@ -159,3 +159,7 @@ void GamePiece::transformPiece(int transformation) {
     for (auto & anchor : *anchors)
         anchor->transformPosition(transformations[transformation]);
 }
+
+std::vector<Position *> *GamePiece::getSquares() {
+    return squares;
+}

@@ -16,6 +16,9 @@ public:
     Board();
 
     ~Board();
+
+    int **getBoard();
+    int *getSize();
 };
 
 

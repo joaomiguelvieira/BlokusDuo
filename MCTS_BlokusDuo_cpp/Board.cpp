@@ -17,3 +17,11 @@ Board::~Board() {
     }
     delete [] board;
 }
+
+int **Board::getBoard() {
+    return board;
+}
+
+int *Board::getSize() {
+    return size;
+}

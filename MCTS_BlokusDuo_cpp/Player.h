@@ -6,15 +6,21 @@
 #define MCTS_BLOKUSDUO_CPP_PLAYER_H
 
 
+#include "GamePiece.h"
+
 class Player {
 private:
     static int idCount;
 
     int playerId;
+    std::list<GamePiece *> *remainingGamePieces;
 public:
     Player();
 
+    ~Player();
+
     int getPlayerId();
+    std::list<GamePiece *> *getRemainingGamePieces();
 };
 
 

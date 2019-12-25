@@ -30,6 +30,7 @@ public:
     void printGamePiece();
     static std::list<GamePiece *> *getInitialSetOfGamePieces();
     char getCodeName();
+    std::vector<Position *> *getSquares();
     void transformPiece(int transformation);
 };
 

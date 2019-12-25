@@ -1,22 +1,16 @@
 #include <algorithm>
+#include <iostream>
 #include "GamePiece.h"
+#include "Player.h"
 
 int main() {
-    auto initialSetOfGamePieces = GamePiece::getInitialSetOfGamePieces();
+    auto player1 = new Player();
 
-    auto testPiece = *std::find_if(initialSetOfGamePieces->begin(), initialSetOfGamePieces->end(), [](GamePiece *gamePiece){return gamePiece->getCodeName() == 't';});
+    std::cout << "Player " << player1->getPlayerId() << " has " << player1->getRemainingGamePieces()->size() << " remaining game pieces:\n";
+    for (auto & gamePiece : *player1->getRemainingGamePieces())
+        std::cout << gamePiece->getCodeName() << "\n";
 
-    for (int i = 0; i < GamePiece::N_TRANSFORMATIONS; ++i) {
-        auto transformedPiece = new GamePiece(testPiece);
-        transformedPiece->transformPiece(i);
-        transformedPiece->printGamePiece();
-        delete transformedPiece;
-    }
-
-    for (auto & gamePiece : *initialSetOfGamePieces) {
-        delete gamePiece;
-    }
-    delete initialSetOfGamePieces;
+    delete player1;
 
     return 0;
 }

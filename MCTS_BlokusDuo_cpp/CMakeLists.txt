@@ -3,4 +3,4 @@ project(MCTS_BlokusDuo_cpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(MCTS_BlokusDuo_cpp main.cpp Board.cpp Board.h Player.cpp Player.h GamePiece.cpp GamePiece.h Position.cpp Position.h)
+add_executable(MCTS_BlokusDuo_cpp main.cpp Board.cpp Board.h Player.cpp Player.h GamePiece.cpp GamePiece.h Position.cpp Position.h Move.cpp Move.h)
