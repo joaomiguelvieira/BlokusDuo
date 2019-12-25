@@ -9,6 +9,10 @@ Board::Board() {
     board = new int*[DEFAULT_BOARD_SIZE];
     for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
         board[i] = new int[DEFAULT_BOARD_SIZE];
+
+        for (int j = 0; j < DEFAULT_BOARD_SIZE; ++j) {
+            board[i][j] = 0;
+        }
     }
 }
 
@@ -73,4 +77,18 @@ void Board::printBoard() {
 
         std::cout << "\n";
     }
+}
+
+Board::Board(Board *board) {
+    this->board = new int*[board->size[0]];
+    for (int i = 0; i < board->size[0]; ++i) {
+        this->board[i] = new int[board->size[1]];
+
+        for (int j = 0; j < board->size[1]; ++j) {
+            this->board[i][j] = board->board[i][j];
+        }
+    }
+
+    this->size[0] = board->size[0];
+    this->size[1] = board->size[1];
 }

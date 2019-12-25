@@ -17,6 +17,7 @@ private:
     int size[2]{DEFAULT_BOARD_SIZE, DEFAULT_BOARD_SIZE};
 public:
     Board();
+    explicit Board(Board *board);
 
     ~Board();
 
