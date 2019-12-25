@@ -13,14 +13,14 @@ private:
     static int idCount;
 
     int playerId;
-    std::list<GamePiece *> *remainingGamePieces;
+    std::list<std::vector<GamePiece *> *> *remainingGamePieces;
 public:
     Player();
 
     ~Player();
 
     int getPlayerId();
-    std::list<GamePiece *> *getRemainingGamePieces();
+    std::list<std::vector<GamePiece *> *> *getRemainingGamePieces();
 };
 
 

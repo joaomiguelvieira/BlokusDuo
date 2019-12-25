@@ -17,18 +17,18 @@ const int GamePiece::transformations[8][2][2] = {
 };
 
 // TODO optimize array allocation
-GamePiece::GamePiece(char codeName, int nSquares, int squares[][2], int nAnchors, int anchors[][2]) {
+GamePiece::GamePiece(char codeName, std::vector<std::vector<int>> squares, std::vector<std::vector<int>> anchors) {
     this->codeName = codeName;
 
     this->transformation = 0;
 
     this->squares = new std::vector<Position *>();
-    for (int i = 0; i < nSquares; ++i)
-        this->squares->push_back(new Position(squares[i][0], squares[i][1]));
+    for (auto & square : squares)
+        this->squares->push_back(new Position(square[0], square[1]));
 
     this->anchors = new std::vector<Position *>();
-    for (int j = 0; j < nAnchors; ++j)
-        this->anchors->push_back(new Position(anchors[j][0], anchors[j][1]));
+    for (auto & anchor : anchors)
+        this->anchors->push_back(new Position(anchor[0], anchor[1]));
 }
 
 // TODO optimize array allocation
@@ -84,10 +84,10 @@ void GamePiece::printGamePiece() {
     }
 }
 
-std::list<GamePiece *> *GamePiece::getInitialSetOfGamePieces() {
-    auto initialSetOfGamePieces = new std::list<GamePiece *>();
+std::list<std::vector<GamePiece *> *> *GamePiece::getInitialSetOfGamePieces() {
+    auto initialSetOfGamePieces = new std::list<std::vector<GamePiece *> *>();
 
-    struct OneSquareGamePiece {char codeName; int nAnchors; int squares[1][2], anchors[1][2];};
+    /*struct OneSquareGamePiece {char codeName; int nAnchors; int squares[1][2], anchors[1][2];};
     struct OneSquareGamePiece oneSquareGamePieces[] = {
             {.codeName = 'a', .nAnchors = 1, .squares = {{ 0,  0}}, .anchors = {{ 0,  0}}}
     };
@@ -141,7 +141,35 @@ std::list<GamePiece *> *GamePiece::getInitialSetOfGamePieces() {
         initialSetOfGamePieces->push_back(new GamePiece(gamePiece.codeName, 4, gamePiece.squares, gamePiece.nAnchors, gamePiece.anchors));
 
     for (auto gamePiece : fiveSquareGamePieces)
-        initialSetOfGamePieces->push_back(new GamePiece(gamePiece.codeName, 5, gamePiece.squares, gamePiece.nAnchors, gamePiece.anchors));
+        initialSetOfGamePieces->push_back(new GamePiece(gamePiece.codeName, 5, gamePiece.squares, gamePiece.nAnchors, gamePiece.anchors));*/
+
+    struct DefaultGamePiece {char codeName; std::vector<std::vector<int>> squares, anchors; std::vector<int> variants;};
+    std::vector<struct DefaultGamePiece> defaultGamePieces = {
+            {.codeName = 'a', .squares = {{ 0,  0}},                                         .anchors = {{ 0,  0}}                                        , .variants = {0}},
+            {.codeName = 'b', .squares = {{ 0,  0}, { 0,  1}},                               .anchors = {{ 0,  0}, { 0,  1}}                              , .variants = {0, 2}},
+            {.codeName = 'c', .squares = {{ 0,  0}, { 0,  1}, { 0, -1}},                     .anchors = {{ 0,  1}, { 0, -1}, { 0,  0}}                    , .variants = {0, 2}},
+            {.codeName = 'd', .squares = {{ 0,  0}, { 0, -1}, { 1,  0}},                     .anchors = {{ 0,  0}, { 0, -1}, { 1,  0}}                    , .variants = {0, 1, 2, 3}},
+            {.codeName = 'e', .squares = {{ 0,  0}, { 0,  1}, { 0,  2}, { 0, -1}},           .anchors = {{ 0,  2}, { 0, -1}, { 0,  0}, { 0,  0}}          , .variants = {0, 2}},
+            {.codeName = 'f', .squares = {{ 0,  0}, { 0,  1}, {-1,  1}, { 0, -1}},           .anchors = {{ 0,  1}, {-1,  1}, { 0, -1}, { 0,  0}}          , .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'g', .squares = {{ 0,  0}, { 0,  1}, { 0, -1}, { 1,  0}},           .anchors = {{ 0,  1}, { 1,  0}, { 0, -1}, { 0,  0}}          , .variants = {0, 1, 2, 6}},
+            {.codeName = 'h', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}},           .anchors = {{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}}          , .variants = {0}},
+            {.codeName = 'i', .squares = {{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}},           .anchors = {{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}}          , .variants = {0, 1, 2, 3}},
+            {.codeName = 'j', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, { 0,  2}}, .anchors = {{ 0, -2}, { 0,  2}, { 0,  0}, { 0,  0}, { 0,  0}}, .variants = {0, 2}},
+            {.codeName = 'k', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, {-1,  1}}, .anchors = {{ 0, -2}, { 0,  1}, {-1,  1}, { 0,  0}, { 0,  0}}, .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'l', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, {-1,  0}, {-1,  1}}, .anchors = {{ 0, -2}, {-1,  0}, {-1,  1}, { 0,  0}, { 0,  0}}, .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'm', .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  0}, {-1,  1}}, .anchors = {{ 0, -1}, {-1,  0}, {-1,  1}, { 0,  1}, { 0,  0}}, .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'n', .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1, -1}, {-1,  1}}, .anchors = {{-1, -1}, { 0, -1}, {-1,  1}, { 0,  1}, { 0,  0}}, .variants = {0, 1, 2, 6}},
+            {.codeName = 'o', .squares = {{ 0,  0}, { 0, -1}, { 1,  0}, { 0,  1}, { 0,  2}}, .anchors = {{ 0,  2}, { 1,  0}, { 0, -1}, { 0,  0}, { 0,  0}}, .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'p', .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  1}, { 1,  1}}, .anchors = {{ 0, -1}, {-1,  1}, { 1,  1}, { 0,  0}, { 0,  0}}, .variants = {0, 2, 3, 4}},
+            {.codeName = 'q', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 1,  0}, { 2,  0}}, .anchors = {{ 0,  0}, { 0, -2}, { 2,  0}, { 0,  0}, { 0,  0}}, .variants = {0, 1, 2, 3}},
+            {.codeName = 'r', .squares = {{ 0,  0}, { 0, -1}, {-1, -1}, { 1,  0}, { 1,  1}}, .anchors = {{ 0,  0}, { 0, -1}, {-1, -1}, { 1,  0}, { 1,  1}}, .variants = {0, 1, 2, 3}},
+            {.codeName = 's', .squares = {{ 0,  0}, { 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}}, .anchors = {{ 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}, { 0,  0}}, .variants = {0, 1, 2, 3}},
+            {.codeName = 't', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}}, .anchors = {{ 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}, { 0,  0}}, .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'u', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}}, .anchors = {{ 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}, { 0,  0}}, .variants = {0}}
+    };
+
+    for (const auto& gamePiece : defaultGamePieces)
+        initialSetOfGamePieces->push_back(new GamePiece(gamePiece.codeName, gamePiece.squares, gamePiece.anchors));
 
     return initialSetOfGamePieces;
 }

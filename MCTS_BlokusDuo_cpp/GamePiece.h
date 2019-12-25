@@ -22,13 +22,13 @@ private:
 public:
     static constexpr int N_TRANSFORMATIONS = 8;
 
-    GamePiece(char codeName, int nSquares, int squares[][2], int nAnchors, int anchors[][2]);
+    GamePiece(char codeName, std::vector<std::vector<int>> squares, std::vector<std::vector<int>> anchors);
     explicit GamePiece(GamePiece *gamePiece);
 
     ~GamePiece();
 
     void printGamePiece();
-    static std::list<GamePiece *> *getInitialSetOfGamePieces();
+    static std::list<std::vector<GamePiece *> *> *getInitialSetOfGamePieces();
     char getCodeName();
     std::vector<Position *> *getSquares();
     void transformPiece(int transformation);

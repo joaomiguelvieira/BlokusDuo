@@ -16,11 +16,16 @@ int Player::getPlayerId() {
 }
 
 Player::~Player() {
-    for (auto & gamePiece : *remainingGamePieces)
+    for (auto & gamePiece : *remainingGamePieces) {
+        for (auto & variant : *gamePiece)
+            delete variant;
+
         delete gamePiece;
+    }
+
     delete remainingGamePieces;
 }
 
-std::list<GamePiece *> *Player::getRemainingGamePieces() {
+std::list<std::vector<GamePiece *> *> *Player::getRemainingGamePieces() {
     return remainingGamePieces;
 }
