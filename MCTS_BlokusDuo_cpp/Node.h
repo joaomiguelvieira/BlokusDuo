@@ -7,6 +7,7 @@
 
 
 #include <list>
+#include "State.h"
 
 class Node {
 private:

@@ -4,6 +4,7 @@
 
 #include <cfloat>
 #include "State.h"
+#include "Move.h"
 
 State::State() {
     board = new Board();
@@ -23,10 +24,6 @@ State::State(State *state) {
 
 State::State(Board *board) {
     this->board = new Board(board);
-    player = nullptr;
-    opponent = nullptr;
-    visitCount = 0;
-    winScore = 0;
 }
 
 State::~State() {
@@ -89,13 +86,33 @@ Player *State::getOpponent() {
 
 std::list<State *> *State::getAllPossibleStates() {
     auto possibleStates = new std::list<State *>();
-    auto availablePositions = board->getEmptyPositions();
-    for (auto & availablePosition : *availablePositions) {
+    auto possibleMoves = Move::getAllValidMoves(board, player);
+    for (auto & possibleMove : *possibleMoves) {
         auto newState = new State(board);
-        newState->setPlayerNo(3 - playerNo);
-        newState->getBoard()->performMove(newState->getPlayerNo(), availablePosition);
+        newState->setPlayer(new Player(opponent));
+        newState->setOpponent(new Player(player, possibleMove->getGamePiece()))
+        newState->getBoard()->performMove(newState->player, possibleMove);
         possibleStates->push_back(newState);
     }
 
     return possibleStates;
+}
+
+Move *State::getMove() {
+    return move;
+}
+
+int State::checkStatus() {
+    if (player->getQuited() && opponent->getQuited()) {
+        auto scoreDiff = player->getScore() - opponent->getScore();
+
+        if (scoreDiff < 0)
+            return player->getPlayerId();
+        else if (scoreDiff > 0)
+            return opponent->getPlayerId();
+        else
+            return DRAW;
+    }
+
+    return IN_PROGRESS;
 }

@@ -20,6 +20,9 @@ public:
 
     ~Move();
 
+    GamePiece *getGamePiece();
+    Position *getCenter();
+
     static bool checkValidMove(Board *board, Player *player, GamePiece *gamePiece, Position *center);
     static std::list<Move *> *getAllValidMoves(Board *board, Player *player);
 };

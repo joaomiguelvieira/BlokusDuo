@@ -92,3 +92,8 @@ Board::Board(Board *board) {
     this->size[0] = board->size[0];
     this->size[1] = board->size[1];
 }
+
+void Board::performMove(Player *player, Move *move) {
+    for (auto & square : *move->getGamePiece()->getSquares())
+        board[square->getX() + move->getCenter()->getX()][square->getY() + move->getCenter()->getY()] = player->getPlayerId();
+}

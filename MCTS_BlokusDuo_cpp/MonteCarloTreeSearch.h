@@ -11,16 +11,18 @@
 
 class MonteCarloTreeSearch {
 private:
-    int moveDurationMillis;
-    Tree *gameTree;
-    Player *player1, *player2;
-public:
-    static constexpr int IN_PROGRESS = -1;
-    static constexpr int DRAW = 0;
+    static constexpr int DEFAULT_DURATION_MILLIS = 1000;
 
+    int moveDurationMillis{DEFAULT_DURATION_MILLIS};
+    Tree *gameTree;
+public:
     explicit MonteCarloTreeSearch(int moveDurationMillis);
 
     ~MonteCarloTreeSearch();
+
+    int checkStatus();
+
+    Move *findNextMove();
 };
 
 #endif //MCTS_BLOKUSDUO_CPP_MONTECARLOTREESEARCH_H

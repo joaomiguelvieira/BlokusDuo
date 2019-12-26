@@ -7,8 +7,10 @@
 int main() {
     auto mcts = new MonteCarloTreeSearch(1000);
 
-    while (mcts->checkStatus() == MonteCarloTreeSearch::IN_PROGRESS)
-        mcts->performBestMove();
+    while (mcts->checkStatus() == State::IN_PROGRESS) {
+        auto bestMove = mcts->findNextMove();
+        mcts->performBestMove(bestMove)
+    }
 
     mcts->printStatus();
 

@@ -8,6 +8,8 @@
 
 #include <list>
 #include "Position.h"
+#include "Move.h"
+#include "Player.h"
 
 class Board {
 private:
@@ -27,6 +29,7 @@ public:
     bool hasCornerContact(int x, int y, int playerId);
     bool hasEdgeContact(int x, int y, int playerId);
     void printBoard();
+    void performMove(Player *player, Move *move);
 };
 
 

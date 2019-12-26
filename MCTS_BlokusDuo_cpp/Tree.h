@@ -6,8 +6,18 @@
 #define MCTS_BLOKUSDUO_CPP_TREE_H
 
 
-class Tree {
+#include "Node.h"
 
+class Tree {
+private:
+    Node *root;
+public:
+    Tree();
+
+    ~Tree();
+
+    Node *getRoot();
+    void *setRoot(Node *root);
 };
 
 

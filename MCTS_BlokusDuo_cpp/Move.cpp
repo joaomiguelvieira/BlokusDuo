@@ -53,3 +53,11 @@ std::list<Move *> *Move::getAllValidMoves(Board *board, Player *player) {
 Move::~Move() {
     delete center;
 }
+
+GamePiece *Move::getGamePiece() {
+    return gamePiece;
+}
+
+Position *Move::getCenter() {
+    return center;
+}

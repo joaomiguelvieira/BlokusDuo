@@ -11,11 +11,15 @@
 
 class State {
 private:
-    Board *board;
-    Player *player, *opponent;
-    int visitCount;
-    double winScore;
+    Board *board{nullptr};
+    Player *player{nullptr}, *opponent{nullptr};
+    Move *move{nullptr};
+    int visitCount{0};
+    double winScore{0};
 public:
+    static constexpr int IN_PROGRESS = -1;
+    static constexpr int DRAW = 0;
+
     State();
     explicit State(State *state);
     explicit State(Board *board);
@@ -36,6 +40,8 @@ public:
     void addScore(double score);
     std::list<State *> *getAllPossibleStates();
     Player *getOpponent();
+    Move *getMove();
+    int checkStatus();
 };
 
 

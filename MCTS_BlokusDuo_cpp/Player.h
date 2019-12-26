@@ -13,14 +13,19 @@ private:
     static int idCount;
 
     int playerId;
+    bool quited{false};
     std::list<std::vector<GamePiece *> *> *remainingGamePieces;
 public:
     Player();
+    Player(Player *player, GamePiece *removePiece);
+    explicit Player(Player *player);
 
     ~Player();
 
     int getPlayerId();
     std::list<std::vector<GamePiece *> *> *getRemainingGamePieces();
+    bool getQuited();
+    int getScore();
 };
 
 
