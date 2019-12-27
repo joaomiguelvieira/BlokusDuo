@@ -30,6 +30,9 @@ void expandGameSubtree(Node *node) {
     //auto player1_RemainingPieces = player1->getRemainingGamePieces()->size();
     //auto player2_RemainingPieces = player2->getRemainingGamePieces()->size();
 
+    nNodes++;
+    std::cout << nNodes << std::endl;
+
     if (state->checkStatus() != State::IN_PROGRESS)
         return;
 
@@ -50,7 +53,7 @@ int main() {
     nNodes = 1;
 
     expandGameSubtree(gameTree->getRoot());
-    std::cout << ++nNodes << std::endl;
+    std::cout << nNodes << std::endl;
 
     return 0;
 }

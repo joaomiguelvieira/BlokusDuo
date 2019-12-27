@@ -16,7 +16,7 @@ Node *Tree::getRoot() {
     return root;
 }
 
-void *Tree::setRoot(Node *root) {
+void Tree::setRoot(Node *root) {
     auto parent = root->getParent();
 
     if (parent)

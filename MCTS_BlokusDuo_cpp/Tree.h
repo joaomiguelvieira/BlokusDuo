@@ -17,7 +17,7 @@ public:
     ~Tree();
 
     Node *getRoot();
-    void *setRoot(Node *root);
+    void setRoot(Node *root);
 };
 
 
