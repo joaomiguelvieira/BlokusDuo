@@ -4,7 +4,7 @@
 #include <pthread.h>
 #include <mutex>
 
-#define NUM_THREADS 8
+#define NUM_THREADS 12
 
 Tree *gameTree;
 int nNodes;
