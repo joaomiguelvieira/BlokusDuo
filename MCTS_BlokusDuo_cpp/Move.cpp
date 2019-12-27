@@ -21,9 +21,10 @@ Position *Move::getCenter() {
     return center;
 }
 
-bool Move::isEqual(Move *move) {
-    return this->center->getX() == move->center->getX() &&
-           this->center->getY() == move->center->getY() &&
-           this->gamePiece->getCodeName() == move->gamePiece->getCodeName() &&
-           this->gamePiece->getTransformation() == move->gamePiece->getTransformation();
+bool Move::isEqual(Move *move1, Move *move2) {
+    return move1 == move2 ||
+           (move1->center->getX() == move2->center->getX() &&
+           move1->center->getY() == move2->center->getY() &&
+           move1->gamePiece->getCodeName() == move2->gamePiece->getCodeName() &&
+           move1->gamePiece->getTransformation() == move2->gamePiece->getTransformation());
 }

@@ -149,6 +149,6 @@ std::vector<Position *> *GamePiece::getAnchors() {
     return anchors;
 }
 
-bool GamePiece::getTransformation() {
+int GamePiece::getTransformation() {
     return transformation;
 }

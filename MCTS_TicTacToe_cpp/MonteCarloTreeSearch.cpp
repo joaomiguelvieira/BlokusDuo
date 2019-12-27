@@ -68,7 +68,6 @@ void MonteCarloTreeSearch::expandNode(Node *node) {
     for (auto & possibleState : *possibleStates) {
         auto newNode = new Node(possibleState);
         newNode->setParent(node);
-        newNode->getState()->setPlayerNo(node->getState()->getOpponent());
         node->getChildArray()->push_back(newNode);
     }
 

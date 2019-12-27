@@ -11,7 +11,8 @@
 
 class MonteCarloTreeSearch {
 private:
-    static constexpr int DEFAULT_DURATION_MILLIS = 1000;
+    static constexpr int WIN_SCORE = 10;
+    static constexpr int DEFAULT_DURATION_MILLIS = 100;
 
     int moveDurationMillis{DEFAULT_DURATION_MILLIS};
     Tree *gameTree;
@@ -21,8 +22,16 @@ public:
     ~MonteCarloTreeSearch();
 
     int checkStatus();
+    Move *findNextMove();
+    static Node *selectPromisingNode(Node *rootNode);
+    static void expandNode(Node *node);
+    int simulateRandomPlayout(Node *node);
 
-    //Move *findNextMove();
+    static void backPropagation(Node *nodeToExplore, int playerId);
+
+    void performNextMove(Move *move);
+
+    void printStatus();
 };
 
 #endif //MCTS_BLOKUSDUO_CPP_MONTECARLOTREESEARCH_H

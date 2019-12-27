@@ -33,7 +33,7 @@ public:
     std::vector<Position *> *getSquares();
     std::vector<Position *> *getAnchors();
     void transformPiece(int transformation);
-    bool getTransformation();
+    int getTransformation();
 };
 
 

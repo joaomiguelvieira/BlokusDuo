@@ -21,7 +21,7 @@ public:
 
     GamePiece *getGamePiece();
     Position *getCenter();
-    bool isEqual(Move *move);
+    static bool isEqual(Move *move1, Move *move2);
 };
 
 

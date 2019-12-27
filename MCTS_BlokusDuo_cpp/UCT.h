@@ -6,8 +6,12 @@
 #define MCTS_BLOKUSDUO_CPP_UCT_H
 
 
-class UCT {
+#include "Node.h"
 
+class UCT {
+public:
+    static Node *findBestNodeWithUCT(Node *node);
+    static double uctValue(int totalVisit, double nodeWinScore, int nodeVisit);
 };
 
 

@@ -6,19 +6,19 @@
 #include <climits>
 #include "State.h"
 #include "Move.h"
+#include <cstdlib>
+#include <ctime>
 
 State::State() {
     board = new Board();
-    player = nullptr;
-    opponent = nullptr;
     visitCount = 0;
     winScore = 0;
 }
 
 State::State(State *state) {
     board = new Board(state->getBoard());
-    player = state->getPlayer();
-    opponent = state->getOpponent();
+    player = new Player(state->getPlayer());
+    opponent = new Player(state->getOpponent());
     visitCount = state->getVisitCount();
     winScore = state->getVisitCount();
 }
@@ -131,4 +131,24 @@ int State::checkStatus() {
 
 void State::setMove(Move *move) {
     this->move = move;
+}
+
+void State::randomPlay() {
+    auto possibleMoves = board->getAllValidMoves(player);
+    int totalPossibilities = (int) possibleMoves->size();
+
+    if (totalPossibilities == 0) {
+        player->setQuited(true);
+        return;
+    }
+
+    srand((unsigned int) time(nullptr));
+    int selectRandom = rand() % totalPossibilities;
+
+    auto it = possibleMoves->begin();
+    std::advance(it, selectRandom);
+    auto moveToPerform = *it;
+    board->performMove(player, moveToPerform);
+    auto pieceToRemove = moveToPerform->getGamePiece();
+    player->getRemainingGamePieces()->remove_if([pieceToRemove](std::vector<GamePiece *> *gamePiece)->bool{return (*gamePiece)[0]->getCodeName() == pieceToRemove->getCodeName();});
 }
