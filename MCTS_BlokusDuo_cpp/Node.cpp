@@ -65,3 +65,8 @@ Node *Node::getChildWithMaxScore() {
         return node1->getState()->getVisitCount() < node2->getState()->getVisitCount();
     });
 }
+
+void Node::resetChildArray() {
+    delete childArray;
+    childArray = new std::list<Node *>();
+}

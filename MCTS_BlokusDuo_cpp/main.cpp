@@ -27,8 +27,12 @@ void expandGameSubtree(Node *node) {
     MonteCarloTreeSearch::expandNode(node);
 
     // expand each of the node's children
-    for (auto & child : *node->getChildArray())
+    for (auto & child : *node->getChildArray()) {
         expandGameSubtree(child);
+        delete child;
+    }
+
+    node->resetChildArray();
 }
 
 void *expandGameSubtreeMultithread(void *id) {

@@ -27,6 +27,8 @@ public:
     Node *getRandomChildNode();
     Node *getParent();
     Node *getChildWithMaxScore();
+
+    void resetChildArray();
 };
 
 
