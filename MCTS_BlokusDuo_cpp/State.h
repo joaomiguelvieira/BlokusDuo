@@ -42,6 +42,7 @@ public:
     Player *getOpponent();
     Move *getMove();
     int checkStatus();
+    void setMove(Move *move);
 };
 
 

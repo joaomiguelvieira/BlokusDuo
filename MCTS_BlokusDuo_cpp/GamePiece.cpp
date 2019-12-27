@@ -148,3 +148,7 @@ std::vector<Position *> *GamePiece::getSquares() {
 std::vector<Position *> *GamePiece::getAnchors() {
     return anchors;
 }
+
+bool GamePiece::getTransformation() {
+    return transformation;
+}

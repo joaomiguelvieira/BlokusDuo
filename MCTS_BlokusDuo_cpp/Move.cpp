@@ -9,47 +9,6 @@ Move::Move(GamePiece *gamePiece, Position *center) {
     this->center = new Position(center);
 }
 
-bool Move::checkValidMove(Board *board, Player *player, GamePiece *gamePiece, Position *center) {
-    for (auto & square : *gamePiece->getSquares()) {
-        auto x = square->getX() + center->getX();
-        auto y = square->getY() + center->getY();
-
-        // check for board limits
-        if (x < 0 || x >= board->getSize()[0] || y < 0 || y >= board->getSize()[1])
-            return false;
-
-        // check for overlap
-        if (board->getBoard()[x][y])
-            return false;
-
-        // check for edge contact
-        if (board->hasEdgeContact(x, y, player->getPlayerId()))
-            return false;
-    }
-
-    return true;
-}
-
-std::list<Move *> *Move::getAllValidMoves(Board *board, Player *player) {
-    auto validMoves = new std::list<Move *>();
-
-    for (auto & boardAnchor : *board->getAllAnchors(player->getPlayerId())) {
-        for (auto & gamePiece : *player->getRemainingGamePieces()) {
-            for (auto & variant : *gamePiece) {
-                for (auto & anchor : *variant->getAnchors()) {
-                    auto center = Position(boardAnchor);
-                    center.subtract(anchor);
-
-                    if (checkValidMove(board, player, variant, &center))
-                        validMoves->push_back(new Move(variant, &center));
-                }
-            }
-        }
-    }
-
-    return validMoves;
-}
-
 Move::~Move() {
     delete center;
 }
@@ -60,4 +19,11 @@ GamePiece *Move::getGamePiece() {
 
 Position *Move::getCenter() {
     return center;
+}
+
+bool Move::isEqual(Move *move) {
+    return this->center->getX() == move->center->getX() &&
+           this->center->getY() == move->center->getY() &&
+           this->gamePiece->getCodeName() == move->gamePiece->getCodeName() &&
+           this->gamePiece->getTransformation() == move->gamePiece->getTransformation();
 }

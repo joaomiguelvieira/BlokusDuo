@@ -3,6 +3,7 @@
 //
 
 #include <cfloat>
+#include <climits>
 #include "State.h"
 #include "Move.h"
 
@@ -86,14 +87,25 @@ Player *State::getOpponent() {
 
 std::list<State *> *State::getAllPossibleStates() {
     auto possibleStates = new std::list<State *>();
-    auto possibleMoves = Move::getAllValidMoves(board, player);
-    for (auto & possibleMove : *possibleMoves) {
-        auto newState = new State(board);
-        newState->setPlayer(new Player(opponent));
-        newState->setOpponent(new Player(player, possibleMove->getGamePiece()))
-        newState->getBoard()->performMove(newState->player, possibleMove);
-        possibleStates->push_back(newState);
+
+    if (!opponent->getQuited()) {
+        auto possibleMoves = board->getAllValidMoves(opponent);
+        for (auto & possibleMove : *possibleMoves) {
+            auto newState = new State(board);
+            newState->setPlayer(new Player(opponent, possibleMove->getGamePiece()));
+            newState->setOpponent(new Player(player));
+            newState->setMove(possibleMove);
+            newState->getBoard()->performMove(newState->player, possibleMove);
+            possibleStates->push_back(newState);
+        }
     }
+
+    // add the quit state
+    auto newState = new State(board);
+    newState->setPlayer(new Player(opponent));
+    newState->setOpponent(new Player(player));
+    newState->getPlayer()->setQuited(true);
+    possibleStates->push_back(newState);
 
     return possibleStates;
 }
@@ -115,4 +127,8 @@ int State::checkStatus() {
     }
 
     return IN_PROGRESS;
+}
+
+void State::setMove(Move *move) {
+    this->move = move;
 }

@@ -22,7 +22,7 @@ public:
 
     int checkStatus();
 
-    Move *findNextMove();
+    //Move *findNextMove();
 };
 
 #endif //MCTS_BLOKUSDUO_CPP_MONTECARLOTREESEARCH_H

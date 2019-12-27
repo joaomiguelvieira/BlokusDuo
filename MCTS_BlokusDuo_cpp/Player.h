@@ -6,13 +6,14 @@
 #define MCTS_BLOKUSDUO_CPP_PLAYER_H
 
 
+#include <cstdint>
 #include "GamePiece.h"
 
 class Player {
 private:
-    static int idCount;
+    static uint8_t idCount;
 
-    int playerId;
+    uint8_t playerId;
     bool quited{false};
     std::list<std::vector<GamePiece *> *> *remainingGamePieces;
 public:
@@ -22,10 +23,12 @@ public:
 
     ~Player();
 
-    int getPlayerId();
+    uint8_t getPlayerId();
     std::list<std::vector<GamePiece *> *> *getRemainingGamePieces();
     bool getQuited();
     int getScore();
+
+    void setQuited(bool quited);
 };
 
 

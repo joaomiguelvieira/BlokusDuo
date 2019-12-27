@@ -18,6 +18,7 @@ int MonteCarloTreeSearch::checkStatus() {
     return gameTree->getRoot()->getState()->checkStatus();
 }
 
+/*
 Move *MonteCarloTreeSearch::findNextMove() {
     auto start = std::chrono::high_resolution_clock::now();
     long elapsed;
@@ -47,3 +48,4 @@ Move *MonteCarloTreeSearch::findNextMove() {
     auto winnerNode = gameTree->getRoot()->getChildWithMaxScore();
     return winnerNode->getState()->getMove();
 }
+*/

@@ -6,9 +6,9 @@
 #include "Board.h"
 
 Board::Board() {
-    board = new int*[DEFAULT_BOARD_SIZE];
+    board = new uint8_t*[DEFAULT_BOARD_SIZE];
     for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
-        board[i] = new int[DEFAULT_BOARD_SIZE];
+        board[i] = new uint8_t[DEFAULT_BOARD_SIZE];
 
         for (int j = 0; j < DEFAULT_BOARD_SIZE; ++j) {
             board[i][j] = 0;
@@ -23,7 +23,7 @@ Board::~Board() {
     delete [] board;
 }
 
-int **Board::getBoard() {
+uint8_t **Board::getBoard() {
     return board;
 }
 
@@ -72,7 +72,10 @@ bool Board::hasEdgeContact(int x, int y, int playerId) {
 void Board::printBoard() {
     for (int i = 0; i < size[0]; ++i) {
         for (int j = 0; j < size[1]; ++j) {
-            std::cout << (board[j][i] == 0 ? ' ' : board[j][i]);
+            if (board[j][i] == 0)
+                std::cout << ' ';
+            else
+                std::cout << unsigned(board[j][i]);
         }
 
         std::cout << "\n";
@@ -80,9 +83,9 @@ void Board::printBoard() {
 }
 
 Board::Board(Board *board) {
-    this->board = new int*[board->size[0]];
+    this->board = new uint8_t*[board->size[0]];
     for (int i = 0; i < board->size[0]; ++i) {
-        this->board[i] = new int[board->size[1]];
+        this->board[i] = new uint8_t[board->size[1]];
 
         for (int j = 0; j < board->size[1]; ++j) {
             this->board[i][j] = board->board[i][j];
@@ -96,4 +99,45 @@ Board::Board(Board *board) {
 void Board::performMove(Player *player, Move *move) {
     for (auto & square : *move->getGamePiece()->getSquares())
         board[square->getX() + move->getCenter()->getX()][square->getY() + move->getCenter()->getY()] = player->getPlayerId();
+}
+
+bool Board::checkValidMove(Player *player, GamePiece *gamePiece, Position *center) {
+    for (auto & square : *gamePiece->getSquares()) {
+        auto x = square->getX() + center->getX();
+        auto y = square->getY() + center->getY();
+
+        // check for board limits
+        if (x < 0 || x >= size[0] || y < 0 || y >= size[1])
+            return false;
+
+        // check for overlap
+        if (board[x][y])
+            return false;
+
+        // check for edge contact
+        if (hasEdgeContact(x, y, player->getPlayerId()))
+            return false;
+    }
+
+    return true;
+}
+
+std::list<Move *> *Board::getAllValidMoves(Player *player) {
+    auto validMoves = new std::list<Move *>();
+
+    for (auto & boardAnchor : *getAllAnchors(player->getPlayerId())) {
+        for (auto & gamePiece : *player->getRemainingGamePieces()) {
+            for (auto & variant : *gamePiece) {
+                for (auto & anchor : *variant->getAnchors()) {
+                    auto center = Position(boardAnchor);
+                    center.subtract(anchor);
+
+                    if (checkValidMove(player, variant, &center))
+                        validMoves->push_back(new Move(variant, &center));
+                }
+            }
+        }
+    }
+
+    return validMoves;
 }

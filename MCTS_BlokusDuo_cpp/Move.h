@@ -8,7 +8,6 @@
 
 #include "Position.h"
 #include "GamePiece.h"
-#include "Board.h"
 #include "Player.h"
 
 class Move {
@@ -22,9 +21,7 @@ public:
 
     GamePiece *getGamePiece();
     Position *getCenter();
-
-    static bool checkValidMove(Board *board, Player *player, GamePiece *gamePiece, Position *center);
-    static std::list<Move *> *getAllValidMoves(Board *board, Player *player);
+    bool isEqual(Move *move);
 };
 
 

@@ -11,9 +11,9 @@
 
 class Node {
 private:
-    State *state;
-    std::list<Node *> *childArray;
-    Node *parent;
+    State *state{nullptr};
+    std::list<Node *> *childArray{nullptr};
+    Node *parent{nullptr};
 public:
     Node();
     explicit Node(State *state);

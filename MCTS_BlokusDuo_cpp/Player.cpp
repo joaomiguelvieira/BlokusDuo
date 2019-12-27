@@ -4,14 +4,14 @@
 
 #include "Player.h"
 
-int Player::idCount = 0;
+uint8_t Player::idCount = 0;
 
 Player::Player() {
     playerId = ++idCount;
     remainingGamePieces = GamePiece::getInitialSetOfGamePieces();
 }
 
-int Player::getPlayerId() {
+uint8_t Player::getPlayerId() {
     return playerId;
 }
 
@@ -37,11 +37,14 @@ Player::Player(Player *player, GamePiece *removePiece) {
     for (auto & gamePiece : *player->remainingGamePieces)
         if ((*gamePiece)[0]->getCodeName() != removePiece->getCodeName())
             remainingGamePieces->push_back(gamePiece);
+
+    quited = player->quited;
 }
 
 Player::Player(Player *player) {
     playerId = player->playerId;
     remainingGamePieces = player->remainingGamePieces;
+    quited = player->quited;
 }
 
 bool Player::getQuited() {
@@ -55,4 +58,8 @@ int Player::getScore() {
         score += (*gamePiece)[0]->getSquares()->size();
 
     return score;
+}
+
+void Player::setQuited(bool quited) {
+    this->quited = quited;
 }

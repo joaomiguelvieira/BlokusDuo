@@ -6,16 +6,17 @@
 #define MCTS_BLOKUSDUO_CPP_BOARD_H
 
 
+#include <cstdint>
 #include <list>
 #include "Position.h"
-#include "Move.h"
 #include "Player.h"
+#include "Move.h"
 
 class Board {
 private:
     static constexpr int DEFAULT_BOARD_SIZE = 14;
 
-    int **board;
+    uint8_t **board;
     int size[2]{DEFAULT_BOARD_SIZE, DEFAULT_BOARD_SIZE};
 public:
     Board();
@@ -23,13 +24,15 @@ public:
 
     ~Board();
 
-    int **getBoard();
+    uint8_t **getBoard();
     int *getSize();
     std::list<Position *> *getAllAnchors(int playerId);
     bool hasCornerContact(int x, int y, int playerId);
     bool hasEdgeContact(int x, int y, int playerId);
     void printBoard();
     void performMove(Player *player, Move *move);
+    bool checkValidMove(Player *player, GamePiece *gamePiece, Position *center);
+    std::list<Move *> *getAllValidMoves(Player *player);
 };
 
 
