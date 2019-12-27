@@ -2,7 +2,6 @@
 // Created by joaovieira on 12/25/19.
 //
 
-#include <cfloat>
 #include <climits>
 #include "State.h"
 #include "Move.h"
@@ -29,6 +28,9 @@ State::State(Board *board) {
 
 State::~State() {
     delete board;
+    delete player;
+    delete move;
+    delete opponent;
 }
 
 // TODO optimize setBoard
@@ -98,6 +100,8 @@ std::list<State *> *State::getAllPossibleStates() {
             newState->getBoard()->performMove(newState->player, possibleMove);
             possibleStates->push_back(newState);
         }
+
+        delete possibleMoves;
     }
 
     // add the quit state
@@ -139,6 +143,7 @@ void State::randomPlay() {
 
     if (totalPossibilities == 0) {
         player->setQuited(true);
+        delete possibleMoves;
         return;
     }
 
@@ -151,4 +156,8 @@ void State::randomPlay() {
     board->performMove(player, moveToPerform);
     auto pieceToRemove = moveToPerform->getGamePiece();
     player->getRemainingGamePieces()->remove_if([pieceToRemove](std::vector<GamePiece *> *gamePiece)->bool{return (*gamePiece)[0]->getCodeName() == pieceToRemove->getCodeName();});
+
+    for (auto & possibleMove : *possibleMoves)
+        delete possibleMove;
+    delete possibleMoves;
 }

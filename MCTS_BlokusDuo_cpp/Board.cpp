@@ -125,7 +125,8 @@ bool Board::checkValidMove(Player *player, GamePiece *gamePiece, Position *cente
 std::list<Move *> *Board::getAllValidMoves(Player *player) {
     auto validMoves = new std::list<Move *>();
 
-    for (auto & boardAnchor : *getAllAnchors(player->getPlayerId())) {
+    auto boardAnchors = getAllAnchors(player->getPlayerId());
+    for (auto & boardAnchor : *boardAnchors) {
         for (auto & gamePiece : *player->getRemainingGamePieces()) {
             for (auto & variant : *gamePiece) {
                 for (auto & anchor : *variant->getAnchors()) {
@@ -137,7 +138,11 @@ std::list<Move *> *Board::getAllValidMoves(Player *player) {
                 }
             }
         }
+
+        delete boardAnchor;
     }
+
+    delete boardAnchors;
 
     return validMoves;
 }

@@ -11,11 +11,27 @@
 MonteCarloTreeSearch::MonteCarloTreeSearch(int moveDurationMillis) {
     this->moveDurationMillis = moveDurationMillis;
     this->gameTree = new Tree();
-    this->gameTree->getRoot()->getState()->setOpponent(new Player);
-    this->gameTree->getRoot()->getState()->setPlayer(new Player());
+    this->gamePieceSet1 = GamePiece::getInitialSetOfGamePieces();
+    this->gameTree->getRoot()->getState()->setOpponent(new Player(gamePieceSet1));
+    this->gamePieceSet2 = GamePiece::getInitialSetOfGamePieces();
+    this->gameTree->getRoot()->getState()->setPlayer(new Player(gamePieceSet2));
 }
 
 MonteCarloTreeSearch::~MonteCarloTreeSearch() {
+    for (auto & gamePiece : *gamePieceSet1) {
+        for (auto & variant : *gamePiece)
+            delete variant;
+        delete gamePiece;
+    }
+    delete gamePieceSet1;
+
+    for (auto & gamePiece : *gamePieceSet2) {
+        for (auto & variant : *gamePiece)
+            delete variant;
+        delete gamePiece;
+    }
+    delete gamePieceSet2;
+
     delete gameTree;
 }
 
@@ -48,6 +64,8 @@ Move *MonteCarloTreeSearch::findNextMove() {
         auto end = std::chrono::high_resolution_clock::now();
         elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
     } while (elapsed < moveDurationMillis);
+
+    std::cout << "Simulations: " << gameTree->getRoot()->getState()->getVisitCount() << "\n";
 
     auto winnerNode = gameTree->getRoot()->getChildWithMaxScore();
     return winnerNode->getState()->getMove();
@@ -82,7 +100,7 @@ int MonteCarloTreeSearch::simulateRandomPlayout(Node *node) {
     auto opponent = gameTree->getRoot()->getState()->getPlayer();
     if (status == opponent->getPlayerId()) {
         tempNode->getParent()->getState()->setWinScore(INT_MIN);
-        //delete tempNode
+        delete tempNode;
         return status;
     }
     while (status == State::IN_PROGRESS) {
@@ -91,7 +109,7 @@ int MonteCarloTreeSearch::simulateRandomPlayout(Node *node) {
         status = tempState->checkStatus();
     }
 
-    //delete tempNode;
+    delete tempNode;
 
     return status;
 }
@@ -124,12 +142,33 @@ void MonteCarloTreeSearch::performNextMove(Move *move) {
 }
 
 void MonteCarloTreeSearch::printStatus() {
-    auto status = checkStatus();
+    auto actualState = gameTree->getRoot()->getState();
 
+    auto player1 = actualState->getPlayer()->getPlayerId() == 1 ? actualState->getPlayer() : actualState->getOpponent();
+    auto player2 = actualState->getPlayer()->getPlayerId() == 2 ? actualState->getPlayer() : actualState->getOpponent();
+
+    std::cout << "================= PLAYER " << unsigned(actualState->getPlayer()->getPlayerId()) << "'S TURN =================\n";
+
+    if (player1->getQuited())
+        std::cout << "Player 1 has quited with ";
+    else
+        std::cout << "Player 1 is playing with ";
+    std::cout << player1->getRemainingGamePieces()->size() << " remaining game pieces.\n";
+
+    if (player2->getQuited())
+        std::cout << "Player 2 has quited with ";
+    else
+        std::cout << "Player 2 is playing with ";
+    std::cout << player2->getRemainingGamePieces()->size() << " remaining game pieces.\n\n";
+
+    std::cout << "Actual board:\n";
+    actualState->getBoard()->printBoard();
+
+    /*auto status = checkStatus();
     if (checkStatus() == State::IN_PROGRESS)
-        std::cout << "Status: in progress...\n";
+        std::cout << "Status: game in progress...\n";
     else if (checkStatus() == State::DRAW)
         std::cout << "Status: game draw.\n";
     else
-        std::cout << "Status: player " << status << " wins!\n";
+        std::cout << "Status: player " << status << " wins!\n";*/
 }

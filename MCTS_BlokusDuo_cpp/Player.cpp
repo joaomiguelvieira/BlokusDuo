@@ -16,13 +16,6 @@ uint8_t Player::getPlayerId() {
 }
 
 Player::~Player() {
-    for (auto & gamePiece : *remainingGamePieces) {
-        for (auto & variant : *gamePiece)
-            delete variant;
-
-        delete gamePiece;
-    }
-
     delete remainingGamePieces;
 }
 
@@ -32,8 +25,8 @@ std::list<std::vector<GamePiece *> *> *Player::getRemainingGamePieces() {
 
 Player::Player(Player *player, GamePiece *removePiece) {
     playerId = player->playerId;
-    remainingGamePieces = new std::list<std::vector<GamePiece *> *>();
 
+    remainingGamePieces = new std::list<std::vector<GamePiece *> *>();
     for (auto & gamePiece : *player->remainingGamePieces)
         if ((*gamePiece)[0]->getCodeName() != removePiece->getCodeName())
             remainingGamePieces->push_back(gamePiece);
@@ -43,7 +36,12 @@ Player::Player(Player *player, GamePiece *removePiece) {
 
 Player::Player(Player *player) {
     playerId = player->playerId;
-    remainingGamePieces = player->remainingGamePieces;
+
+    //remainingGamePieces = player->remainingGamePieces;
+    remainingGamePieces = new std::list<std::vector<GamePiece *> *>();
+    for (auto & gamePiece : *player->remainingGamePieces)
+        remainingGamePieces->push_back(gamePiece);
+
     quited = player->quited;
 }
 
@@ -62,4 +60,11 @@ int Player::getScore() {
 
 void Player::setQuited(bool quited) {
     this->quited = quited;
+}
+
+Player::Player(std::list<std::vector<GamePiece *> *> *remainingGamePieces) {
+    playerId = ++idCount;
+    this->remainingGamePieces = new std::list<std::vector<GamePiece *> *>();
+    for (auto & gamePiece : *remainingGamePieces)
+        this->remainingGamePieces->push_back(gamePiece);
 }

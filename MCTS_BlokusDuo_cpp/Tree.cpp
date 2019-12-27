@@ -23,6 +23,6 @@ void Tree::setRoot(Node *root) {
         parent->getChildArray()->remove_if([root](Node *child)->bool{return child == root;});
 
     root->setParent(nullptr);
-    //delete this->root;
+    delete this->root;
     this->root = root;
 }

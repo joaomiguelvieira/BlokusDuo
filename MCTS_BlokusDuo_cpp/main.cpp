@@ -2,14 +2,13 @@
 #include "MonteCarloTreeSearch.h"
 
 void playGame() {
-    auto mcts = new MonteCarloTreeSearch(1000);
+    auto mcts = new MonteCarloTreeSearch();
 
     while (mcts->checkStatus() == State::IN_PROGRESS) {
         auto bestMove = mcts->findNextMove();
         mcts->performNextMove(bestMove);
+        //mcts->printStatus();
     }
-
-    mcts->printStatus();
 
     delete mcts;
 }
