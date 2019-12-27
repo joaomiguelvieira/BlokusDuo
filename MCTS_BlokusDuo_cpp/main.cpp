@@ -19,7 +19,7 @@ void playGame() {
 }
  */
 
-int nNodes;
+long nNodes;
 
 void expandGameSubtree(Node *node) {
     auto state = node->getState();
@@ -30,8 +30,8 @@ void expandGameSubtree(Node *node) {
     //auto player1_RemainingPieces = player1->getRemainingGamePieces()->size();
     //auto player2_RemainingPieces = player2->getRemainingGamePieces()->size();
 
-    nNodes++;
-    std::cout << nNodes << std::endl;
+    if (nNodes++ % (1024 * 1024) == 0)
+        std::cout << nNodes / 1024 / 1024 << "Mi Nodes" << std::endl;
 
     if (state->checkStatus() != State::IN_PROGRESS)
         return;
@@ -53,7 +53,7 @@ int main() {
     nNodes = 1;
 
     expandGameSubtree(gameTree->getRoot());
-    std::cout << nNodes << std::endl;
+    std::cout << "Total number of nodes: " << nNodes << std::endl;
 
     return 0;
 }
