@@ -7,7 +7,7 @@
 #define NUM_THREADS 12
 
 Tree *gameTree;
-int nNodes;
+long nNodes;
 std::mutex mtx;
 
 void expandGameSubtree(Node *node) {
