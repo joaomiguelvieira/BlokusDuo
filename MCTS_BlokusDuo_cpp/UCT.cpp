@@ -5,6 +5,7 @@
 #include "UCT.h"
 #include <algorithm>
 #include <climits>
+#include <cmath>
 
 Node *UCT::findBestNodeWithUCT(Node *node) {
     int parentVisit = node->getState()->getVisitCount();
