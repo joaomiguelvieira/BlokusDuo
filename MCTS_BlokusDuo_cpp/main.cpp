@@ -3,6 +3,7 @@
 #include "MonteCarloTreeSearch.h"
 #include <pthread.h>
 #include <mutex>
+#include <sstream>
 
 #define NUM_THREADS 12
 
@@ -39,8 +40,8 @@ void *expandGameSubtreeMultithread(void *id) {
     auto childArray = gameTree->getRoot()->getChildArray();
     auto it = childArray->begin();
 
-    for (long i = 0; i < childArray->size(); ++i) {
-        if (i % NUM_THREADS == (long) id) {
+    for (int i = 0; i < childArray->size(); ++i) {
+        if (i % NUM_THREADS == *((int *) id)) {
             expandGameSubtree(*it);
         }
 
@@ -65,7 +66,7 @@ void calculateGameTree() {
     pthread_t threads[NUM_THREADS];
 
     for (int i = 0; i < NUM_THREADS; ++i) {
-        pthread_create(&threads[i], nullptr, expandGameSubtreeMultithread, (void *) i);
+        pthread_create(&threads[i], nullptr, expandGameSubtreeMultithread, (void *) &i);
     }
 
     for (int j = 0; j < NUM_THREADS; ++j) {
@@ -80,6 +81,29 @@ void playGame() {
         auto bestMove = mcts->findNextMove();
         mcts->performNextMove(bestMove);
         mcts->printMove();
+    }
+
+    delete mcts;
+}
+
+void interactiveGame() {
+    auto mcts = new MonteCarloTreeSearch();
+
+    std::string last_move;
+    while (mcts->checkStatus() == State::IN_PROGRESS) {
+        mcts->printStatus();
+        std::string move;
+        std::cin >> move;
+
+        if (move == "hint")
+            mcts->printValidMoves();
+        else if (move == "simulate")
+            std::cout << "MCTS advises move " << mcts->findNextMove() << std::endl;
+        else if (move == "last")
+            std::cout << "Last move was " << last_move << std::endl;
+        else
+            if (mcts->performNextMove(move) == 0)
+                last_move = move;
     }
 
     delete mcts;

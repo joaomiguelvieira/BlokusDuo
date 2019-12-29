@@ -7,19 +7,20 @@
 #include "Move.h"
 #include <cstdlib>
 #include <ctime>
+#include <cmath>
+#include <cfloat>
 
 State::State() {
     board = new Board();
-    visitCount = 0;
-    winScore = 0;
 }
 
 State::State(State *state) {
-    board = new Board(state->getBoard());
-    player = new Player(state->getPlayer());
-    opponent = new Player(state->getOpponent());
-    visitCount = state->getVisitCount();
-    winScore = state->getVisitCount();
+    board = new Board(state->board);
+    player = new Player(state->player);
+    opponent = new Player(state->opponent);
+    visitCount = state->visitCount;
+    winScore = state->winScore;
+    winCount = state->winCount;
 }
 
 State::State(Board *board) {
@@ -69,7 +70,7 @@ void State::incrementVisit() {
 }
 
 void State::addScore(double score) {
-    if (winScore != INT_MIN)
+    if (winScore != -DBL_MAX)
         winScore += score;
 }
 
@@ -164,4 +165,55 @@ void State::randomPlay() {
 
 int State::getScore() {
     return abs(player->getScore() - opponent->getScore());
+}
+
+double State::getStateViability() {
+    // if quit then node is not viable
+    if (Move::moveToString(move) == "0000")
+        return -DBL_MAX;
+
+    /*// win score
+    double winScoreContribution = 0;
+    if (winScore > 0)
+        winScoreContribution = exp2(-1.0 / winScore);*/
+
+    // proximity to diagonal
+    double proximityDiag = 9.9 - (1.0 / 1.4 * abs(move->getCenter()->getX() + move->getCenter()->getY()) - 13);
+    double proximityDiagContribution = 0;
+    if (proximityDiag > 0)
+        proximityDiagContribution = proximityDiag / 9.9;
+
+    // number of visits
+    double visitsContribution = 0;
+    if (visitCount > 0)
+        visitsContribution = exp2(-1.0 / visitCount);
+
+    /*// win count
+    double winCountContribution = 0;
+    if (winCount > 0) {
+        winCountContribution = exp2(-1.0 / winCount);
+        winCountContribution *= exp2(-1.0 / (0.01 * visitCount));
+    }
+    */
+
+    // number of squares
+    double squaresContribution = move->getGamePiece()->getSquares()->size();
+    squaresContribution /= 5;
+
+    double viability =
+            //winScoreContribution +
+            //winCountContribution +
+            proximityDiagContribution +
+            8 * visitsContribution +
+            2 * squaresContribution;
+
+    return viability;
+}
+
+void State::incrementWinCount() {
+    winCount++;
+}
+
+double State::getWinCount() {
+    return winCount;
 }

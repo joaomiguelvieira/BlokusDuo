@@ -59,16 +59,24 @@ bool Board::hasEdgeContact(int x, int y, int playerId) {
 }
 
 void Board::printBoard() {
+    std::vector<char> axis = {'1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e'};
+    std::cout << "  0 ";
+    for (auto & tick : axis)
+        std::cout << tick << " ";
+    std::cout << "f" << std::endl;
+    std::cout << "0 + + + + + + + + + + + + + + + +" << std::endl;
     for (int i = 0; i < size[0]; ++i) {
+        std::cout << axis[i] << " + ";
         for (int j = 0; j < size[1]; ++j) {
             if (board[j][i] == 0)
-                std::cout << ' ';
+                std::cout << "  ";
             else
-                std::cout << unsigned(board[j][i]);
+                std::cout << unsigned(board[j][i]) << " ";
         }
 
-        std::cout << "\n";
+        std::cout << "+" << std::endl;
     }
+    std::cout << "f + + + + + + + + + + + + + + + +" << std::endl;
 }
 
 Board::Board(Board *board) {

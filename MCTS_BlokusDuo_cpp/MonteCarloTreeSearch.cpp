@@ -7,6 +7,8 @@
 #include "UCT.h"
 #include <climits>
 #include <iostream>
+#include <algorithm>
+#include <cfloat>
 
 MonteCarloTreeSearch::MonteCarloTreeSearch(int moveDurationMillis) {
     this->moveDurationMillis = moveDurationMillis;
@@ -100,7 +102,7 @@ int MonteCarloTreeSearch::simulateRandomPlayout(Node *node, int *score) {
 
     auto opponent = gameTree->getRoot()->getState()->getPlayer();
     if (status == opponent->getPlayerId()) {
-        tempNode->getParent()->getState()->setWinScore(INT_MIN);
+        tempNode->getParent()->getState()->setWinScore(-DBL_MAX);
         delete tempNode;
         return status;
     }
@@ -121,14 +123,16 @@ void MonteCarloTreeSearch::backPropagation(Node *nodeToExplore, int playerId, in
     Node *tempNode = nodeToExplore;
     while (tempNode != nullptr) {
         tempNode->getState()->incrementVisit();
-        if (tempNode->getState()->getPlayer()->getPlayerId() == playerId)
+        if (tempNode->getState()->getPlayer()->getPlayerId() == playerId) {
             tempNode->getState()->addScore(winScore);
+            tempNode->getState()->incrementWinCount();
+        }
         tempNode = tempNode->getParent();
     }
 }
 
 // TODO optimize does not need to expand node
-void MonteCarloTreeSearch::performNextMove(const std::string& move) {
+int MonteCarloTreeSearch::performNextMove(const std::string& move) {
     if (gameTree->getRoot()->getChildArray()->empty())
         expandNode(gameTree->getRoot());
 
@@ -136,12 +140,23 @@ void MonteCarloTreeSearch::performNextMove(const std::string& move) {
         if (Move::moveToString(child->getState()->getMove()) == move) {
             gameTree->setRoot(child);
 
-            return;
+            return 0;
         }
     }
 
-    std::cout << "ERROR! Move could not be predicted!\n";
-    exit(-1);
+    std::cout << "ERROR! Move could not be predicted! Doing nothing!" << std::endl;
+
+    return -1;
+}
+
+void MonteCarloTreeSearch::printValidMoves() {
+    if (gameTree->getRoot()->getChildArray()->empty())
+        expandNode(gameTree->getRoot());
+
+    std::cout << "Here's all valid moves: ";
+    for (auto & child : *gameTree->getRoot()->getChildArray())
+        std::cout << Move::moveToString(child->getState()->getMove()) << " ";
+    std::cout << std::endl;
 }
 
 void MonteCarloTreeSearch::printStatus() {
@@ -149,6 +164,57 @@ void MonteCarloTreeSearch::printStatus() {
 
     auto player1 = actualState->getPlayer()->getPlayerId() == 1 ? actualState->getPlayer() : actualState->getOpponent();
     auto player2 = actualState->getPlayer()->getPlayerId() == 2 ? actualState->getPlayer() : actualState->getOpponent();
+
+    std::cout << "----------------- Available Tiles -----------------" << std::endl;
+
+    std::vector<char> allGamePieces = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u'};
+    std::cout << "          ";
+    for (auto & gamePiece : allGamePieces)
+        std::cout << gamePiece << " ";
+    std::cout << std::endl;
+
+    std::list<char> remainingGamePieces1;
+    for (auto & remainingGamePiece : *player1->getRemainingGamePieces())
+        remainingGamePieces1.push_back((*remainingGamePiece)[0]->getCodeName());
+    std::cout << "Player 1: ";
+    for (auto & gamePiece : allGamePieces) {
+        if (std::find(remainingGamePieces1.begin(), remainingGamePieces1.end(), gamePiece) != remainingGamePieces1.end())
+            std::cout << "1 ";
+        else
+            std::cout << "0 ";
+    }
+    std::cout << std::endl;
+
+    std::list<char> remainingGamePieces2;
+    for (auto & remainingGamePiece : *player2->getRemainingGamePieces())
+        remainingGamePieces2.push_back((*remainingGamePiece)[0]->getCodeName());
+    std::cout << "Player 2: ";
+    for (auto & gamePiece : allGamePieces) {
+        if (std::find(remainingGamePieces2.begin(), remainingGamePieces2.end(), gamePiece) != remainingGamePieces2.end())
+            std::cout << "1 ";
+        else
+            std::cout << "0 ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "---------------------------------------------------" << std::endl;
+
+    if (player1->getScore() > player2->getScore())
+        std::cout << "Player 2 is winning!" << std::endl;
+    else if (player1->getScore() < player2->getScore())
+        std::cout << "Player 1 is winning!" << std::endl;
+    else
+        std::cout << "Game is a draw!" << std::endl;
+
+    std::cout << "---------------------- Board ----------------------" << std::endl;
+
+    actualState->getBoard()->printBoard();
+
+    std::cout << "---------------------------------------------------" << std::endl;
+
+    std::cout << "Player " << unsigned(actualState->getOpponent()->getPlayerId()) << ": ";
+
+    return;
 
     std::cout << "================= PLAYER " << unsigned(actualState->getPlayer()->getPlayerId()) << "'S TURN =================\n";
 

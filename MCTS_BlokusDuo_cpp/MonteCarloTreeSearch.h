@@ -28,9 +28,11 @@ public:
     static void expandNode(Node *node);
     int simulateRandomPlayout(Node *node, int *score);
     static void backPropagation(Node *nodeToExplore, int playerId, int winScore);
-    void performNextMove(const std::string& move);
+    int performNextMove(const std::string& move);
     void printStatus();
     void printMove();
+
+    void printValidMoves();
 };
 
 #endif //MCTS_BLOKUSDUO_CPP_MONTECARLOTREESEARCH_H

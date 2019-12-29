@@ -16,6 +16,7 @@ private:
     Move *move{nullptr};
     int visitCount{0};
     double winScore{0};
+    int winCount{0};
 public:
     static constexpr int IN_PROGRESS = -1;
     static constexpr int DRAW = 0;
@@ -43,8 +44,13 @@ public:
     Move *getMove();
     int checkStatus();
     void setMove(Move *move);
+    double getStateViability();
 
     int getScore();
+
+    void incrementWinCount();
+
+    double getWinCount();
 };
 
 
