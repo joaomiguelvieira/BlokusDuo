@@ -28,7 +28,6 @@ public:
     std::list<std::vector<GamePiece *> *> *getRemainingGamePieces();
     bool getQuited();
     int getScore();
-
     void setQuited(bool quited);
 };
 

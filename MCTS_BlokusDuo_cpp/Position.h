@@ -6,6 +6,8 @@
 #define MCTS_BLOKUSDUO_CPP_POSITION_H
 
 
+#include <string>
+
 class Position {
 private:
     int x, y;

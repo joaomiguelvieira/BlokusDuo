@@ -23,13 +23,14 @@ public:
     ~MonteCarloTreeSearch();
 
     int checkStatus();
-    Move *findNextMove();
+    std::string findNextMove();
     static Node *selectPromisingNode(Node *rootNode);
     static void expandNode(Node *node);
-    int simulateRandomPlayout(Node *node);
-    static void backPropagation(Node *nodeToExplore, int playerId);
-    void performNextMove(Move *move);
+    int simulateRandomPlayout(Node *node, int *score);
+    static void backPropagation(Node *nodeToExplore, int playerId, int winScore);
+    void performNextMove(const std::string& move);
     void printStatus();
+    void printMove();
 };
 
 #endif //MCTS_BLOKUSDUO_CPP_MONTECARLOTREESEARCH_H

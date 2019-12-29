@@ -70,7 +70,7 @@ void State::incrementVisit() {
 
 void State::addScore(double score) {
     if (winScore != INT_MIN)
-        score += score;
+        winScore += score;
 }
 
 void State::setOpponent(Player *opponent) {
@@ -160,4 +160,8 @@ void State::randomPlay() {
     for (auto & possibleMove : *possibleMoves)
         delete possibleMove;
     delete possibleMoves;
+}
+
+int State::getScore() {
+    return abs(player->getScore() - opponent->getScore());
 }

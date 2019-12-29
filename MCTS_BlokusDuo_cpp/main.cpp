@@ -79,14 +79,14 @@ void playGame() {
     while (mcts->checkStatus() == State::IN_PROGRESS) {
         auto bestMove = mcts->findNextMove();
         mcts->performNextMove(bestMove);
-        //mcts->printStatus();
+        mcts->printMove();
     }
 
     delete mcts;
 }
 
 int main() {
-    calculateGameTree();
+    playGame();
 
     return 0;
 }

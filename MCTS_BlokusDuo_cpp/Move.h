@@ -6,6 +6,7 @@
 #define MCTS_BLOKUSDUO_CPP_MOVE_H
 
 
+#include <string>
 #include "Position.h"
 #include "GamePiece.h"
 #include "Player.h"
@@ -22,6 +23,7 @@ public:
     GamePiece *getGamePiece();
     Position *getCenter();
     static bool isEqual(Move *move1, Move *move2);
+    static std::string moveToString(Move *move);
 };
 
 

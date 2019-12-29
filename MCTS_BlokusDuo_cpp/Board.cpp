@@ -34,17 +34,6 @@ int *Board::getSize() {
 std::list<Position *> *Board::getAllAnchors(int playerId) {
     auto anchors = new std::list<Position *>();
 
-    // first or second moves
-    if (!board[4][4])
-        anchors->push_back(new Position(4, 4));
-
-    if (!board[9][9])
-        anchors->push_back(new Position(9, 9));
-
-    if (!anchors->empty())
-        return anchors;
-
-    // any other moves
     for (int i = 0; i < size[0]; ++i) {
         for (int j = 0; j < size[1]; ++j) {
             if (!board[i][j] && hasCornerContact(i, j, playerId) && !hasEdgeContact(i, j, playerId))
@@ -124,6 +113,38 @@ bool Board::checkValidMove(Player *player, GamePiece *gamePiece, Position *cente
 
 std::list<Move *> *Board::getAllValidMoves(Player *player) {
     auto validMoves = new std::list<Move *>();
+
+    // all valid moves cover 5, 5
+    if (!board[4][4]) {
+        for (auto & gamePiece : *player->getRemainingGamePieces()) {
+            for (auto & variant : *gamePiece) {
+                for (auto & square : *variant->getSquares()) {
+                    auto center = Position(4, 4);
+                    center.subtract(square);
+
+                    validMoves->push_back(new Move(variant, &center));
+                }
+            }
+        }
+
+        return validMoves;
+    }
+
+    // all valid moves cover a, a
+    if (!board[9][9]) {
+        for (auto & gamePiece : *player->getRemainingGamePieces()) {
+            for (auto & variant : *gamePiece) {
+                for (auto & square : *variant->getSquares()) {
+                    auto center = Position(9, 9);
+                    center.subtract(square);
+
+                    validMoves->push_back(new Move(variant, &center));
+                }
+            }
+        }
+
+        return validMoves;
+    }
 
     auto boardAnchors = getAllAnchors(player->getPlayerId());
     for (auto & boardAnchor : *boardAnchors) {

@@ -43,6 +43,8 @@ public:
     Move *getMove();
     int checkStatus();
     void setMove(Move *move);
+
+    int getScore();
 };
 
 
