@@ -31,21 +31,6 @@ GamePiece::GamePiece(char codeName, std::vector<std::vector<int>> squares, std::
         this->anchors->push_back(new Position(anchor[0], anchor[1]));
 }
 
-// TODO optimize array allocation
-GamePiece::GamePiece(GamePiece *gamePiece) {
-    codeName = gamePiece->codeName;
-
-    transformation = gamePiece->transformation;
-
-    squares = new std::vector<Position *>();
-    for (auto & square : *gamePiece->squares)
-        squares->push_back(new Position(square));
-
-    anchors = new std::vector<Position *>();
-    for (auto & anchor : *gamePiece->anchors)
-        anchors->push_back(new Position(anchor));
-}
-
 GamePiece::~GamePiece() {
     for (auto & anchor : *anchors)
         delete anchor;

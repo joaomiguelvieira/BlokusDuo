@@ -172,40 +172,26 @@ double State::getStateViability() {
     if (Move::moveToString(move) == "0000")
         return -DBL_MAX;
 
-    /*// win score
-    double winScoreContribution = 0;
-    if (winScore > 0)
-        winScoreContribution = exp2(-1.0 / winScore);*/
-
     // proximity to diagonal
-    double proximityDiag = 9.9 - (1.0 / 1.4 * abs(move->getCenter()->getX() + move->getCenter()->getY()) - 13);
+    double distanceDiag = 0.7 * abs(move->getCenter()->getX() + move->getCenter()->getY() - 13);
+    double proximityDiag = 9.1 - distanceDiag;
     double proximityDiagContribution = 0;
     if (proximityDiag > 0)
         proximityDiagContribution = proximityDiag / 9.9;
 
     // number of visits
     double visitsContribution = 0;
-    if (visitCount > 0)
+    if (visitCount > 10)
         visitsContribution = exp2(-1.0 / visitCount);
-
-    /*// win count
-    double winCountContribution = 0;
-    if (winCount > 0) {
-        winCountContribution = exp2(-1.0 / winCount);
-        winCountContribution *= exp2(-1.0 / (0.01 * visitCount));
-    }
-    */
 
     // number of squares
     double squaresContribution = move->getGamePiece()->getSquares()->size();
     squaresContribution /= 5;
 
     double viability =
-            //winScoreContribution +
-            //winCountContribution +
-            proximityDiagContribution +
             8 * visitsContribution +
-            2 * squaresContribution;
+            2 * squaresContribution +
+            proximityDiagContribution;
 
     return viability;
 }

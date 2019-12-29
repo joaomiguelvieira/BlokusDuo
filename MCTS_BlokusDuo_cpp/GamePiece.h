@@ -23,7 +23,6 @@ public:
     static constexpr int N_TRANSFORMATIONS = 8;
 
     GamePiece(char codeName, std::vector<std::vector<int>> squares, std::vector<std::vector<int>> anchors);
-    explicit GamePiece(GamePiece *gamePiece);
 
     ~GamePiece();
 

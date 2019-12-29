@@ -6,25 +6,13 @@
 #include "Board.h"
 
 Board::Board() {
-    board = new uint8_t*[DEFAULT_BOARD_SIZE];
-    for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
-        board[i] = new uint8_t[DEFAULT_BOARD_SIZE];
-
-        for (int j = 0; j < DEFAULT_BOARD_SIZE; ++j) {
+    for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i)
+        for (int j = 0; j < DEFAULT_BOARD_SIZE; ++j)
             board[i][j] = 0;
-        }
-    }
-}
-
-Board::~Board() {
-    for (int i = 0; i < DEFAULT_BOARD_SIZE; ++i) {
-        delete [] board[i];
-    }
-    delete [] board;
 }
 
 uint8_t **Board::getBoard() {
-    return board;
+    return (uint8_t **) &board;
 }
 
 int *Board::getSize() {
@@ -80,14 +68,9 @@ void Board::printBoard() {
 }
 
 Board::Board(Board *board) {
-    this->board = new uint8_t*[board->size[0]];
-    for (int i = 0; i < board->size[0]; ++i) {
-        this->board[i] = new uint8_t[board->size[1]];
-
-        for (int j = 0; j < board->size[1]; ++j) {
+    for (int i = 0; i < board->size[0]; ++i)
+        for (int j = 0; j < board->size[1]; ++j)
             this->board[i][j] = board->board[i][j];
-        }
-    }
 
     this->size[0] = board->size[0];
     this->size[1] = board->size[1];
@@ -174,4 +157,22 @@ std::list<Move *> *Board::getAllValidMoves(Player *player) {
     delete boardAnchors;
 
     return validMoves;
+}
+
+// buffer
+
+int Board::bufferPtr = 0;
+std::vector<Board> *Board::buffer = nullptr;
+
+void Board::reserveBuffer(int bufferSize) {
+    buffer = new std::vector<Board>(bufferSize);
+    bufferPtr = bufferSize - 1;
+}
+
+void Board::deleteBuffer() {
+    delete [] buffer;
+}
+
+Board *Board::captureBoard() {
+    return nullptr;
 }
