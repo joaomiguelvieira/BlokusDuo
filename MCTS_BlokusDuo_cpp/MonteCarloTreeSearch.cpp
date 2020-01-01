@@ -5,7 +5,6 @@
 #include <chrono>
 #include "MonteCarloTreeSearch.h"
 #include "UCT.h"
-#include <climits>
 #include <iostream>
 #include <algorithm>
 #include <cfloat>
@@ -68,7 +67,7 @@ std::string MonteCarloTreeSearch::findNextMove() {
         elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
     } while (elapsed < moveDurationMillis);
 
-    std::cout << "Simulations: " << gameTree->getRoot()->getState()->getVisitCount() << "\n";
+    //std::cout << "Simulations: " << gameTree->getRoot()->getState()->getVisitCount() << "\n";
 
     auto winnerNode = gameTree->getRoot()->getChildWithMaxScore();
     return Move::moveToString(winnerNode->getState()->getMove());
@@ -103,6 +102,7 @@ int MonteCarloTreeSearch::simulateRandomPlayout(Node *node, int *score) {
     auto opponent = gameTree->getRoot()->getState()->getPlayer();
     if (status == opponent->getPlayerId()) {
         tempNode->getParent()->getState()->setWinScore(-DBL_MAX);
+        *score = tempState->getScore();
         delete tempNode;
         return status;
     }
