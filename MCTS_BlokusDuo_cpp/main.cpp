@@ -4,6 +4,7 @@
 #include <pthread.h>
 #include <mutex>
 #include <sstream>
+#include "rs232.h"
 
 #define NUM_THREADS 12
 
