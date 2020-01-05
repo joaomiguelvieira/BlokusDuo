@@ -2,27 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af419a5c-1c45-4636-93b4-5425e01c2a08" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/.idea/description.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/.idea/project-template.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/MCTS_BlokusDuo_java.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/Board.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/GamePiece.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/MonteCarloTreeSearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/Move.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/Position.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/Tree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/UCT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MCTS_BlokusDuo_cpp/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_cpp/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MCTS_BlokusDuo_cpp/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_cpp/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/MonteCarloTreeSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/MonteCarloTreeSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MCTS_BlokusDuo_java/src/com/joaomiguelvieira/Tree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,6 +126,8 @@
       <workItem from="1577882584224" duration="195000" />
       <workItem from="1577882925713" duration="1214000" />
       <workItem from="1577888645163" duration="3771000" />
+      <workItem from="1578043889424" duration="625000" />
+      <workItem from="1578141594548" duration="1199000" />
     </task>
     <servers />
   </component>
@@ -201,13 +186,13 @@
     <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.960@0.23.1680.960" timestamp="1577032039266" />
     <state width="1872" height="263" key="GridCell.Tab.0.right/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
     <state width="1232" height="250" key="GridCell.Tab.0.right/0.28.2560.1018@0.28.2560.1018" timestamp="1577185800076" />
-    <state x="835" y="366" key="com.intellij.ide.util.TipDialog" timestamp="1577888648621">
+    <state x="835" y="366" key="com.intellij.ide.util.TipDialog" timestamp="1578143097133">
       <screen x="0" y="28" width="2560" height="1018" />
     </state>
     <state x="548" y="349" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1577104071123" />
     <state x="548" y="349" key="com.intellij.ide.util.TipDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031325700" />
     <state x="2546" y="367" key="com.intellij.ide.util.TipDialog/0.28.1920.1018/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576168906031" />
-    <state x="835" y="366" key="com.intellij.ide.util.TipDialog/0.28.2560.1018@0.28.2560.1018" timestamp="1577888648621" />
+    <state x="835" y="366" key="com.intellij.ide.util.TipDialog/0.28.2560.1018@0.28.2560.1018" timestamp="1578143097133" />
     <state x="855" y="431" width="550" height="212" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1577172928333">
       <screen x="0" y="28" width="2560" height="1018" />
     </state>

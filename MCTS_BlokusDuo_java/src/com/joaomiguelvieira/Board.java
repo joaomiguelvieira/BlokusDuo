@@ -30,6 +30,14 @@ public class Board {
         return anchors;
     }
 
+    private boolean isOccupied(int x, int y) {
+        return board[x][y] != 0;
+    }
+
+    private boolean respectsBoundaries(int x, int y) {
+        return x >= 0 && x < board.length && y >= 0 && y < board.length;
+    }
+
     private boolean hasCornerContact(int x, int y, int playerId) {
         return (x - 1 >= 0 && y - 1 >= 0 && board[x - 1][y - 1] == playerId) ||
                 (x - 1 >= 0 && y + 1 < board.length && board[x - 1][y + 1] == playerId) ||
@@ -139,6 +147,61 @@ public class Board {
 
                         if (checkValidMove(player, variant, center))
                         validMoves.add(new Move(variant, center));
+                    }
+                }
+            }
+        }
+
+        return validMoves;
+    }
+
+    private boolean isAnchor(int x, int y, int playerId) {
+        return respectsBoundaries(x, y) && !isOccupied(x, y) && hasCornerContact(x, y, playerId) && !hasEdgeContact(x, y, playerId);
+    }
+
+    public ArrayList<Move> getAllValidMoves(Player player, ArrayList<Move> previouslyValidMoves,
+                                            Move previouslyPlayedMove, Board previousBoard) {
+        ArrayList<Move> validMoves = new ArrayList<>();
+
+        // delete obsolete moves
+        for (Move previouslyValidMove : previouslyValidMoves)
+            if (previouslyValidMove.getGamePiece().getCodeName() != previouslyPlayedMove.getGamePiece().getCodeName() &&
+            checkValidMove(player, previouslyPlayedMove.getGamePiece(), previouslyPlayedMove.getCenter()))
+                validMoves.add(previouslyValidMove);
+
+        // calculate new anchors
+        ArrayList<Position> newAnchors = new ArrayList<>();
+        for (Position possibleAnchorSource : previouslyPlayedMove.getGamePiece().getAnchors()) {
+            int x = possibleAnchorSource.getX() + previouslyPlayedMove.getCenter().getX();
+            int y = possibleAnchorSource.getY() + previouslyPlayedMove.getCenter().getY();
+
+            if (isAnchor(x - 1, y - 1, player.getPlayerId()) &&
+                    !previousBoard.isAnchor(x - 1, y - 1, player.getPlayerId()))
+                newAnchors.add(new Position(x - 1, y - 1));
+
+            if (isAnchor(x + 1, y - 1, player.getPlayerId()) &&
+                    !previousBoard.isAnchor(x + 1, y - 1, player.getPlayerId()))
+                newAnchors.add(new Position(x + 1, y - 1));
+
+            if (isAnchor(x - 1, y + 1, player.getPlayerId()) &&
+                    !previousBoard.isAnchor(x - 1, y + 1, player.getPlayerId()))
+                newAnchors.add(new Position(x - 1, y + 1));
+
+            if (isAnchor(x + 1, y + 1, player.getPlayerId()) &&
+                    !previousBoard.isAnchor(x + 1, y + 1, player.getPlayerId()))
+                newAnchors.add(new Position(x + 1, y + 1));
+        }
+
+        // get valid moves from new anchors only
+        for (Position boardAnchor : newAnchors) {
+            for (ArrayList<GamePiece> gamePiece : player.getRemainingGamePieces()) {
+                for (GamePiece variant : gamePiece) {
+                    for (Position anchor : variant.getAnchors()) {
+                        Position center = new Position(boardAnchor);
+                        center.subtract(anchor);
+
+                        if (checkValidMove(player, variant, center))
+                            validMoves.add(new Move(variant, center));
                     }
                 }
             }

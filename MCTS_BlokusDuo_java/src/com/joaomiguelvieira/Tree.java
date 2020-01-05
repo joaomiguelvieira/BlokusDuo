@@ -13,6 +13,11 @@ public class Tree {
 
     public void setRoot(Node root) {
         this.root = root;
-        root.setParent(null);
+
+        Node tempNode = root.getParent();
+        while (tempNode.getParent() != null) {
+            tempNode.getChildArray().clear();
+            tempNode = tempNode.getParent();
+        }
     }
 }

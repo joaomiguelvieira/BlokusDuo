@@ -6,9 +6,11 @@ public class State {
     private Board board;
     private Player player, opponent;
     private Move move;
+    private ArrayList<Move> possibleMoves;
     private int visitCount = 0;
     private double winScore = 0;
     private int winCount = 0;
+    private int movesPlayed = 0;
 
     public static final int IN_PROGRESS = -1;
     public static final int DRAW = 0;
@@ -21,9 +23,11 @@ public class State {
         board = new Board(state.board);
         player = new Player(state.player);
         opponent = new Player(state.opponent);
+        move = state.move;
         visitCount = state.visitCount;
         winScore = state.winScore;
         winCount = state.winCount;
+        movesPlayed = state.movesPlayed;
     }
 
     public State(Board board) {
@@ -84,10 +88,12 @@ public class State {
             ArrayList<Move> possibleMoves = board.getAllValidMoves(opponent);
             for (Move possibleMove : possibleMoves) {
                 State newState = new State(board);
+                this.possibleMoves = possibleMoves;
                 newState.setPlayer(new Player(opponent, possibleMove.getGamePiece()));
                 newState.setOpponent(new Player(player));
                 newState.setMove(possibleMove);
                 newState.getBoard().performMove(newState.player, possibleMove);
+                newState.setMovesPlayed(movesPlayed + 1);
                 possibleStates.add(newState);
             }
         }
@@ -96,6 +102,34 @@ public class State {
         newState.setPlayer(new Player(opponent));
         newState.setOpponent(new Player(player));
         newState.getPlayer().setQuited(true);
+        newState.setMovesPlayed(movesPlayed + 1);
+        possibleStates.add(newState);
+
+        return possibleStates;
+    }
+
+    public ArrayList<State> getAllPossibleStates(State oldState, State olderState) {
+        ArrayList<State> possibleStates = new ArrayList<>();
+
+        if (!opponent.getQuited()) {
+            ArrayList<Move> possibleMoves = board.getAllValidMoves(opponent, olderState.possibleMoves, oldState.move, olderState.board);
+            for (Move possibleMove : possibleMoves) {
+                State newState = new State(board);
+                this.possibleMoves = possibleMoves;
+                newState.setPlayer(new Player(opponent, possibleMove.getGamePiece()));
+                newState.setOpponent(new Player(player));
+                newState.setMove(possibleMove);
+                newState.getBoard().performMove(newState.player, possibleMove);
+                newState.setMovesPlayed(movesPlayed + 1);
+                possibleStates.add(newState);
+            }
+        }
+
+        State newState = new State(board);
+        newState.setPlayer(new Player(opponent));
+        newState.setOpponent(new Player(player));
+        newState.getPlayer().setQuited(true);
+        newState.setMovesPlayed(movesPlayed + 1);
         possibleStates.add(newState);
 
         return possibleStates;
@@ -140,6 +174,9 @@ public class State {
         int selectRandom = (int) (Math.random() * totalPossibilities);
         Move moveToPerform = possibleMoves.get(selectRandom);
         board.performMove(player, moveToPerform);
+        move = moveToPerform;
+        movesPlayed++;
+
         GamePiece pieceToRemove = moveToPerform.getGamePiece();
         player.getRemainingGamePieces().removeIf(gamePiece -> gamePiece.get(0).getCodeName() == pieceToRemove.getCodeName());
     }
@@ -179,5 +216,21 @@ public class State {
 
     public int getScore() {
         return Math.abs(player.getScore() - opponent.getScore());
+    }
+
+    public int getMovesPlayed() {
+        return movesPlayed;
+    }
+
+    public void setMovesPlayed(int movesPlayed) {
+        this.movesPlayed = movesPlayed;
+    }
+
+    public void incrementMovesPlayed() {
+        movesPlayed++;
+    }
+
+    public ArrayList<Move> getPossibleMoves() {
+        return possibleMoves;
     }
 }
