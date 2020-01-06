@@ -55,7 +55,7 @@ public class Board {
         for (char tick : axis)
             text.append(tick).append(" ");
         text.append("\n");
-        text.append("  + + + + + + + + + + + + + + + +");
+        text.append("  + + + + + + + + + + + + + + + +\n");
         for (int i = 0; i < board.length; i++) {
             text.append(axis[i]).append(" + ");
             for (byte[] bytes : board) {
@@ -64,7 +64,7 @@ public class Board {
                 else
                     text.append(bytes[i]).append(" ");
             }
-            text.append("+");
+            text.append("+\n");
         }
         text.append("  + + + + + + + + + + + + + + + +");
 
@@ -165,6 +165,22 @@ public class Board {
             return validMoves;
 
         // delete obsolete moves
+        for (Move previouslyValidMove : previouslyValidMoves) {
+            if (previouslyValidMove.getGamePiece().getCodeName() != previouslyPlayedMove.getGamePiece().getCodeName()) {
+                boolean contains = false;
+
+                for (ArrayList<GamePiece> gamePiece : player.getRemainingGamePieces()) {
+                    if (gamePiece.get(0).getCodeName() == previouslyValidMove.getGamePiece().getCodeName()) {
+                        contains = true;
+                        break;
+                    }
+                }
+
+                if (!contains)
+                    System.out.println("Move refers to piece that was already used!");
+            }
+        }
+
         for (Move previouslyValidMove : previouslyValidMoves) {
             if (previouslyValidMove.getGamePiece().getCodeName() != previouslyPlayedMove.getGamePiece().getCodeName() &&
                     checkValidMove(player, previouslyPlayedMove.getGamePiece(), previouslyPlayedMove.getCenter()))

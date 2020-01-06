@@ -54,15 +54,18 @@ public class MonteCarloTreeSearch {
     }
 
     private void expandNode(Node node) {
-        // ArrayList<State> possibleStates = node.getState().getAllPossibleStates();
-        //if (node.getState().getMovesPlayed() < 4)
-        //    possibleStates = node.getState().getAllPossibleStates();
-        //else
-        //    possibleStates = node.getState().getAllPossibleStates(node.getParent().getState(), node.getParent().getParent().getState());
-
         if (!node.getState().getOpponent().getQuited()) {
             // calculate all valid moves
-            ArrayList<Move> possibleMoves = node.getState().getBoard().getAllValidMoves(node.getState().getOpponent());
+            ArrayList<Move> possibleMoves;
+
+            if (node.getState().getMovesPlayed() < 4)
+                possibleMoves = node.getState().getBoard().getAllValidMoves(node.getState().getOpponent());
+            else
+                possibleMoves = node.getState().getBoard().getAllValidMoves(node.getState().getOpponent(),
+                        node.getParent().getParent().getState().getPossibleMoves(),
+                        node.getParent().getState().getMove(),
+                        node.getParent().getParent().getState().getBoard());
+
             node.getState().setPossibleMoves(possibleMoves);
 
             for (Move possibleMove : possibleMoves) {
@@ -188,6 +191,7 @@ public class MonteCarloTreeSearch {
             System.out.print(gamePiece + " ");
         System.out.println();
 
+        System.out.print("Player 1: ");
         for (char gamePiece : allGamePieces) {
             if (player1.getRemainingGamePieces().stream().noneMatch(p -> p.get(0).getCodeName() == gamePiece))
                 System.out.print("0 ");
@@ -196,6 +200,7 @@ public class MonteCarloTreeSearch {
         }
         System.out.println();
 
+        System.out.print("Player 2: ");
         for (char gamePiece : allGamePieces) {
             if (player2.getRemainingGamePieces().stream().noneMatch(p -> p.get(0).getCodeName() == gamePiece))
                 System.out.print("0 ");

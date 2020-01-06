@@ -131,4 +131,8 @@ public class State {
     public void setPossibleMoves(ArrayList<Move> possibleMoves) {
         this.possibleMoves = possibleMoves;
     }
+
+    public ArrayList<Move> getPossibleMoves() {
+        return possibleMoves;
+    }
 }
