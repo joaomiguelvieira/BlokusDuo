@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af419a5c-1c45-4636-93b4-5425e01c2a08" name="Default Changelist" comment="" />
+    <list default="true" id="af419a5c-1c45-4636-93b4-5425e01c2a08" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +35,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MCTS_BlokusDuo_java" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -122,6 +124,7 @@
       <workItem from="1577888645163" duration="3771000" />
       <workItem from="1578043889424" duration="625000" />
       <workItem from="1578141594548" duration="1199000" />
+      <workItem from="1578302787818" duration="123000" />
     </task>
     <servers />
   </component>
@@ -148,9 +151,10 @@
     </state>
     <state x="689" y="410" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031385021" />
     <state x="1050" y="438" width="301" height="223" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.28.2560.1018@0.28.2560.1018" timestamp="1577172841426" />
-    <state x="925" y="266" width="424" height="522" key="FileChooserDialogImpl" timestamp="1577882669487">
-      <screen x="0" y="28" width="2560" height="1018" />
+    <state x="694" y="266" width="361" height="522" key="FileChooserDialogImpl" timestamp="1578302913808">
+      <screen x="0" y="28" width="1920" height="1018" />
     </state>
+    <state x="694" y="266" width="361" height="522" key="FileChooserDialogImpl/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1578302913808" />
     <state x="925" y="266" width="424" height="522" key="FileChooserDialogImpl/0.28.2560.1018@0.28.2560.1018" timestamp="1577882669487" />
     <state width="1232" height="250" key="GridCell.Tab.0.bottom" timestamp="1577185800077">
       <screen x="0" y="28" width="2560" height="1018" />
@@ -180,12 +184,12 @@
     <state width="1638" height="258" key="GridCell.Tab.0.right/0.23.1680.960@0.23.1680.960" timestamp="1577032039266" />
     <state width="1872" height="263" key="GridCell.Tab.0.right/0.28.1920.1018/1920.0.1920.1080@0.28.1920.1018" timestamp="1575993816806" />
     <state width="1232" height="250" key="GridCell.Tab.0.right/0.28.2560.1018@0.28.2560.1018" timestamp="1577185800076" />
-    <state x="835" y="366" key="com.intellij.ide.util.TipDialog" timestamp="1578143097133">
-      <screen x="0" y="28" width="2560" height="1018" />
+    <state x="2546" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1578302896273">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="548" y="349" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1577104071123" />
     <state x="548" y="349" key="com.intellij.ide.util.TipDialog/0.23.1680.960@0.23.1680.960" timestamp="1577031325700" />
-    <state x="2546" y="367" key="com.intellij.ide.util.TipDialog/0.28.1920.1018/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576168906031" />
+    <state x="2546" y="367" key="com.intellij.ide.util.TipDialog/0.28.1920.1018/1920.0.1920.1080@1920.0.1920.1080" timestamp="1578302896273" />
     <state x="835" y="366" key="com.intellij.ide.util.TipDialog/0.28.2560.1018@0.28.2560.1018" timestamp="1578143097133" />
     <state x="855" y="431" width="550" height="212" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1577172928333">
       <screen x="0" y="28" width="2560" height="1018" />

@@ -19,23 +19,8 @@ public class State {
         board = new Board();
     }
 
-    public State(State state) {
-        board = new Board(state.board);
-        player = new Player(state.player);
-        opponent = new Player(state.opponent);
-        move = state.move;
-        visitCount = state.visitCount;
-        winScore = state.winScore;
-        winCount = state.winCount;
-        movesPlayed = state.movesPlayed;
-    }
-
     public State(Board board) {
         this.board = new Board(board);
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
     }
 
     public int getVisitCount() {
@@ -44,10 +29,6 @@ public class State {
 
     public Board getBoard() {
         return board;
-    }
-
-    public double getWinScore() {
-        return winScore;
     }
 
     public Player getPlayer() {
@@ -71,68 +52,8 @@ public class State {
         this.opponent = opponent;
     }
 
-    public void togglePlayer() {
-        Player tempPlayer = player;
-        player = opponent;
-        opponent = tempPlayer;
-    }
-
     public Player getOpponent() {
         return opponent;
-    }
-
-    public ArrayList<State> getAllPossibleStates() {
-        ArrayList<State> possibleStates = new ArrayList<>();
-
-        if (!opponent.getQuited()) {
-            ArrayList<Move> possibleMoves = board.getAllValidMoves(opponent);
-            for (Move possibleMove : possibleMoves) {
-                State newState = new State(board);
-                this.possibleMoves = possibleMoves;
-                newState.setPlayer(new Player(opponent, possibleMove.getGamePiece()));
-                newState.setOpponent(new Player(player));
-                newState.setMove(possibleMove);
-                newState.getBoard().performMove(newState.player, possibleMove);
-                newState.setMovesPlayed(movesPlayed + 1);
-                possibleStates.add(newState);
-            }
-        }
-
-        State newState = new State(board);
-        newState.setPlayer(new Player(opponent));
-        newState.setOpponent(new Player(player));
-        newState.getPlayer().setQuited(true);
-        newState.setMovesPlayed(movesPlayed + 1);
-        possibleStates.add(newState);
-
-        return possibleStates;
-    }
-
-    public ArrayList<State> getAllPossibleStates(State oldState, State olderState) {
-        ArrayList<State> possibleStates = new ArrayList<>();
-
-        if (!opponent.getQuited()) {
-            ArrayList<Move> possibleMoves = board.getAllValidMoves(opponent, olderState.possibleMoves, oldState.move, olderState.board);
-            for (Move possibleMove : possibleMoves) {
-                State newState = new State(board);
-                this.possibleMoves = possibleMoves;
-                newState.setPlayer(new Player(opponent, possibleMove.getGamePiece()));
-                newState.setOpponent(new Player(player));
-                newState.setMove(possibleMove);
-                newState.getBoard().performMove(newState.player, possibleMove);
-                newState.setMovesPlayed(movesPlayed + 1);
-                possibleStates.add(newState);
-            }
-        }
-
-        State newState = new State(board);
-        newState.setPlayer(new Player(opponent));
-        newState.setOpponent(new Player(player));
-        newState.getPlayer().setQuited(true);
-        newState.setMovesPlayed(movesPlayed + 1);
-        possibleStates.add(newState);
-
-        return possibleStates;
     }
 
     public Move getMove() {
@@ -160,25 +81,6 @@ public class State {
         }
 
         return IN_PROGRESS;
-    }
-
-    public void randomPlay() {
-        ArrayList<Move> possibleMoves = board.getAllValidMoves(player);
-        int totalPossibilities = possibleMoves.size();
-
-        if (totalPossibilities == 0) {
-            player.setQuited(true);
-            return;
-        }
-
-        int selectRandom = (int) (Math.random() * totalPossibilities);
-        Move moveToPerform = possibleMoves.get(selectRandom);
-        board.performMove(player, moveToPerform);
-        move = moveToPerform;
-        movesPlayed++;
-
-        GamePiece pieceToRemove = moveToPerform.getGamePiece();
-        player.getRemainingGamePieces().removeIf(gamePiece -> gamePiece.get(0).getCodeName() == pieceToRemove.getCodeName());
     }
 
     public double getStateViability() {
@@ -226,11 +128,7 @@ public class State {
         this.movesPlayed = movesPlayed;
     }
 
-    public void incrementMovesPlayed() {
-        movesPlayed++;
-    }
-
-    public ArrayList<Move> getPossibleMoves() {
-        return possibleMoves;
+    public void setPossibleMoves(ArrayList<Move> possibleMoves) {
+        this.possibleMoves = possibleMoves;
     }
 }

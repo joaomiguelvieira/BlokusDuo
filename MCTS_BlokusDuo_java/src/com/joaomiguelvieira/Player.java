@@ -16,14 +16,6 @@ public class Player {
         remainingGamePieces = GamePiece.getInitialSetOfGamePieces();
     }
 
-    public byte getPlayerId() {
-        return playerId;
-    }
-
-    public ArrayList<ArrayList<GamePiece>> getRemainingGamePieces() {
-        return remainingGamePieces;
-    }
-
     public Player(Player player, GamePiece removePiece) {
         playerId = player.playerId;
 
@@ -44,6 +36,14 @@ public class Player {
         quited = player.quited;
     }
 
+    public byte getPlayerId() {
+        return playerId;
+    }
+
+    public ArrayList<ArrayList<GamePiece>> getRemainingGamePieces() {
+        return remainingGamePieces;
+    }
+
     public boolean getQuited() {
         return quited;
     }
@@ -59,11 +59,5 @@ public class Player {
 
     public void setQuited(boolean quited) {
         this.quited = quited;
-    }
-
-    public Player(ArrayList<ArrayList<GamePiece>> remainingGamePieces) {
-        playerId = ++idCount;
-        this.remainingGamePieces = new ArrayList<>();
-        this.remainingGamePieces.addAll(remainingGamePieces);
     }
 }

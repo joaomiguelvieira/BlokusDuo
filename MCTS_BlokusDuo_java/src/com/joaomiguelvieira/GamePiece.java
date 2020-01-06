@@ -36,30 +36,6 @@ public class GamePiece {
             this.anchors[i] = new Position(anchors[i][0], anchors[i][1]);
     }
 
-    public void printGamePiece() {
-        int offset = DEFAULT_MAX_SQUARES / 2;
-
-        char[][] printArea = new char[DEFAULT_MAX_SQUARES][DEFAULT_MAX_SQUARES];
-        for (int i = 0; i < DEFAULT_MAX_SQUARES; ++i) {
-            for (int j = 0; j < DEFAULT_MAX_SQUARES; ++j) {
-                printArea[i][j] = ' ';
-            }
-        }
-
-        for (Position square : squares) printArea[square.getX() + offset][square.getY() + offset] = '#';
-        for (Position anchor : anchors) printArea[anchor.getX() + offset][anchor.getY() + offset] = 'X';
-        printArea[offset][offset] = printArea[offset][offset] == 'X' ? '+' : 'O';
-
-        System.out.println("Game Piece: " + codeName + transformation);
-
-        for (int i = 0; i < DEFAULT_MAX_SQUARES; i++) {
-            for (int j = 0; j < DEFAULT_MAX_SQUARES; j++)
-                System.out.print(printArea[j][i]);
-
-            System.out.println();
-        }
-    }
-
     public static ArrayList<ArrayList<GamePiece>> getInitialSetOfGamePieces () {
         ArrayList<ArrayList<GamePiece>> initialSetOfGamePieces = new ArrayList<>();
 
@@ -125,10 +101,10 @@ public class GamePiece {
         this.transformation = transformation;
 
         for (Position square : squares)
-            square.transformPosition(transformations[transformation]);
+            square.transform(transformations[transformation]);
 
         for (Position anchor : anchors)
-            anchor.transformPosition(transformations[transformation]);
+            anchor.transform(transformations[transformation]);
     }
 
     public Position[] getSquares() {

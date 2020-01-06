@@ -1,7 +1,5 @@
 package com.joaomiguelvieira;
 
-import java.awt.desktop.SystemHotkey;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,21 +11,6 @@ public class Board {
     public Board() {
         board = new byte[DEFAULT_BOARD_SIZE][DEFAULT_BOARD_SIZE];
         for (byte[] bytes : board) Arrays.fill(bytes, (byte) 0);
-    }
-
-    public byte[][] getBoard() {
-        return board;
-    }
-
-    public ArrayList<Position> getAllAnchors(int playerId) {
-        ArrayList<Position> anchors = new ArrayList<>();
-
-        for (int i = 0; i < board.length; i++)
-            for (int j = 0; j < board.length; j++)
-                if (board[i][j] == 0 && hasCornerContact(i, j, playerId) && !hasEdgeContact(i, j, playerId))
-                    anchors.add(new Position(i, j));
-
-        return anchors;
     }
 
     private boolean isOccupied(int x, int y) {
@@ -50,24 +33,42 @@ public class Board {
                 (y - 1 >= 0 && board[x][y - 1] == playerId) || (y + 1 < board.length && board[x][y + 1] == playerId);
     }
 
-    public void printBoard() {
+    private boolean isAnchor(int x, int y, int playerId) {
+        return respectsBoundaries(x, y) && !isOccupied(x, y) && hasCornerContact(x, y, playerId) && !hasEdgeContact(x, y, playerId);
+    }
+
+    public ArrayList<Position> getAllAnchors(int playerId) {
+        ArrayList<Position> anchors = new ArrayList<>();
+
+        for (int i = 0; i < board.length; i++)
+            for (int j = 0; j < board.length; j++)
+                if (isAnchor(i, j, playerId))
+                    anchors.add(new Position(i, j));
+
+        return anchors;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder text = new StringBuilder("    ");
         char[] axis = {'1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e'};
-        System.out.print("    ");
         for (char tick : axis)
-            System.out.print(tick + " ");
-        System.out.println();
-        System.out.println("  + + + + + + + + + + + + + + + +");
+            text.append(tick).append(" ");
+        text.append("\n");
+        text.append("  + + + + + + + + + + + + + + + +");
         for (int i = 0; i < board.length; i++) {
-            System.out.print(axis[i] + " + ");
+            text.append(axis[i]).append(" + ");
             for (byte[] bytes : board) {
                 if (bytes[i] == 0)
-                    System.out.print("  ");
+                    text.append("  ");
                 else
-                    System.out.print(bytes[i] + " ");
+                    text.append(bytes[i]).append(" ");
             }
-            System.out.println("+");
+            text.append("+");
         }
-        System.out.println("  + + + + + + + + + + + + + + + +");
+        text.append("  + + + + + + + + + + + + + + + +");
+
+        return text.toString();
     }
 
     public Board(Board board) {
@@ -155,19 +156,20 @@ public class Board {
         return validMoves;
     }
 
-    private boolean isAnchor(int x, int y, int playerId) {
-        return respectsBoundaries(x, y) && !isOccupied(x, y) && hasCornerContact(x, y, playerId) && !hasEdgeContact(x, y, playerId);
-    }
-
     public ArrayList<Move> getAllValidMoves(Player player, ArrayList<Move> previouslyValidMoves,
                                             Move previouslyPlayedMove, Board previousBoard) {
         ArrayList<Move> validMoves = new ArrayList<>();
 
+        // in case the player has quited return empty list
+        if (player.getQuited())
+            return validMoves;
+
         // delete obsolete moves
-        for (Move previouslyValidMove : previouslyValidMoves)
+        for (Move previouslyValidMove : previouslyValidMoves) {
             if (previouslyValidMove.getGamePiece().getCodeName() != previouslyPlayedMove.getGamePiece().getCodeName() &&
-            checkValidMove(player, previouslyPlayedMove.getGamePiece(), previouslyPlayedMove.getCenter()))
+                    checkValidMove(player, previouslyPlayedMove.getGamePiece(), previouslyPlayedMove.getCenter()))
                 validMoves.add(previouslyValidMove);
+        }
 
         // calculate new anchors
         ArrayList<Position> newAnchors = new ArrayList<>();

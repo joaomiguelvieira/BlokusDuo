@@ -20,15 +20,6 @@ public class Node {
         childArray = new ArrayList<>();
     }
 
-    public Node(Node node) {
-        state = new State(node.state);
-        childArray = new ArrayList<>();
-        if (node.parent != null)
-            parent = node.parent;
-        for (Node child : node.childArray)
-            childArray.add(new Node(child));
-    }
-
     public State getState() {
         return state;
     }
@@ -53,9 +44,5 @@ public class Node {
 
     public Node getChildWithMaxScore() {
         return Collections.max(childArray, Comparator.comparing(node -> node.getState().getStateViability()));
-    }
-
-    public void resetChildArray() {
-        childArray.clear();
     }
 }

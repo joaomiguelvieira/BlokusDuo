@@ -21,7 +21,7 @@ public class Position {
         return y;
     }
 
-    public void transformPosition(int[][] transformation) {
+    public void transform(int[][] transformation) {
         int newX = x * transformation[0][0] + y * transformation[0][1];
         int newY = x * transformation[1][0] + y * transformation[1][1];
 

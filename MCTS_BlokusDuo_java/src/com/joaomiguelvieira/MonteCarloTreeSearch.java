@@ -1,22 +1,16 @@
 package com.joaomiguelvieira;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class MonteCarloTreeSearch {
-    private static final int WIN_SCORE = 10;
     private static final int DEFAULT_DURATION_MILLIS = 1000;
 
-    private int moveDurationMillis = DEFAULT_DURATION_MILLIS;
     private Tree gameTree;
-    private ArrayList<ArrayList<GamePiece>> gamePieceSet1, gamePieceSet2;
 
     public MonteCarloTreeSearch() {
         gameTree = new Tree();
-        gamePieceSet1 = GamePiece.getInitialSetOfGamePieces();
-        gameTree.getRoot().getState().setOpponent(new Player(gamePieceSet1));
-        gamePieceSet2 = GamePiece.getInitialSetOfGamePieces();
-        gameTree.getRoot().getState().setPlayer(new Player(gamePieceSet2));
+        gameTree.getRoot().getState().setOpponent(new Player());
+        gameTree.getRoot().getState().setPlayer(new Player());
     }
 
     public int checkStatus() {
@@ -25,7 +19,7 @@ public class MonteCarloTreeSearch {
 
     public String findNextMove() {
         long start = System.currentTimeMillis();
-        long end = start + moveDurationMillis;
+        long end = start + DEFAULT_DURATION_MILLIS;
 
         while (System.currentTimeMillis() < end) {
             // selection
@@ -46,8 +40,6 @@ public class MonteCarloTreeSearch {
             backPropagation(nodeToExplore, playoutResult[0], playoutResult[1]);
         }
 
-        //System.out.println("Simulations: " + gameTree.getRoot().getState().getVisitCount());
-
         Node winnerNode = gameTree.getRoot().getChildWithMaxScore();
         return Move.moveToString(winnerNode.getState().getMove());
     }
@@ -62,42 +54,46 @@ public class MonteCarloTreeSearch {
     }
 
     private void expandNode(Node node) {
-        ArrayList<State> possibleStates = node.getState().getAllPossibleStates();
+        // ArrayList<State> possibleStates = node.getState().getAllPossibleStates();
+        //if (node.getState().getMovesPlayed() < 4)
+        //    possibleStates = node.getState().getAllPossibleStates();
+        //else
+        //    possibleStates = node.getState().getAllPossibleStates(node.getParent().getState(), node.getParent().getParent().getState());
 
-        /*ArrayList<State> possibleStates;
-        if (node.getState().getMovesPlayed() < 4)
-            possibleStates = node.getState().getAllPossibleStates();
-        else
-            possibleStates = node.getState().getAllPossibleStates(node.getParent().getState(), node.getParent().getParent().getState());*/
+        if (!node.getState().getOpponent().getQuited()) {
+            // calculate all valid moves
+            ArrayList<Move> possibleMoves = node.getState().getBoard().getAllValidMoves(node.getState().getOpponent());
+            node.getState().setPossibleMoves(possibleMoves);
 
-        for (State possibleState : possibleStates) {
-            Node newNode = new Node(possibleState);
-            newNode.setParent(node);
-            node.getChildArray().add(newNode);
+            for (Move possibleMove : possibleMoves) {
+                // create new state for each valid move
+                State newState = new State(node.getState().getBoard());
+                newState.setPlayer(new Player(node.getState().getOpponent(), possibleMove.getGamePiece()));
+                newState.setOpponent(new Player(node.getState().getPlayer()));
+                newState.setMove(possibleMove);
+                newState.getBoard().performMove(newState.getPlayer(), possibleMove);
+                newState.setMovesPlayed(node.getState().getMovesPlayed() + 1);
+
+                Node newNode = new Node(newState);
+                newNode.setParent(node);
+                node.getChildArray().add(newNode);
+            }
         }
+
+        // create quit state
+        State newState = new State(node.getState().getBoard());
+        newState.setPlayer(new Player(node.getState().getOpponent()));
+        newState.setOpponent(new Player(node.getState().getPlayer()));
+        newState.getPlayer().setQuited(true);
+        newState.setMovesPlayed(node.getState().getMovesPlayed() + 1);
+
+        Node newNode = new Node(newState);
+        newNode.setParent(node);
+        node.getChildArray().add(newNode);
     }
 
-    /*private int[] simulateRandomPlayout(Node node) {
-        Node tempNode = new Node(node);
-        State tempState = tempNode.getState();
-        int status = tempState.checkStatus();
-
-        Player opponent = gameTree.getRoot().getState().getPlayer();
-        if (status == opponent.getPlayerId()) {
-            tempNode.getParent().getState().setWinScore(-Double.MAX_VALUE);
-            return new int[]{status, tempState.getScore()};
-        }
-        while (status == State.IN_PROGRESS) {
-            tempState.togglePlayer();
-            tempState.randomPlay();
-            status = tempState.checkStatus();
-        }
-
-        return new int[]{status, tempState.getScore()};
-    }*/
-
     private int[] simulateRandomPlayout(Node node) {
-        Node actualNode = new Node(node);
+        Node actualNode = node;
         int status = actualNode.getState().checkStatus();
 
         if (status == gameTree.getRoot().getState().getPlayer().getPlayerId()) {
@@ -111,15 +107,16 @@ public class MonteCarloTreeSearch {
             newNode.getState().setOpponent(new Player(actualNode.getState().getPlayer()));
             newNode.setParent(actualNode);
 
+            ArrayList<Move> possibleMoves = actualNode.getState().getBoard().getAllValidMoves(actualNode.getState().getOpponent());;
+            //if (actualNode.getState().getMovesPlayed() < 4)
+            //    possibleMoves = actualNode.getState().getBoard().getAllValidMoves(actualNode.getState().getOpponent());
+            //else
+            //    possibleMoves = actualNode.getState().getBoard().getAllValidMoves(actualNode.getState().getOpponent(),
+            //            actualNode.getParent().getParent().getState().getPossibleMoves(),
+            //            actualNode.getParent().getState().getMove(),
+            //            actualNode.getParent().getParent().getState().getBoard());
 
-            ArrayList<Move> possibleMoves;
-            if (actualNode.getState().getMovesPlayed() < 4)
-                possibleMoves = actualNode.getState().getBoard().getAllValidMoves(actualNode.getState().getPlayer());
-            else
-                possibleMoves = actualNode.getState().getBoard().getAllValidMoves(actualNode.getState().getPlayer(),
-                        actualNode.getParent().getParent().getState().getPossibleMoves(),
-                        actualNode.getParent().getState().getMove(),
-                        actualNode.getParent().getParent().getState().getBoard());
+            actualNode.getState().setPossibleMoves(possibleMoves);
 
             if (possibleMoves.isEmpty()) {
                 newNode.getState().setPlayer(new Player(actualNode.getState().getOpponent()));
@@ -217,7 +214,7 @@ public class MonteCarloTreeSearch {
             System.out.println("Game is a draw!");
 
         System.out.println("---------------------- Board ----------------------");
-        actualState.getBoard().printBoard();
+        System.out.println(actualState.getBoard());
         System.out.println("---------------------------------------------------");
 
         System.out.println("Player " + actualState.getOpponent().getPlayerId() + ": ");
