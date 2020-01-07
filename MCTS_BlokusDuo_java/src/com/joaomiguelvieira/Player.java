@@ -60,4 +60,21 @@ public class Player {
     public void setQuited(boolean quited) {
         this.quited = quited;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder text = new StringBuilder();
+
+        text.append("Player ").append(playerId).append(": { ");
+
+        text.append("quited: ").append(quited ? "true; " : "false; ");
+        text.append("score: ").append(getScore()).append("; ");
+        text.append("remaining pieces: ");
+        for (ArrayList<GamePiece> gamePiece : remainingGamePieces)
+            text.append(gamePiece.get(0).getCodeName()).append(" ");
+
+        text.append("}");
+
+        return text.toString();
+    }
 }

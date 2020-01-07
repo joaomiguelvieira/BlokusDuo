@@ -25,6 +25,8 @@ public class Main {
 
             if (move.equals("hint"))
                 mcts.printValidMoves();
+            else if (move.equals("hint cumulative"))
+                mcts.printValidMovesCumulative();
             else if (move.equals("simulate"))
                 System.out.println(mcts.findNextMove());
             else if (move.equals("last"))
@@ -35,6 +37,15 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        interactiveGame();
+        if (args.length > 0) {
+            if (args[0].equals("interactive"))
+                interactiveGame();
+            else if (args[0].equals("auto"))
+                playGame();
+            else
+                System.out.println("Option not recognized... exiting");
+        }
+        else
+            playGame();
     }
 }

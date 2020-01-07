@@ -58,7 +58,7 @@ public class MonteCarloTreeSearch {
             // calculate all valid moves
             ArrayList<Move> possibleMoves;
 
-            if (node.getState().getMovesPlayed() < 4)
+            if (node.getState().getMovesPlayed() < 100)
                 possibleMoves = node.getState().getBoard().getAllValidMoves(node.getState().getOpponent());
             else
                 possibleMoves = node.getState().getBoard().getAllValidMoves(node.getState().getOpponent(),
@@ -168,12 +168,23 @@ public class MonteCarloTreeSearch {
     }
 
     public void printValidMoves() {
-        if (gameTree.getRoot().getChildArray().isEmpty())
-            expandNode(gameTree.getRoot());
+        ArrayList<Move> validMoves = gameTree.getRoot().getState().getBoard().getAllValidMoves(gameTree.getRoot().getState().getPlayer());
 
         System.out.print("Here's all valid moves: ");
-        for (Node child : gameTree.getRoot().getChildArray())
-            System.out.println(Move.moveToString(child.getState().getMove()));
+        for (Move validMove : validMoves)
+            System.out.print(Move.moveToString(validMove) + " ");
+        System.out.println();
+    }
+
+    public void printValidMovesCumulative() {
+        ArrayList<Move> validMoves = gameTree.getRoot().getState().getBoard().getAllValidMoves(gameTree.getRoot().getState().getPlayer(),
+                gameTree.getRoot().getParent().getParent().getState().getPossibleMoves(),
+                gameTree.getRoot().getParent().getState().getMove(),
+                gameTree.getRoot().getParent().getParent().getState().getBoard());
+
+        System.out.print("Here's all valid moves: ");
+        for (Move validMove : validMoves)
+            System.out.print(Move.moveToString(validMove) + " ");
         System.out.println();
     }
 
@@ -185,44 +196,14 @@ public class MonteCarloTreeSearch {
 
         System.out.println("----------------- Available Tiles -----------------");
 
-        char[] allGamePieces = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u'};
-        System.out.print("          ");
-        for (char gamePiece : allGamePieces)
-            System.out.print(gamePiece + " ");
-        System.out.println();
-
-        System.out.print("Player 1: ");
-        for (char gamePiece : allGamePieces) {
-            if (player1.getRemainingGamePieces().stream().noneMatch(p -> p.get(0).getCodeName() == gamePiece))
-                System.out.print("0 ");
-            else
-                System.out.print("1 ");
-        }
-        System.out.println();
-
-        System.out.print("Player 2: ");
-        for (char gamePiece : allGamePieces) {
-            if (player2.getRemainingGamePieces().stream().noneMatch(p -> p.get(0).getCodeName() == gamePiece))
-                System.out.print("0 ");
-            else
-                System.out.print("1 ");
-        }
-        System.out.println();
-
-        System.out.println("---------------------------------------------------");
-
-        if (player1.getScore() > player2.getScore())
-            System.out.println("Player 2 is winning!");
-        else if (player1.getScore() < player2.getScore())
-            System.out.println("Player 1 is winning!");
-        else
-            System.out.println("Game is a draw!");
+        System.out.println(player1);
+        System.out.println(player2);
 
         System.out.println("---------------------- Board ----------------------");
         System.out.println(actualState.getBoard());
         System.out.println("---------------------------------------------------");
 
-        System.out.println("Player " + actualState.getOpponent().getPlayerId() + ": ");
+        System.out.print("Player " + actualState.getOpponent().getPlayerId() + ": ");
     }
 
     public void printMove() {
