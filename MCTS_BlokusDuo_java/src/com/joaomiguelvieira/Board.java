@@ -13,6 +13,12 @@ public class Board {
         for (byte[] bytes : board) Arrays.fill(bytes, (byte) 0);
     }
 
+    public Board(Board board) {
+        this.board = new byte[DEFAULT_BOARD_SIZE][DEFAULT_BOARD_SIZE];
+        for (int i = 0; i < board.board.length; i++)
+            System.arraycopy(board.board[i], 0, this.board[i], 0, board.board.length);
+    }
+
     private boolean isOccupied(int x, int y) {
         return board[x][y] != 0;
     }
@@ -37,7 +43,7 @@ public class Board {
         return respectsBoundaries(x, y) && !isOccupied(x, y) && hasCornerContact(x, y, playerId) && !hasEdgeContact(x, y, playerId);
     }
 
-    public ArrayList<Position> getAllAnchors(int playerId) {
+    private ArrayList<Position> getAllAnchors(int playerId) {
         ArrayList<Position> anchors = new ArrayList<>();
 
         for (int i = 0; i < board.length; i++)
@@ -71,74 +77,26 @@ public class Board {
         return text.toString();
     }
 
-    public Board(Board board) {
-        this.board = new byte[DEFAULT_BOARD_SIZE][DEFAULT_BOARD_SIZE];
-        for (int i = 0; i < board.board.length; i++)
-            System.arraycopy(board.board[i], 0, this.board[i], 0, board.board.length);
-    }
-
     public void performMove(Player player, Move move) {
         for (Position square : move.getGamePiece().getSquares())
             board[square.getX() + move.getCenter().getX()][square.getY() + move.getCenter().getY()] = player.getPlayerId();
     }
 
-    public boolean checkValidMove(Player player, GamePiece gamePiece, Position center) {
+    private boolean checkValidMove(Player player, GamePiece gamePiece, Position center) {
         for (Position square : gamePiece.getSquares()) {
             int x = square.getX() + center.getX();
             int y = square.getY() + center.getY();
 
-            // check for board limits
-            if (x < 0 || x >= board.length || y < 0 || y >= board.length)
-                return false;
-
-            // check for overlap
-            if (board[x][y] != 0)
-                return false;
-
-            // check for edge contact
-            if (hasEdgeContact(x, y, player.getPlayerId()))
+            if (!respectsBoundaries(x, y) || isOccupied(x, y) || hasEdgeContact(x, y, player.getPlayerId()))
                 return false;
         }
 
         return true;
     }
 
-    public ArrayList<Move> getAllValidMoves(Player player) {
+    private ArrayList<Move> getMovesFromAnchors(Player player, ArrayList<Position> boardAnchors) {
         ArrayList<Move> validMoves = new ArrayList<>();
 
-        // all valid moves cover 5, 5
-        if (board[4][4] == 0) {
-            for (ArrayList<GamePiece> gamePiece : player.getRemainingGamePieces()) {
-                for (GamePiece variant : gamePiece) {
-                    for (Position square : variant.getSquares()) {
-                        Position center = new Position(4, 4);
-                        center.subtract(square);
-
-                        validMoves.add(new Move(variant, center));
-                    }
-                }
-            }
-
-            return validMoves;
-        }
-
-        // all valid moves cover a, a
-        if (board[9][9] == 0) {
-            for (ArrayList<GamePiece> gamePiece : player.getRemainingGamePieces()) {
-                for (GamePiece variant : gamePiece) {
-                    for (Position square : variant.getSquares()) {
-                        Position center = new Position(9, 9);
-                        center.subtract(square);
-
-                        validMoves.add(new Move(variant, center));
-                    }
-                }
-            }
-
-            return validMoves;
-        }
-
-        ArrayList<Position> boardAnchors = getAllAnchors(player.getPlayerId());
         for (Position boardAnchor : boardAnchors) {
             for (ArrayList<GamePiece> gamePiece : player.getRemainingGamePieces()) {
                 for (GamePiece variant : gamePiece) {
@@ -147,13 +105,42 @@ public class Board {
                         center.subtract(anchor);
 
                         if (checkValidMove(player, variant, center))
-                        validMoves.add(new Move(variant, center));
+                            validMoves.add(new Move(variant, center));
                     }
                 }
             }
         }
 
         return validMoves;
+    }
+
+    private ArrayList<Move> getMovesCoveringPosition(Player player, int x, int y) {
+        ArrayList<Move> validMoves = new ArrayList<>();
+
+        for (ArrayList<GamePiece> gamePiece : player.getRemainingGamePieces()) {
+            for (GamePiece variant : gamePiece) {
+                for (Position square : variant.getSquares()) {
+                    Position center = new Position(x, y);
+                    center.subtract(square);
+
+                    validMoves.add(new Move(variant, center));
+                }
+            }
+        }
+
+        return validMoves;
+    }
+
+    public ArrayList<Move> getAllValidMoves(Player player) {
+        // all valid moves cover 5, 5
+        if (board[4][4] == 0)
+            return getMovesCoveringPosition(player, 4, 4);
+        // all valid moves cover a, a
+        else if (board[9][9] == 0)
+            return getMovesCoveringPosition(player, 9, 9);
+        // valid moves are attached to anchors
+        else
+            return getMovesFromAnchors(player, getAllAnchors(player.getPlayerId()));
     }
 
     public ArrayList<Move> getAllValidMoves(Player player, ArrayList<Move> previouslyValidMoves,
@@ -166,24 +153,8 @@ public class Board {
 
         // delete obsolete moves
         for (Move previouslyValidMove : previouslyValidMoves) {
-            if (previouslyValidMove.getGamePiece().getCodeName() != previouslyPlayedMove.getGamePiece().getCodeName()) {
-                boolean contains = false;
-
-                for (ArrayList<GamePiece> gamePiece : player.getRemainingGamePieces()) {
-                    if (gamePiece.get(0).getCodeName() == previouslyValidMove.getGamePiece().getCodeName()) {
-                        contains = true;
-                        break;
-                    }
-                }
-
-                if (!contains)
-                    System.out.println("Move refers to piece that was already used!");
-            }
-        }
-
-        for (Move previouslyValidMove : previouslyValidMoves) {
             if (previouslyValidMove.getGamePiece().getCodeName() != previouslyPlayedMove.getGamePiece().getCodeName() &&
-                    checkValidMove(player, previouslyPlayedMove.getGamePiece(), previouslyPlayedMove.getCenter()))
+                    checkValidMove(player, previouslyValidMove.getGamePiece(), previouslyValidMove.getCenter()))
                 validMoves.add(previouslyValidMove);
         }
 
@@ -211,19 +182,7 @@ public class Board {
         }
 
         // get valid moves from new anchors only
-        for (Position boardAnchor : newAnchors) {
-            for (ArrayList<GamePiece> gamePiece : player.getRemainingGamePieces()) {
-                for (GamePiece variant : gamePiece) {
-                    for (Position anchor : variant.getAnchors()) {
-                        Position center = new Position(boardAnchor);
-                        center.subtract(anchor);
-
-                        if (checkValidMove(player, variant, center))
-                            validMoves.add(new Move(variant, center));
-                    }
-                }
-            }
-        }
+        validMoves.addAll(getMovesFromAnchors(player, newAnchors));
 
         return validMoves;
     }

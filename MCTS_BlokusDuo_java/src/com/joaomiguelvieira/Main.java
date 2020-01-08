@@ -1,6 +1,5 @@
 package com.joaomiguelvieira;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -23,13 +22,16 @@ public class Main {
             mcts.printStatus();
             String move = scanner.nextLine();
 
-            if (move.equals("hint"))
+            if (move.equals("hint") || move.equals("h"))
                 mcts.printValidMoves();
-            else if (move.equals("hint cumulative"))
-                mcts.printValidMovesCumulative();
-            else if (move.equals("simulate"))
-                System.out.println(mcts.findNextMove());
-            else if (move.equals("last"))
+            else if (move.equals("simulate") || move.equals("s"))
+                System.out.println("Simulated move is " + mcts.findNextMove());
+            else if (move.equals("simulate and play") || move.equals("sp")) {
+                String nextMove = mcts.findNextMove();
+                System.out.println("Simulated move is " + nextMove);
+                mcts.performNextMove(nextMove);
+            }
+            else if (move.equals("last") || move.equals("l"))
                 System.out.println("Last move was " + last_move);
             else if (mcts.performNextMove(move) == 0)
                 last_move = move;

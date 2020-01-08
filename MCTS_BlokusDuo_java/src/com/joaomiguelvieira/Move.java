@@ -1,5 +1,7 @@
 package com.joaomiguelvieira;
 
+import java.util.Objects;
+
 public class Move {
     private GamePiece gamePiece;
     private Position center;
@@ -28,5 +30,19 @@ public class Move {
         string += move.gamePiece.getTransformation();
 
         return string;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Move move = (Move) o;
+        return gamePiece.equals(move.gamePiece) &&
+                center.equals(move.center);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(gamePiece, center);
     }
 }

@@ -1,10 +1,7 @@
 package com.joaomiguelvieira;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 public class GamePiece {
     private static final int DEFAULT_MAX_SQUARES = 5;
@@ -117,5 +114,19 @@ public class GamePiece {
 
     public int getTransformation() {
         return transformation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GamePiece gamePiece = (GamePiece) o;
+        return codeName == gamePiece.codeName &&
+                transformation == gamePiece.transformation;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codeName, transformation);
     }
 }
