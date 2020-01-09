@@ -43,6 +43,6 @@ public class Node {
     }
 
     public Node getChildWithMaxScore() {
-        return Collections.max(childArray, Comparator.comparing(node -> node.getState().getStateViability()));
+        return Collections.max(childArray, Comparator.comparing(node -> node.getState().getStateViability(node.getParent() == null ? null : node.getParent().getState())));
     }
 }

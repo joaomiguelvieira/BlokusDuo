@@ -51,27 +51,27 @@ public class GamePiece {
         }
 
         DefaultGamePiece[] defaultGamePieces = {
-                new DefaultGamePiece('a', new int[][]{{ 0,  0}},                                         new int[][]{{ 0,  0}}                                        , new int[]{0}),
-                new DefaultGamePiece('b', new int[][]{{ 0,  0}, { 0,  1}},                               new int[][]{{ 0,  0}, { 0,  1}}                              , new int[]{0, 2}),
-                new DefaultGamePiece('c', new int[][]{{ 0,  0}, { 0,  1}, { 0, -1}},                     new int[][]{{ 0,  1}, { 0, -1}, { 0,  0}}                    , new int[]{0, 2}),
-                new DefaultGamePiece('d', new int[][]{{ 0,  0}, { 0, -1}, { 1,  0}},                     new int[][]{{ 0,  0}, { 0, -1}, { 1,  0}}                    , new int[]{0, 1, 2, 3}),
-                new DefaultGamePiece('e', new int[][]{{ 0,  0}, { 0,  1}, { 0,  2}, { 0, -1}},           new int[][]{{ 0,  2}, { 0, -1}, { 0,  0}, { 0,  0}}          , new int[]{0, 2}),
-                new DefaultGamePiece('f', new int[][]{{ 0,  0}, { 0,  1}, {-1,  1}, { 0, -1}},           new int[][]{{ 0,  1}, {-1,  1}, { 0, -1}, { 0,  0}}          , new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
-                new DefaultGamePiece('g', new int[][]{{ 0,  0}, { 0,  1}, { 0, -1}, { 1,  0}},           new int[][]{{ 0,  1}, { 1,  0}, { 0, -1}, { 0,  0}}          , new int[]{0, 1, 2, 6}),
-                new DefaultGamePiece('h', new int[][]{{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}},           new int[][]{{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}}          , new int[]{0}),
-                new DefaultGamePiece('i', new int[][]{{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}},           new int[][]{{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}}          , new int[]{0, 1, 2, 3}),
-                new DefaultGamePiece('j', new int[][]{{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, { 0,  2}}, new int[][]{{ 0, -2}, { 0,  2}, { 0,  0}, { 0,  0}, { 0,  0}}, new int[]{0, 2}),
-                new DefaultGamePiece('k', new int[][]{{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, {-1,  1}}, new int[][]{{ 0, -2}, { 0,  1}, {-1,  1}, { 0,  0}, { 0,  0}}, new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
-                new DefaultGamePiece('l', new int[][]{{ 0,  0}, { 0, -1}, { 0, -2}, {-1,  0}, {-1,  1}}, new int[][]{{ 0, -2}, {-1,  0}, {-1,  1}, { 0,  0}, { 0,  0}}, new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
-                new DefaultGamePiece('m', new int[][]{{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  0}, {-1,  1}}, new int[][]{{ 0, -1}, {-1,  0}, {-1,  1}, { 0,  1}, { 0,  0}}, new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
-                new DefaultGamePiece('n', new int[][]{{ 0,  0}, { 0, -1}, { 0,  1}, {-1, -1}, {-1,  1}}, new int[][]{{-1, -1}, { 0, -1}, {-1,  1}, { 0,  1}, { 0,  0}}, new int[]{0, 1, 2, 6}),
-                new DefaultGamePiece('o', new int[][]{{ 0,  0}, { 0, -1}, { 1,  0}, { 0,  1}, { 0,  2}}, new int[][]{{ 0,  2}, { 1,  0}, { 0, -1}, { 0,  0}, { 0,  0}}, new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
-                new DefaultGamePiece('p', new int[][]{{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  1}, { 1,  1}}, new int[][]{{ 0, -1}, {-1,  1}, { 1,  1}, { 0,  0}, { 0,  0}}, new int[]{0, 2, 3, 4}),
-                new DefaultGamePiece('q', new int[][]{{ 0,  0}, { 0, -1}, { 0, -2}, { 1,  0}, { 2,  0}}, new int[][]{{ 0,  0}, { 0, -2}, { 2,  0}, { 0,  0}, { 0,  0}}, new int[]{0, 1, 2, 3}),
+                new DefaultGamePiece('a', new int[][]{{ 0,  0}},                                         new int[][]{{ 0,  0}},                                         new int[]{0}),
+                new DefaultGamePiece('b', new int[][]{{ 0,  0}, { 0,  1}},                               new int[][]{{ 0,  0}, { 0,  1}},                               new int[]{0, 2}),
+                new DefaultGamePiece('c', new int[][]{{ 0,  0}, { 0,  1}, { 0, -1}},                     new int[][]{{ 0,  1}, { 0, -1}},                               new int[]{0, 2}),
+                new DefaultGamePiece('d', new int[][]{{ 0,  0}, { 0, -1}, { 1,  0}},                     new int[][]{{ 0,  0}, { 0, -1}, { 1,  0}},                     new int[]{0, 1, 2, 3}),
+                new DefaultGamePiece('e', new int[][]{{ 0,  0}, { 0,  1}, { 0,  2}, { 0, -1}},           new int[][]{{ 0,  2}, { 0, -1}},                               new int[]{0, 2}),
+                new DefaultGamePiece('f', new int[][]{{ 0,  0}, { 0,  1}, {-1,  1}, { 0, -1}},           new int[][]{{ 0,  1}, {-1,  1}, { 0, -1}},                     new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
+                new DefaultGamePiece('g', new int[][]{{ 0,  0}, { 0,  1}, { 0, -1}, { 1,  0}},           new int[][]{{ 0,  1}, { 1,  0}, { 0, -1}},                     new int[]{0, 1, 2, 6}),
+                new DefaultGamePiece('h', new int[][]{{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}},           new int[][]{{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}},           new int[]{0}),
+                new DefaultGamePiece('i', new int[][]{{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}},           new int[][]{{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}},           new int[]{0, 1, 2, 3}),
+                new DefaultGamePiece('j', new int[][]{{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, { 0,  2}}, new int[][]{{ 0, -2}, { 0,  2}},                               new int[]{0, 2}),
+                new DefaultGamePiece('k', new int[][]{{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, {-1,  1}}, new int[][]{{ 0, -2}, { 0,  1}, {-1,  1}},                     new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
+                new DefaultGamePiece('l', new int[][]{{ 0,  0}, { 0, -1}, { 0, -2}, {-1,  0}, {-1,  1}}, new int[][]{{ 0, -2}, {-1,  0}, {-1,  1}},                     new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
+                new DefaultGamePiece('m', new int[][]{{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  0}, {-1,  1}}, new int[][]{{ 0, -1}, {-1,  0}, {-1,  1}, { 0,  1}},           new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
+                new DefaultGamePiece('n', new int[][]{{ 0,  0}, { 0, -1}, { 0,  1}, {-1, -1}, {-1,  1}}, new int[][]{{-1, -1}, { 0, -1}, {-1,  1}, { 0,  1}},           new int[]{0, 1, 2, 6}),
+                new DefaultGamePiece('o', new int[][]{{ 0,  0}, { 0, -1}, { 1,  0}, { 0,  1}, { 0,  2}}, new int[][]{{ 0,  2}, { 1,  0}, { 0, -1}},                     new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
+                new DefaultGamePiece('p', new int[][]{{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  1}, { 1,  1}}, new int[][]{{ 0, -1}, {-1,  1}, { 1,  1}},                     new int[]{0, 2, 3, 4}),
+                new DefaultGamePiece('q', new int[][]{{ 0,  0}, { 0, -1}, { 0, -2}, { 1,  0}, { 2,  0}}, new int[][]{{ 0,  0}, { 0, -2}, { 2,  0}},                     new int[]{0, 1, 2, 3}),
                 new DefaultGamePiece('r', new int[][]{{ 0,  0}, { 0, -1}, {-1, -1}, { 1,  0}, { 1,  1}}, new int[][]{{ 0,  0}, { 0, -1}, {-1, -1}, { 1,  0}, { 1,  1}}, new int[]{0, 1, 2, 3}),
-                new DefaultGamePiece('s', new int[][]{{ 0,  0}, { 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}}, new int[][]{{ 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}, { 0,  0}}, new int[]{0, 1, 2, 3}),
-                new DefaultGamePiece('t', new int[][]{{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}}, new int[][]{{ 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}, { 0,  0}}, new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
-                new DefaultGamePiece('u', new int[][]{{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}}, new int[][]{{ 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}, { 0,  0}}, new int[]{0})
+                new DefaultGamePiece('s', new int[][]{{ 0,  0}, { 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}}, new int[][]{{ 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}},           new int[]{0, 1, 2, 3}),
+                new DefaultGamePiece('t', new int[][]{{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}}, new int[][]{{ 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}},           new int[]{0, 1, 2, 3, 4, 5, 6, 7}),
+                new DefaultGamePiece('u', new int[][]{{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}}, new int[][]{{ 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}},           new int[]{0})
         };
 
         for (DefaultGamePiece defaultGamePiece : defaultGamePieces) {

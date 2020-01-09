@@ -83,7 +83,8 @@ public class State {
         return IN_PROGRESS;
     }
 
-    public double getStateViability() {
+    // TODO optimize getStateViability
+    public double getStateViability(State previousState) {
         if (Move.moveToString(move).equals("0000"))
             return -Double.MAX_VALUE;
 
@@ -103,8 +104,25 @@ public class State {
         double squaresContribution = move.getGamePiece().getSquares().length;
         squaresContribution /= 5;
 
-        return 8 * visitsContribution +
-                2 * squaresContribution +
+        // number of anchors
+        double anchorsContribution = move.getGamePiece().getAnchors().length;
+        anchorsContribution /= 5;
+
+        // proximity to opponent's move
+        double distanceOpponent = 338;
+        if (previousState != null && previousState.getMove() != null) {
+            distanceOpponent = Math.pow(previousState.getMove().getCenter().getX() - move.getCenter().getX(), 2) +
+                    Math.pow(previousState.getMove().getCenter().getY() - move.getCenter().getY(), 2);
+        }
+        double proximityOpponent = 338 - distanceOpponent;
+        double proximityOpponentContribution = 0;
+        if (proximityOpponent > 0)
+            proximityOpponentContribution = proximityOpponent / 338;
+
+        return 16 * visitsContribution +
+                4 * squaresContribution +
+                4 * anchorsContribution +
+                2 * proximityOpponentContribution +
                 proximityDiagContribution;
     }
 
