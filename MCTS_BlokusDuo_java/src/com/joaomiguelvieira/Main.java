@@ -9,7 +9,7 @@ public class Main {
         while (mcts.checkStatus() == State.IN_PROGRESS) {
             String bestMove = mcts.findNextMove();
             mcts.performNextMove(bestMove);
-            mcts.printMove();
+            //mcts.printMove();
         }
     }
 

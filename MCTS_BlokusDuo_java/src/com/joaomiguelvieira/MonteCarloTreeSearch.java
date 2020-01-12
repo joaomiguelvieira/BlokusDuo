@@ -40,7 +40,7 @@ public class MonteCarloTreeSearch {
             backPropagation(nodeToExplore, playoutResult[0], playoutResult[1]);
         }
 
-        //System.out.println("Round " + gameTree.getRoot().getState().getMovesPlayed() + " -> " + gameTree.getRoot().getState().getVisitCount() + " simulations");
+        System.out.println("Round " + gameTree.getRoot().getState().getMovesPlayed() + " -> " + gameTree.getRoot().getState().getVisitCount() + " simulations");
 
         Node winnerNode = gameTree.getRoot().getChildWithMaxScore();
         return Move.moveToString(winnerNode.getState().getMove());
