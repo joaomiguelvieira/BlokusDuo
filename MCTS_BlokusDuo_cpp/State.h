@@ -14,7 +14,7 @@ private:
     Board *board{nullptr};
     Player *player{nullptr}, *opponent{nullptr};
     Move *move{nullptr};
-    std::list<Move *> possibleMoves{nullptr};
+    std::list<Move *> *possibleMoves{nullptr};
     int visitCount{0};
     double winScore{0};
     int winCount{0};

@@ -90,10 +90,10 @@ void GamePiece::transformPiece(int transformation) {
     this->transformation = transformation;
 
     for (auto & square : *squares)
-        square->transformPosition(transformations[transformation]);
+        square->transform(transformations[transformation]);
 
     for (auto & anchor : *anchors)
-        anchor->transformPosition(transformations[transformation]);
+        anchor->transform(transformations[transformation]);
 }
 
 std::vector<Position *> *GamePiece::getSquares() {
