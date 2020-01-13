@@ -6,7 +6,6 @@
 #include "MonteCarloTreeSearch.h"
 #include "UCT.h"
 #include <iostream>
-#include <algorithm>
 #include <cfloat>
 
 MonteCarloTreeSearch::MonteCarloTreeSearch(int moveDurationMillis) {

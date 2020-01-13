@@ -4,7 +4,7 @@ set testsPassed 0
 set testsFailed 0
 
 for i in (seq 1 100)
-	set result (./blokus-host < game_logs3/game$i.txt | grep "Both pass!")
+	set result (./blokus-host < game_logs4/game$i.txt | grep "Both pass!")
 
 	if string match -q "Both pass!" -- "$result"
 		set testsPassed (math $testsPassed + 1)

@@ -35,8 +35,6 @@ UCT.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.h
 iostream
 -
-algorithm
--
 cfloat
 -
 
@@ -78,6 +76,10 @@ Board.h
 Player.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.h
 
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.cpp
+Tree.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.h
+
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.h
 Node.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.h
@@ -85,4 +87,12 @@ Node.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.h
 Node.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.h
+
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/main.cpp
+iostream
+-
+GamePiece.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.h
+MonteCarloTreeSearch.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.h
 

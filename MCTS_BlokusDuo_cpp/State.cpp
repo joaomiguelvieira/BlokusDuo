@@ -21,6 +21,7 @@ State::~State() {
     delete player;
     delete move;
     delete opponent;
+    delete possibleMoves;
 }
 
 void State::setPlayer(Player *player) {

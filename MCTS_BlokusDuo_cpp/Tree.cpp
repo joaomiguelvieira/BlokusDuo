@@ -8,10 +8,6 @@ Tree::Tree() {
     root = new Node();
 }
 
-Tree::~Tree() {
-    delete root;
-}
-
 Node *Tree::getRoot() {
     return root;
 }
