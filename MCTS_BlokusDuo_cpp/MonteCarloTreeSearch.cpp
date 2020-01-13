@@ -227,3 +227,4 @@ void MonteCarloTreeSearch::printMove() {
     if (move != "0000")
         std::cout << move << std::endl;
 }
+
