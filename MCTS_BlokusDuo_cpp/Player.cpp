@@ -62,9 +62,19 @@ void Player::setQuited(bool quited) {
     this->quited = quited;
 }
 
-Player::Player(std::list<std::vector<GamePiece *> *> *remainingGamePieces) {
-    playerId = ++idCount;
-    this->remainingGamePieces = new std::list<std::vector<GamePiece *> *>();
-    for (auto & gamePiece : *remainingGamePieces)
-        this->remainingGamePieces->push_back(gamePiece);
+std::string Player::toString() {
+    std::string text;
+
+    text += "Player " + std::to_string(playerId) + ": { ";
+    text += "quited: "; if (quited) text += "true; "; else text += "false; ";
+    text += "score: " + std::to_string(getScore()) + "; ";
+    text += "remaining pieces: ";
+    for (auto gamePiece : *remainingGamePieces) {
+        text += (*gamePiece)[0]->getCodeName();
+        text += " ";
+    }
+
+    text += "}";
+
+    return text;
 }

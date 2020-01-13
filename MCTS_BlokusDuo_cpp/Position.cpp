@@ -22,7 +22,7 @@ Position::Position(Position *position) {
     y = position->y;
 }
 
-void Position::transformPosition(const int (*transformation)[2]) {
+void Position::transform(const int (*transformation)[2]) {
     auto newX = x * transformation[0][0] + y * transformation[0][1];
     auto newY = x * transformation[1][0] + y * transformation[1][1];
 
@@ -33,4 +33,8 @@ void Position::transformPosition(const int (*transformation)[2]) {
 void Position::subtract(Position *position) {
     x -= position->x;
     y -= position->y;
+}
+
+bool Position::equals(Position *position) {
+    return x == position->x && y == position->y;
 }

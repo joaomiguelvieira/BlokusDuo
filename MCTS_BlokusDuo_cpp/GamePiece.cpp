@@ -2,7 +2,6 @@
 // Created by joaovieira on 12/24/19.
 //
 
-#include <iostream>
 #include "GamePiece.h"
 
 const int GamePiece::transformations[8][2][2] = {
@@ -19,7 +18,6 @@ const int GamePiece::transformations[8][2][2] = {
 // TODO optimize array allocation
 GamePiece::GamePiece(char codeName, std::vector<std::vector<int>> squares, std::vector<std::vector<int>> anchors) {
     this->codeName = codeName;
-
     this->transformation = 0;
 
     this->squares = new std::vector<Position *>();
@@ -41,60 +39,32 @@ GamePiece::~GamePiece() {
     delete squares;
 }
 
-void GamePiece::printGamePiece() {
-    auto offset = DEFAULT_MAX_SQUARES / 2;
-
-    char printArea[DEFAULT_MAX_SQUARES][DEFAULT_MAX_SQUARES];
-    for (int i = 0; i < DEFAULT_MAX_SQUARES; ++i) {
-        for (int j = 0; j < DEFAULT_MAX_SQUARES; ++j) {
-            printArea[i][j] = ' ';
-        }
-    }
-
-    for (auto & square : *squares)
-        printArea[square->getX() + offset][square->getY() + offset] = '#';
-
-    for (auto & anchor : *anchors)
-        printArea[anchor->getX() + offset][anchor->getY() + offset] = 'X';
-
-    printArea[offset][offset] = printArea[offset][offset] == 'X' ? '+' : 'O';
-
-    std::cout << "Game Piece: " << codeName << transformation << "\n";
-
-    for (int i = 0; i < DEFAULT_MAX_SQUARES; ++i) {
-        for (int j = 0; j < DEFAULT_MAX_SQUARES; ++j) {
-            std::cout << printArea[j][i];
-        }
-        std::cout << "\n";
-    }
-}
-
 std::list<std::vector<GamePiece *> *> *GamePiece::getInitialSetOfGamePieces() {
     auto initialSetOfGamePieces = new std::list<std::vector<GamePiece *> *>();
 
     struct DefaultGamePiece {char codeName; std::vector<std::vector<int>> squares, anchors; std::vector<int> variants;};
     std::vector<struct DefaultGamePiece> defaultGamePieces = {
-            {.codeName = 'a', .squares = {{ 0,  0}},                                         .anchors = {{ 0,  0}}                                        , .variants = {0}},
-            {.codeName = 'b', .squares = {{ 0,  0}, { 0,  1}},                               .anchors = {{ 0,  0}, { 0,  1}}                              , .variants = {0, 2}},
-            {.codeName = 'c', .squares = {{ 0,  0}, { 0,  1}, { 0, -1}},                     .anchors = {{ 0,  1}, { 0, -1}, { 0,  0}}                    , .variants = {0, 2}},
-            {.codeName = 'd', .squares = {{ 0,  0}, { 0, -1}, { 1,  0}},                     .anchors = {{ 0,  0}, { 0, -1}, { 1,  0}}                    , .variants = {0, 1, 2, 3}},
-            {.codeName = 'e', .squares = {{ 0,  0}, { 0,  1}, { 0,  2}, { 0, -1}},           .anchors = {{ 0,  2}, { 0, -1}, { 0,  0}, { 0,  0}}          , .variants = {0, 2}},
-            {.codeName = 'f', .squares = {{ 0,  0}, { 0,  1}, {-1,  1}, { 0, -1}},           .anchors = {{ 0,  1}, {-1,  1}, { 0, -1}, { 0,  0}}          , .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
-            {.codeName = 'g', .squares = {{ 0,  0}, { 0,  1}, { 0, -1}, { 1,  0}},           .anchors = {{ 0,  1}, { 1,  0}, { 0, -1}, { 0,  0}}          , .variants = {0, 1, 2, 6}},
-            {.codeName = 'h', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}},           .anchors = {{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}}          , .variants = {0}},
-            {.codeName = 'i', .squares = {{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}},           .anchors = {{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}}          , .variants = {0, 1, 2, 3}},
-            {.codeName = 'j', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, { 0,  2}}, .anchors = {{ 0, -2}, { 0,  2}, { 0,  0}, { 0,  0}, { 0,  0}}, .variants = {0, 2}},
-            {.codeName = 'k', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, {-1,  1}}, .anchors = {{ 0, -2}, { 0,  1}, {-1,  1}, { 0,  0}, { 0,  0}}, .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
-            {.codeName = 'l', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, {-1,  0}, {-1,  1}}, .anchors = {{ 0, -2}, {-1,  0}, {-1,  1}, { 0,  0}, { 0,  0}}, .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
-            {.codeName = 'm', .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  0}, {-1,  1}}, .anchors = {{ 0, -1}, {-1,  0}, {-1,  1}, { 0,  1}, { 0,  0}}, .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
-            {.codeName = 'n', .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1, -1}, {-1,  1}}, .anchors = {{-1, -1}, { 0, -1}, {-1,  1}, { 0,  1}, { 0,  0}}, .variants = {0, 1, 2, 6}},
-            {.codeName = 'o', .squares = {{ 0,  0}, { 0, -1}, { 1,  0}, { 0,  1}, { 0,  2}}, .anchors = {{ 0,  2}, { 1,  0}, { 0, -1}, { 0,  0}, { 0,  0}}, .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
-            {.codeName = 'p', .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  1}, { 1,  1}}, .anchors = {{ 0, -1}, {-1,  1}, { 1,  1}, { 0,  0}, { 0,  0}}, .variants = {0, 2, 3, 4}},
-            {.codeName = 'q', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 1,  0}, { 2,  0}}, .anchors = {{ 0,  0}, { 0, -2}, { 2,  0}, { 0,  0}, { 0,  0}}, .variants = {0, 1, 2, 3}},
+            {.codeName = 'a', .squares = {{ 0,  0}},                                         .anchors = {{ 0,  0}},                                         .variants = {0}},
+            {.codeName = 'b', .squares = {{ 0,  0}, { 0,  1}},                               .anchors = {{ 0,  0}, { 0,  1}},                               .variants = {0, 2}},
+            {.codeName = 'c', .squares = {{ 0,  0}, { 0,  1}, { 0, -1}},                     .anchors = {{ 0,  1}, { 0, -1}},                               .variants = {0, 2}},
+            {.codeName = 'd', .squares = {{ 0,  0}, { 0, -1}, { 1,  0}},                     .anchors = {{ 0,  0}, { 0, -1}, { 1,  0}},                     .variants = {0, 1, 2, 3}},
+            {.codeName = 'e', .squares = {{ 0,  0}, { 0,  1}, { 0,  2}, { 0, -1}},           .anchors = {{ 0,  2}, { 0, -1}},                               .variants = {0, 2}},
+            {.codeName = 'f', .squares = {{ 0,  0}, { 0,  1}, {-1,  1}, { 0, -1}},           .anchors = {{ 0,  1}, {-1,  1}, { 0, -1}},                     .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'g', .squares = {{ 0,  0}, { 0,  1}, { 0, -1}, { 1,  0}},           .anchors = {{ 0,  1}, { 1,  0}, { 0, -1}},                     .variants = {0, 1, 2, 6}},
+            {.codeName = 'h', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}},           .anchors = {{ 0,  0}, { 1,  0}, { 0,  1}, { 1,  1}},           .variants = {0}},
+            {.codeName = 'i', .squares = {{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}},           .anchors = {{ 0,  0}, {-1,  0}, { 0,  1}, { 1,  1}},           .variants = {0, 1, 2, 3}},
+            {.codeName = 'j', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, { 0,  2}}, .anchors = {{ 0, -2}, { 0,  2}},                               .variants = {0, 2}},
+            {.codeName = 'k', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 0,  1}, {-1,  1}}, .anchors = {{ 0, -2}, { 0,  1}, {-1,  1}},                     .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'l', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, {-1,  0}, {-1,  1}}, .anchors = {{ 0, -2}, {-1,  0}, {-1,  1}},                     .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'm', .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  0}, {-1,  1}}, .anchors = {{ 0, -1}, {-1,  0}, {-1,  1}, { 0,  1}},           .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'n', .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1, -1}, {-1,  1}}, .anchors = {{-1, -1}, { 0, -1}, {-1,  1}, { 0,  1}},           .variants = {0, 1, 2, 6}},
+            {.codeName = 'o', .squares = {{ 0,  0}, { 0, -1}, { 1,  0}, { 0,  1}, { 0,  2}}, .anchors = {{ 0,  2}, { 1,  0}, { 0, -1}},                     .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'p', .squares = {{ 0,  0}, { 0, -1}, { 0,  1}, {-1,  1}, { 1,  1}}, .anchors = {{ 0, -1}, {-1,  1}, { 1,  1}},                     .variants = {0, 2, 3, 4}},
+            {.codeName = 'q', .squares = {{ 0,  0}, { 0, -1}, { 0, -2}, { 1,  0}, { 2,  0}}, .anchors = {{ 0,  0}, { 0, -2}, { 2,  0}},                     .variants = {0, 1, 2, 3}},
             {.codeName = 'r', .squares = {{ 0,  0}, { 0, -1}, {-1, -1}, { 1,  0}, { 1,  1}}, .anchors = {{ 0,  0}, { 0, -1}, {-1, -1}, { 1,  0}, { 1,  1}}, .variants = {0, 1, 2, 3}},
-            {.codeName = 's', .squares = {{ 0,  0}, { 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}}, .anchors = {{ 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}, { 0,  0}}, .variants = {0, 1, 2, 3}},
-            {.codeName = 't', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}}, .anchors = {{ 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}, { 0,  0}}, .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
-            {.codeName = 'u', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}}, .anchors = {{ 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}, { 0,  0}}, .variants = {0}}
+            {.codeName = 's', .squares = {{ 0,  0}, { 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}}, .anchors = {{ 1,  0}, { 1,  1}, {-1,  0}, {-1, -1}},           .variants = {0, 1, 2, 3}},
+            {.codeName = 't', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}}, .anchors = {{ 1,  0}, { 0,  1}, {-1,  0}, {-1, -1}},           .variants = {0, 1, 2, 3, 4, 5, 6, 7}},
+            {.codeName = 'u', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}}, .anchors = {{ 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}},           .variants = {0}}
     };
 
     for (const auto& defaultGamePiece : defaultGamePieces) {
@@ -136,4 +106,10 @@ std::vector<Position *> *GamePiece::getAnchors() {
 
 int GamePiece::getTransformation() {
     return transformation;
+}
+
+bool GamePiece::equals(GamePiece *gamePiece) {
+    if (this == gamePiece) return true;
+    if (gamePiece == nullptr) return false;
+    return codeName == gamePiece->codeName && transformation == gamePiece->transformation;
 }

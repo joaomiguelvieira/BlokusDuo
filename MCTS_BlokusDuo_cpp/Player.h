@@ -20,7 +20,6 @@ public:
     Player();
     Player(Player *player, GamePiece *removePiece);
     explicit Player(Player *player);
-    explicit Player(std::list<std::vector<GamePiece *> *> *remainingGamePieces);
 
     ~Player();
 
@@ -29,6 +28,7 @@ public:
     bool getQuited();
     int getScore();
     void setQuited(bool quited);
+    std::string toString();
 };
 
 

@@ -22,7 +22,6 @@ public:
 
     GamePiece *getGamePiece();
     Position *getCenter();
-    static bool isEqual(Move *move1, Move *move2);
     static std::string moveToString(Move *move);
 };
 

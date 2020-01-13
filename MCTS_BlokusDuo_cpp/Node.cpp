@@ -19,15 +19,6 @@ Node::Node(State *state) {
     childArray = new std::list<Node *>();
 }
 
-Node::Node(Node *node) {
-    state = new State(node->state);
-    childArray = new std::list<Node *>();
-    if (node->parent != nullptr)
-        parent = node->parent;
-    for (auto & child : *node->childArray)
-        childArray->push_back(new Node(child));
-}
-
 Node::~Node() {
     for (auto & child : *childArray)
         delete child;
@@ -49,12 +40,9 @@ void Node::setParent(Node *node) {
 }
 
 Node *Node::getRandomChildNode() {
-    int noOfPossibleMoves = (int) childArray->size();
     srand((unsigned int) time(nullptr));
-    int selectRandom = rand() % noOfPossibleMoves;
-
     auto it = childArray->begin();
-    std::advance(it, selectRandom);
+    std::advance(it, rand() % childArray->size());
     return *it;
 }
 
@@ -64,11 +52,6 @@ Node *Node::getParent() {
 
 Node *Node::getChildWithMaxScore() {
     return *max_element(childArray->begin(), childArray->end(), [] (Node *node1, Node *node2) -> bool {
-        return node1->getState()->getStateViability() < node2->getState()->getStateViability();
+        return node1->getState()->getStateViability(node1->getParent() == nullptr ? nullptr : node1->getParent()->getState()) < node2->getState()->getStateViability(node2->getParent() == nullptr ? nullptr : node2->getParent()->getState());
     });
-}
-
-void Node::resetChildArray() {
-    delete childArray;
-    childArray = new std::list<Node *>();
 }

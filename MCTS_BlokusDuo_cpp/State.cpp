@@ -2,25 +2,14 @@
 // Created by joaovieira on 12/25/19.
 //
 
-#include <climits>
 #include "State.h"
 #include "Move.h"
 #include <cstdlib>
-#include <ctime>
 #include <cmath>
 #include <cfloat>
 
 State::State() {
     board = new Board();
-}
-
-State::State(State *state) {
-    board = new Board(state->board);
-    player = new Player(state->player);
-    opponent = new Player(state->opponent);
-    visitCount = state->visitCount;
-    winScore = state->winScore;
-    winCount = state->winCount;
 }
 
 State::State(Board *board) {
@@ -34,13 +23,6 @@ State::~State() {
     delete opponent;
 }
 
-// TODO optimize setBoard
-void State::setBoard(Board *board) {
-    delete this->board;
-
-    this->board = board;
-}
-
 void State::setPlayer(Player *player) {
     this->player = player;
 }
@@ -51,10 +33,6 @@ int State::getVisitCount() {
 
 Board *State::getBoard() {
     return board;
-}
-
-double State::getWinScore() {
-    return winScore;
 }
 
 Player *State::getPlayer() {
@@ -78,41 +56,8 @@ void State::setOpponent(Player *opponent) {
     this->opponent = opponent;
 }
 
-void State::togglePlayer() {
-    auto tempPlayer = player;
-    player = opponent;
-    opponent = tempPlayer;
-}
-
 Player *State::getOpponent() {
     return opponent;
-}
-
-std::list<State *> *State::getAllPossibleStates() {
-    auto possibleStates = new std::list<State *>();
-
-    if (!opponent->getQuited()) {
-        auto possibleMoves = board->getAllValidMoves(opponent);
-        for (auto & possibleMove : *possibleMoves) {
-            auto newState = new State(board);
-            newState->setPlayer(new Player(opponent, possibleMove->getGamePiece()));
-            newState->setOpponent(new Player(player));
-            newState->setMove(possibleMove);
-            newState->getBoard()->performMove(newState->player, possibleMove);
-            possibleStates->push_back(newState);
-        }
-
-        delete possibleMoves;
-    }
-
-    // add the quit state
-    auto newState = new State(board);
-    newState->setPlayer(new Player(opponent));
-    newState->setOpponent(new Player(player));
-    newState->getPlayer()->setQuited(true);
-    possibleStates->push_back(newState);
-
-    return possibleStates;
 }
 
 Move *State::getMove() {
@@ -138,36 +83,11 @@ void State::setMove(Move *move) {
     this->move = move;
 }
 
-void State::randomPlay() {
-    auto possibleMoves = board->getAllValidMoves(player);
-    int totalPossibilities = (int) possibleMoves->size();
-
-    if (totalPossibilities == 0) {
-        player->setQuited(true);
-        delete possibleMoves;
-        return;
-    }
-
-    srand((unsigned int) time(nullptr));
-    int selectRandom = rand() % totalPossibilities;
-
-    auto it = possibleMoves->begin();
-    std::advance(it, selectRandom);
-    auto moveToPerform = *it;
-    board->performMove(player, moveToPerform);
-    auto pieceToRemove = moveToPerform->getGamePiece();
-    player->getRemainingGamePieces()->remove_if([pieceToRemove](std::vector<GamePiece *> *gamePiece)->bool{return (*gamePiece)[0]->getCodeName() == pieceToRemove->getCodeName();});
-
-    for (auto & possibleMove : *possibleMoves)
-        delete possibleMove;
-    delete possibleMoves;
-}
-
 int State::getScore() {
     return abs(player->getScore() - opponent->getScore());
 }
 
-double State::getStateViability() {
+double State::getStateViability(State *previousState) {
     // if quit then node is not viable
     if (Move::moveToString(move) == "0000")
         return -DBL_MAX;
@@ -188,12 +108,26 @@ double State::getStateViability() {
     double squaresContribution = move->getGamePiece()->getSquares()->size();
     squaresContribution /= 5;
 
-    double viability =
-            8 * visitsContribution +
-            2 * squaresContribution +
-            proximityDiagContribution;
+    // number of anchors
+    double anchorsContribution = move->getGamePiece()->getAnchors()->size();
+    anchorsContribution /= 5;
 
-    return viability;
+    // proximity to opponent's move
+    double distanceOpponent = 338;
+    if (previousState != nullptr && previousState->getMove() != nullptr) {
+        distanceOpponent = pow(previousState->getMove()->getCenter()->getX() - move->getCenter()->getX(), 2) +
+                           pow(previousState->getMove()->getCenter()->getY() - move->getCenter()->getY(), 2);
+    }
+    double proximityOpponent = 338 - distanceOpponent;
+    double proximityOpponentContribution = 0;
+    if (proximityOpponent > 0)
+        proximityOpponentContribution = proximityOpponent / 338;
+
+    return 16 * visitsContribution +
+           4 * squaresContribution +
+           4 * anchorsContribution +
+           2 * proximityOpponentContribution +
+           proximityDiagContribution;
 }
 
 void State::incrementWinCount() {
@@ -202,4 +136,20 @@ void State::incrementWinCount() {
 
 double State::getWinCount() {
     return winCount;
+}
+
+int State::getMovesPlayed() {
+    return movesPlayed;
+}
+
+void State::setMovesPlayed(int movesPlayed) {
+    this->movesPlayed = movesPlayed;
+}
+
+void State::setPossibleMoves(std::list<Move *> *possibleMoves) {
+    this->possibleMoves = possibleMoves;
+}
+
+std::list<Move *> *State::getPossibleMoves() {
+    return possibleMoves;
 }

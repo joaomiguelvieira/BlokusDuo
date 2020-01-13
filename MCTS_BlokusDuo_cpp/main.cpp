@@ -1,77 +1,6 @@
 #include <iostream>
 #include "GamePiece.h"
 #include "MonteCarloTreeSearch.h"
-#include <pthread.h>
-#include <mutex>
-
-#define NUM_THREADS 12
-
-Tree *gameTree;
-long nNodes;
-std::mutex mtx;
-
-void expandGameSubtree(Node *node) {
-    mtx.lock();
-    nNodes++;
-    if (nNodes % (1024 * 1024) == 0)
-        std::cout << nNodes / 1024 / 1024 << "Mi Nodes" << std::endl;
-    mtx.unlock();
-
-    // if node is terminal do not expand
-    if (node->getState()->checkStatus() != State::IN_PROGRESS) {
-        //std::cout << "Reached terminal node!\n";
-        return;
-    }
-
-    // expand node
-    MonteCarloTreeSearch::expandNode(node);
-
-    // expand each of the node's children
-    for (auto & child : *node->getChildArray()) {
-        expandGameSubtree(child);
-        delete child;
-    }
-
-    node->resetChildArray();
-}
-
-void *expandGameSubtreeMultithread(void *id) {
-    auto childArray = gameTree->getRoot()->getChildArray();
-    auto it = childArray->begin();
-
-    for (int i = 0; i < childArray->size(); ++i) {
-        if (i % NUM_THREADS == *((int *) id)) {
-            expandGameSubtree(*it);
-        }
-
-        it++;
-    }
-
-    return nullptr;
-}
-
-void calculateGameTree() {
-    gameTree = new Tree();
-
-    auto gamePieceSet1 = GamePiece::getInitialSetOfGamePieces();
-    gameTree->getRoot()->getState()->setOpponent(new Player(gamePieceSet1));
-
-    auto gamePieceSet2 = GamePiece::getInitialSetOfGamePieces();
-    gameTree->getRoot()->getState()->setPlayer(new Player(gamePieceSet2));
-
-    MonteCarloTreeSearch::expandNode(gameTree->getRoot());
-
-    nNodes = 1;
-    pthread_t threads[NUM_THREADS];
-
-    for (int i = 0; i < NUM_THREADS; ++i) {
-        pthread_create(&threads[i], nullptr, expandGameSubtreeMultithread, (void *) &i);
-    }
-
-    for (int j = 0; j < NUM_THREADS; ++j) {
-        pthread_join(threads[j], nullptr);
-    }
-}
 
 void playGame() {
     auto mcts = new MonteCarloTreeSearch();
@@ -94,10 +23,15 @@ void interactiveGame() {
         std::string move;
         std::cin >> move;
 
-        if (move == "hint")
+        if (move == "hint" || move == "h")
             mcts->printValidMoves();
-        else if (move == "simulate")
-            std::cout << "MCTS advises move " << mcts->findNextMove() << std::endl;
+        else if (move == "simulate" || move == "s")
+            std::cout << "Simulated move is " << mcts->findNextMove() << std::endl;
+        else if (move == "simulate and play" || move == "sp") {
+            auto nextMove = mcts->findNextMove();
+            std::cout << "Simulated move is " << nextMove << std::endl;
+            mcts->performNextMove(nextMove);
+        }
         else if (move == "last")
             std::cout << "Last move was " << last_move << std::endl;
         else
@@ -108,7 +42,7 @@ void interactiveGame() {
     delete mcts;
 }
 
-int main() {
+int main(int argc, char **argv) {
     playGame();
 
     return 0;

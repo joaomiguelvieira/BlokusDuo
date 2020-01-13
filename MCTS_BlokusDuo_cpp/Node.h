@@ -17,7 +17,6 @@ private:
 public:
     Node();
     explicit Node(State *state);
-    explicit Node(Node *node);
 
     ~Node();
 
@@ -27,8 +26,6 @@ public:
     Node *getRandomChildNode();
     Node *getParent();
     Node *getChildWithMaxScore();
-
-    void resetChildArray();
 };
 
 

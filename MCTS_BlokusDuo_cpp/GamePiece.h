@@ -12,7 +12,6 @@
 
 class GamePiece {
 private:
-    static constexpr int DEFAULT_MAX_SQUARES = 5;
     static const int transformations[8][2][2];
 
     char codeName;
@@ -20,19 +19,18 @@ private:
     std::vector<Position *> *squares;
     std::vector<Position *> *anchors;
 public:
-    static constexpr int N_TRANSFORMATIONS = 8;
 
     GamePiece(char codeName, std::vector<std::vector<int>> squares, std::vector<std::vector<int>> anchors);
 
     ~GamePiece();
 
-    void printGamePiece();
     static std::list<std::vector<GamePiece *> *> *getInitialSetOfGamePieces();
     char getCodeName();
     std::vector<Position *> *getSquares();
     std::vector<Position *> *getAnchors();
     void transformPiece(int transformation);
     int getTransformation();
+    bool equals(GamePiece *gamePiece);
 };
 
 

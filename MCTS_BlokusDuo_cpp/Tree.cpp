@@ -16,13 +16,7 @@ Node *Tree::getRoot() {
     return root;
 }
 
+// TODO delete unnecessary nodes
 void Tree::setRoot(Node *root) {
-    auto parent = root->getParent();
-
-    if (parent)
-        parent->getChildArray()->remove_if([root](Node *child)->bool{return child == root;});
-
-    root->setParent(nullptr);
-    delete this->root;
     this->root = root;
 }

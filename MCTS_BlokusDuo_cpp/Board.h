@@ -14,34 +14,27 @@
 
 class Board {
 private:
-    static constexpr int DEFAULT_BOARD_SIZE = 14;
+    static constexpr int BOARD_SIZE = 14;
 
-    uint8_t board[DEFAULT_BOARD_SIZE][DEFAULT_BOARD_SIZE];
-    int size[2]{DEFAULT_BOARD_SIZE, DEFAULT_BOARD_SIZE};
-
-    // buffer
-    static std::vector<Board> *buffer;
-    static int bufferPtr;
+    uint8_t board[BOARD_SIZE][BOARD_SIZE];
 public:
     Board();
     explicit Board(Board *board);
 
-    uint8_t **getBoard();
-    int *getSize();
-    std::list<Position *> *getAllAnchors(int playerId);
+    bool isOccupied(int x, int y);
+    static bool respectsBoundaries(int x, int y);
     bool hasCornerContact(int x, int y, int playerId);
     bool hasEdgeContact(int x, int y, int playerId);
-    void printBoard();
+    bool isAnchor(int x, int y, int playerId);
+    std::list<Position *> *getAllAnchors(int playerId);
+    std::string toString();
     void performMove(Player *player, Move *move);
     bool checkValidMove(Player *player, GamePiece *gamePiece, Position *center);
+    std::list<Move *> *getMovesFromAnchors(Player *player, std::list<Position *> *boardAnchors);
+    static std::list<Move *> *getMovesCoveringPosition(Player *player, int x, int y);
     std::list<Move *> *getAllValidMoves(Player *player);
-
-    // buffer
-    static void reserveBuffer(int bufferSize);
-    static void deleteBuffer();
-    static Board *captureBoard();
-    static Board *captureBoard(Board *board);
-    static void releaseBoard();
+    std::list<Move *> *getAllValidMoves(Player *player, std::list<Move *> *previouslyValidMoves,
+            Move *previouslyPlayedMove, Board *previousBoard);
 };
 
 
