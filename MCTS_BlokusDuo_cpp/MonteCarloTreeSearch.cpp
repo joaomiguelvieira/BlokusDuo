@@ -218,7 +218,7 @@ void MonteCarloTreeSearch::printStatus() {
 
     std::cout << "---------------------------------------------------" << std::endl;
     std::cout << "Round " << actualState->getMovesPlayed() << std::endl;
-    std::cout << "Player " << actualState->getOpponent()->getPlayerId() << ": ";
+    std::cout << "Player " << std::to_string(actualState->getOpponent()->getPlayerId()) << ": ";
 }
 
 void MonteCarloTreeSearch::printMove() {
@@ -227,4 +227,3 @@ void MonteCarloTreeSearch::printMove() {
     if (move != "0000")
         std::cout << move << std::endl;
 }
-

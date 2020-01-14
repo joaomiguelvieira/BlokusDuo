@@ -85,12 +85,15 @@ bool Board::isAnchor(int x, int y, int playerId) {
 std::string Board::toString() {
     std::string text = "    ";
     char axis[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e'};
-    for (auto tick : axis)
-        text += std::to_string(tick) + " ";
+    for (auto tick : axis) {
+        text += tick;
+        text += " ";
+    }
     text += "\n";
     text += "  + + + + + + + + + + + + + + + +\n";
     for (int i = 0; i < BOARD_SIZE; i++) {
-        text += std::to_string(axis[i]) + " + ";
+        text += axis[i];
+        text += " + ";
         for (auto & j : board) {
             if (j[i] == 0)
                 text += "  ";

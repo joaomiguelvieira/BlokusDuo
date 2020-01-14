@@ -26,18 +26,6 @@ vector
 Position.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Position.h
 
-/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.cpp
-chrono
--
-MonteCarloTreeSearch.h
-/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.h
-UCT.h
-/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.h
-iostream
--
-cfloat
--
-
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.h
 Tree.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.h
@@ -76,15 +64,7 @@ Board.h
 Player.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.h
 
-/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.cpp
-Tree.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.h
-
-/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.h
-Node.h
-/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.h
-
-/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.h
 Node.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.h
 

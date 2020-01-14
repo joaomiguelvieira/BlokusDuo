@@ -43,7 +43,10 @@ void interactiveGame() {
 }
 
 int main(int argc, char **argv) {
-    playGame();
+    if (argc > 1)
+        interactiveGame();
+    else
+        playGame();
 
     return 0;
 }
