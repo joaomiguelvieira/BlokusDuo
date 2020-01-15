@@ -6,9 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.cpp
-GamePiece.h
-/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.cpp
+iostream
+-
+Board.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.h
+
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.h
+cstdint
+-
+list
+-
+Position.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Position.h
+Player.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.h
+Move.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Move.h
 
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.h
 list
@@ -17,6 +31,22 @@ vector
 -
 Position.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Position.h
+
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Move.h
+string
+-
+Position.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Position.h
+GamePiece.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.h
+Player.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.h
+
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.h
+cstdint
+-
+GamePiece.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.h
 
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Position.h
 string
