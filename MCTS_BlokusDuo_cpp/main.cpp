@@ -32,7 +32,7 @@ void interactiveGame() {
             std::cout << "Simulated move is " << nextMove << std::endl;
             mcts->performNextMove(nextMove);
         }
-        else if (move == "last")
+        else if (move == "last" || move == "l")
             std::cout << "Last move was " << last_move << std::endl;
         else
             if (mcts->performNextMove(move) == 0)

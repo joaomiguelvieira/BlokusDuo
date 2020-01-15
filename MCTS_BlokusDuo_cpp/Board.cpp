@@ -188,6 +188,8 @@ Board::getAllValidMoves(Player *player, std::list<Move *> *previouslyValidMoves,
     auto newPossibleMoves = getMovesFromAnchors(player, newAnchors);
 
     /*================================================================================================================*/
+    std::cout << "========== FINDING POSSIBLE MOVES DIFFERENTIALLY ==========" << std::endl;
+
     auto deterministicMoves = getAllValidMoves(player);
 
     for (auto deterministicMove : *deterministicMoves) {
