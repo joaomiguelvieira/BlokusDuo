@@ -188,7 +188,7 @@ Board::getAllValidMoves(Player *player, std::list<Move *> *previouslyValidMoves,
     auto newPossibleMoves = getMovesFromAnchors(player, newAnchors);
 
     /*================================================================================================================*/
-    std::cout << "========== FINDING POSSIBLE MOVES DIFFERENTIALLY ==========" << std::endl;
+    /*std::cout << "========== FINDING POSSIBLE MOVES DIFFERENTIALLY ==========" << std::endl;
 
     auto deterministicMoves = getAllValidMoves(player);
 
@@ -226,7 +226,7 @@ Board::getAllValidMoves(Player *player, std::list<Move *> *previouslyValidMoves,
             if (!detected)
                 std::cout << "Failed to predict new move " << Move::moveToString(deterministicMove) << std::endl;
         }
-    }
+    }*/
     /*================================================================================================================*/
 
     // TODO optimize list merge
