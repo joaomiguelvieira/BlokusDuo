@@ -2,6 +2,9 @@
 
 set testsPassed 0
 set testsFailed 0
+set player1Wins 0
+set player2Wins 0
+set gameDraw 0
 
 for i in (seq 1 100)
 	set result (./blokus-host < game_logs4/game$i.txt | grep "Both pass!")
