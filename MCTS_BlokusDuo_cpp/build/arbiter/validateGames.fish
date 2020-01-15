@@ -35,7 +35,7 @@ end
 
 set totalTests (math $testsPassed + $testsFailed)
 
-set differentGames
+set differentGames 0
 
 set numberOfGames (count $logFolder/*.txt)
 
@@ -44,7 +44,9 @@ for i in (seq 1 $numberOfGames)
 
   for j in (seq $i $numberOfGames)
     if test "$i" -ne "$j"
-      if string match -q (diff $gameLogs/game$i.txt $gameLogs/game$j.txt) -- ""
+
+      set difference (diff "$logFolder/game$i.txt" "$logFolder/game$j.txt")
+      if string match -q "$difference" -- ""
         set original 0
         break
       end
@@ -56,7 +58,7 @@ for i in (seq 1 $numberOfGames)
   end
 end
 
-
+echo ""
 echo "========== SUMMARY =========="
 echo "Different games: $differentGames"
 echo "-----------------------------"
