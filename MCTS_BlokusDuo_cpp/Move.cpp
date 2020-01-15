@@ -37,3 +37,8 @@ std::string Move::moveToString(Move *move) {
 
     return text.str();
 }
+
+bool Move::equals(Move *move) {
+    if (move == nullptr) return false;
+    return move->center->equals(center) && move->gamePiece->equals(gamePiece);
+}

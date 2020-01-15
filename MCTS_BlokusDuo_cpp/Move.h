@@ -23,6 +23,7 @@ public:
     GamePiece *getGamePiece();
     Position *getCenter();
     static std::string moveToString(Move *move);
+    bool equals(Move *move);
 };
 
 

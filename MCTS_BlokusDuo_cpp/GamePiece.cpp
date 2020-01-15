@@ -76,7 +76,7 @@ std::list<std::vector<GamePiece *> *> *GamePiece::getInitialSetOfGamePieces() {
             gamePiece->push_back(variant);
         }
 
-        initialSetOfGamePieces->push_front(gamePiece);
+        initialSetOfGamePieces->push_back(gamePiece);
     }
 
     return initialSetOfGamePieces;

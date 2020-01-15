@@ -2,6 +2,7 @@
 // Created by joaovieira on 12/24/19.
 //
 
+#include <iostream>
 #include "Board.h"
 
 Board::Board() {
@@ -183,9 +184,51 @@ Board::getAllValidMoves(Player *player, std::list<Move *> *previouslyValidMoves,
             newAnchors->push_back(new Position(x + 1, y + 1));
     }
 
-    // TODO optimize list merge
     // get valid moves from new anchors only
-    for (auto validMove : *getMovesFromAnchors(player, newAnchors))
+    auto newPossibleMoves = getMovesFromAnchors(player, newAnchors);
+
+    /*================================================================================================================*/
+    auto deterministicMoves = getAllValidMoves(player);
+
+    for (auto deterministicMove : *deterministicMoves) {
+        auto oldMove = false;
+
+        for (auto move : *previouslyValidMoves) {
+            if (deterministicMove->equals(move)) {
+                oldMove = true;
+                break;
+            }
+        }
+
+        if (oldMove) {
+            auto detected = false;
+            for (auto heuristicMove : *validMoves) {
+                if (deterministicMove->equals(heuristicMove)) {
+                    detected = true;
+                    break;
+                }
+            }
+
+            if (!detected)
+                std::cout << "Failed to predict old move " << Move::moveToString(deterministicMove) << std::endl;
+        }
+        else {
+            auto detected = false;
+            for (auto heuristicMove : *newPossibleMoves) {
+                if (deterministicMove->equals(heuristicMove)) {
+                    detected = true;
+                    break;
+                }
+            }
+
+            if (!detected)
+                std::cout << "Failed to predict new move " << Move::moveToString(deterministicMove) << std::endl;
+        }
+    }
+    /*================================================================================================================*/
+
+    // TODO optimize list merge
+    for (auto validMove : *newPossibleMoves)
         validMoves->push_back(validMove);
 
     return validMoves;
