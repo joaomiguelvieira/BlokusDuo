@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /extra/cmake-3.16.2/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E remove -f
+RM = /extra/cmake-3.16.2/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp
+CMAKE_SOURCE_DIR = /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build
+CMAKE_BINARY_DIR = /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/MCTS_BlokusDuo_cpp.dir/depend.make
@@ -59,146 +59,146 @@ include CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/main.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/main.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/main.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/main.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/main.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.s
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.o: ../Board.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Board.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Board.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Board.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Board.cpp.s
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.o: ../Player.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Player.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Player.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Player.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Player.cpp.s
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.o: ../GamePiece.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/GamePiece.cpp.s
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.o: ../Position.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Position.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Position.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Position.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Position.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Position.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Position.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Position.cpp.s
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.o: ../Move.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Move.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Move.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Move.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Move.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Move.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Move.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Move.cpp.s
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.o: ../MonteCarloTreeSearch.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/MonteCarloTreeSearch.cpp.s
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.o: ../UCT.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/UCT.cpp.s
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.o: ../State.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/State.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/State.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/State.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/State.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/State.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/State.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.s
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.o: ../Node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Node.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Node.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Node.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.s
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.o: CMakeFiles/MCTS_BlokusDuo_cpp.dir/flags.make
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.o: ../Tree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.o"
-	/opt/rh/devtoolset-7/root/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.o -c /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.o -c /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.cpp
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.i"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.cpp > CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.i
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.s"
-	/opt/rh/devtoolset-7/root/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.cpp -o CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.s
 
 # Object files for target MCTS_BlokusDuo_cpp
 MCTS_BlokusDuo_cpp_OBJECTS = \
@@ -230,7 +230,7 @@ MCTS_BlokusDuo_cpp: CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.o
 MCTS_BlokusDuo_cpp: CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.o
 MCTS_BlokusDuo_cpp: CMakeFiles/MCTS_BlokusDuo_cpp.dir/build.make
 MCTS_BlokusDuo_cpp: CMakeFiles/MCTS_BlokusDuo_cpp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable MCTS_BlokusDuo_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable MCTS_BlokusDuo_cpp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MCTS_BlokusDuo_cpp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -243,6 +243,6 @@ CMakeFiles/MCTS_BlokusDuo_cpp.dir/clean:
 .PHONY : CMakeFiles/MCTS_BlokusDuo_cpp.dir/clean
 
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/depend:
-	cd /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles/MCTS_BlokusDuo_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles/MCTS_BlokusDuo_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/MCTS_BlokusDuo_cpp.dir/depend
 
