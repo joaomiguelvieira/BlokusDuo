@@ -1,4 +1,4 @@
-# Install script for directory: /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp
+# Install script for directory: /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -8,7 +8,7 @@ void playGame() {
     while (mcts->checkStatus() == State::IN_PROGRESS) {
         auto bestMove = mcts->findNextMove();
         mcts->performNextMove(bestMove);
-        mcts->printMove();
+        //mcts->printMove();
     }
 
     delete mcts;

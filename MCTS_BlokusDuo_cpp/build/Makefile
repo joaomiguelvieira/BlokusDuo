@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /extra/cmake-3.16.2/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /extra/cmake-3.16.2/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp
+CMAKE_SOURCE_DIR = /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build
+CMAKE_BINARY_DIR = /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/extra/cmake-3.16.2/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,8 +69,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/extra/cmake-3.16.2/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joaovieira/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
