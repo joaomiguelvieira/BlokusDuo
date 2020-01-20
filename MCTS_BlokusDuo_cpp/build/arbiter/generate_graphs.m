@@ -28,6 +28,7 @@ Y = [player1Wins player2Wins gameDraws];
 b1 = bar(X, Y, 'BarWidth', 0.5);
 b1.FaceColor = [0 0.4470 0.7410];
 b1.FaceAlpha = 1;
+xlabel('Winner');
 ylabel('Frequency');
 set(gca,'FontSize',10);
 saveas(gcf,'wins','epsc');
