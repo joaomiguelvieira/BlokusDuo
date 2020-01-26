@@ -29,7 +29,8 @@ public:
     int performNextMove(const std::string& move);
     void printValidMoves();
     void printStatus();
-    void printMove();
+    void printMove(bool printQuit = false);
+    Tree *getGameTree();
 };
 
 #endif //MCTS_BLOKUSDUO_CPP_MONTECARLOTREESEARCH_H

@@ -50,8 +50,6 @@ std::string MonteCarloTreeSearch::findNextMove() {
         elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
     } while (elapsed < moveDurationMillis);
 
-    std::cout << "Round " << gameTree->getRoot()->getState()->getMovesPlayed() << " -> " << gameTree->getRoot()->getState()->getVisitCount() << " simulations" << std::endl;
-
     auto winnerNode = gameTree->getRoot()->getChildWithMaxScore();
     return Move::moveToString(winnerNode->getState()->getMove());
 }
@@ -221,9 +219,13 @@ void MonteCarloTreeSearch::printStatus() {
     std::cout << "Player " << std::to_string(actualState->getOpponent()->getPlayerId()) << ": ";
 }
 
-void MonteCarloTreeSearch::printMove() {
+void MonteCarloTreeSearch::printMove(bool printQuit) {
     auto actualState = gameTree->getRoot()->getState();
     auto move = Move::moveToString(actualState->getMove());
-    if (move != "0000")
+    if (move != "0000" || printQuit)
         std::cout << move << std::endl;
+}
+
+Tree *MonteCarloTreeSearch::getGameTree() {
+    return gameTree;
 }
