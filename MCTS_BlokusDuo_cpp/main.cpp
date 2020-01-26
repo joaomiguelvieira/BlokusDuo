@@ -51,45 +51,60 @@ void interactiveGame() {
     delete mcts;
 }
 
+void sendSerial(const std::string& buffer) {
+    std::cout << buffer;
+}
+
+void recvSerial(std::string *buffer) {
+    std::cin >> *buffer;
+}
+
 void officialMatch() {
+    // TODO open serial
+
+    // play game
     auto mcts = new MonteCarloTreeSearch(900);
+
+    std::string bestMove, buffer;
 
     while (mcts->checkStatus() == State::IN_PROGRESS) {
         // wait for arbiter to send message
-        std::string message, bestMove;
-        std::cin >> message;
+        recvSerial(&buffer);
 
-        switch (message[0]) {
+        switch (buffer[0]) {
             // init code answer with team id
             case '0':
-                std::cout << "1" << TEAM_ID;
+                buffer = "1";
+                buffer += TEAM_ID;
                 break;
             // ask for first move of the first player
             case '2':
-                assert(message[1] == '5');
+                assert(buffer[1] == '5');
                 bestMove = mcts->findNextMove();
                 mcts->performNextMove(bestMove);
-                mcts->printMove(true);
+                buffer = bestMove;
                 break;
             // ask for second move of the second player
             case '3':
-                assert(message[1] == 'A');
-                mcts->performNextMove(message.substr(2));
+                assert(buffer[1] == 'A');
+                mcts->performNextMove(buffer.substr(2));
                 bestMove = mcts->findNextMove();
                 mcts->performNextMove(bestMove);
-                mcts->printMove(true);
+                buffer = bestMove;
                 break;
             // ask for move
             case '4':
-                mcts->performNextMove(message.substr(1));
+                mcts->performNextMove(buffer.substr(1));
                 bestMove = mcts->findNextMove();
                 mcts->performNextMove(bestMove);
-                mcts->printMove(true);
+                buffer = bestMove;
                 break;
             // finish game
             case '9':
                 goto end;
         }
+
+        sendSerial(buffer);
     }
 
     end: delete mcts;
