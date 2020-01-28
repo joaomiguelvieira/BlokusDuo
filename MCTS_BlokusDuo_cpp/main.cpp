@@ -51,12 +51,23 @@ void interactiveGame() {
     delete mcts;
 }
 
+#define MSG_TERMINATOR '\0'
+
 void sendSerial(const std::string& buffer) {
-    std::cout << buffer;
+    for (int i = 0; buffer[i] != '\0'; i++)
+        putchar(buffer[i]);
+
+    putchar(MSG_TERMINATOR);
 }
 
 void recvSerial(std::string *buffer) {
-    std::cin >> *buffer;
+    int i = 0;
+
+    do {
+        (*buffer)[i] = getchar();
+        i++;
+    }
+    while ((*buffer)[i - 1] != MSG_TERMINATOR);
 }
 
 void officialMatch() {
