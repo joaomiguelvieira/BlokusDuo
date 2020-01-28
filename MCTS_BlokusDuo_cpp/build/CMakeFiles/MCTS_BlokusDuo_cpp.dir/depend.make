@@ -85,4 +85,5 @@ CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o: ../Position.h
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o: ../State.h
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o: ../Tree.h
 CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o: ../main.cpp
+CMakeFiles/MCTS_BlokusDuo_cpp.dir/main.cpp.o: /usr/local/include/libserial/SerialPort.h
 

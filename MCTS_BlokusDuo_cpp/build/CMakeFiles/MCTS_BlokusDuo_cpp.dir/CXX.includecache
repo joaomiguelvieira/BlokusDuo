@@ -77,4 +77,14 @@ GamePiece.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.h
 MonteCarloTreeSearch.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.h
+SerialPort.h
+-
+
+/usr/local/include/libserial/SerialPort.h
+libserial/SerialPortConstants.h
+-
+ios
+-
+memory
+-
 

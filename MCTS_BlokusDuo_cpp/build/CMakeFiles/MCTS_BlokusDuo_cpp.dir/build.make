@@ -229,6 +229,7 @@ MCTS_BlokusDuo_cpp: CMakeFiles/MCTS_BlokusDuo_cpp.dir/State.cpp.o
 MCTS_BlokusDuo_cpp: CMakeFiles/MCTS_BlokusDuo_cpp.dir/Node.cpp.o
 MCTS_BlokusDuo_cpp: CMakeFiles/MCTS_BlokusDuo_cpp.dir/Tree.cpp.o
 MCTS_BlokusDuo_cpp: CMakeFiles/MCTS_BlokusDuo_cpp.dir/build.make
+MCTS_BlokusDuo_cpp: /usr/local/lib64/libserial.so.1
 MCTS_BlokusDuo_cpp: CMakeFiles/MCTS_BlokusDuo_cpp.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable MCTS_BlokusDuo_cpp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MCTS_BlokusDuo_cpp.dir/link.txt --verbose=$(VERBOSE)

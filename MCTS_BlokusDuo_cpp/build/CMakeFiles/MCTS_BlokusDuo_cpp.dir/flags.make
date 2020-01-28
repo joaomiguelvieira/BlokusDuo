@@ -6,5 +6,5 @@ CXX_FLAGS = -pthread   -std=gnu++1y
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/usr/local/include/libserial 
 

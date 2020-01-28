@@ -4,7 +4,7 @@
 #include "MonteCarloTreeSearch.h"
 #include <SerialPort.h>
 
-#define SERIAL_PORT "/dev/ttyPS0"
+#define SERIAL_PORT "/dev/ttyUSB1"
 #define TEAM_ID "01"
 #define SIM_MILLIS 850
 
@@ -64,7 +64,7 @@ void officialMatch() {
 
     std::string bestMove, buffer;
 
-    while (mcts->checkStatus() == State::IN_PROGRESS) {
+    while (true) {
         // wait for arbiter to send message
         serial->Read(buffer, 1);
 
