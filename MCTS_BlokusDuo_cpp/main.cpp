@@ -2,7 +2,9 @@
 #include <cassert>
 #include "GamePiece.h"
 #include "MonteCarloTreeSearch.h"
+#include <SerialPort.h>
 
+#define SERIAL_PORT "/dev/ttyPS0"
 #define TEAM_ID "01"
 
 void playGame(bool evalPerformance = false) {
@@ -40,38 +42,21 @@ void interactiveGame() {
             auto nextMove = mcts->findNextMove();
             std::cout << "Simulated move is " << nextMove << std::endl;
             mcts->performNextMove(nextMove);
-        }
-        else if (move == "last" || move == "l")
+        } else if (move == "last" || move == "l")
             std::cout << "Last move was " << last_move << std::endl;
-        else
-            if (mcts->performNextMove(move) == 0)
-                last_move = move;
+        else if (mcts->performNextMove(move) == 0)
+            last_move = move;
     }
 
     delete mcts;
 }
 
-#define MSG_TERMINATOR '\0'
-
-void sendSerial(const std::string& buffer) {
-    for (int i = 0; buffer[i] != '\0'; i++)
-        putchar(buffer[i]);
-
-    putchar(MSG_TERMINATOR);
-}
-
-void recvSerial(std::string *buffer) {
-    int i = 0;
-
-    do {
-        (*buffer)[i] = getchar();
-        i++;
-    }
-    while ((*buffer)[i - 1] != MSG_TERMINATOR);
-}
-
 void officialMatch() {
-    // TODO open serial
+    auto serial = new LibSerial::SerialPort(SERIAL_PORT, LibSerial::BaudRate::BAUD_115200,
+                                            LibSerial::CharacterSize::CHAR_SIZE_DEFAULT,
+                                            LibSerial::FlowControl::FLOW_CONTROL_DEFAULT,
+                                            LibSerial::Parity::PARITY_DEFAULT,
+                                            LibSerial::StopBits::STOP_BITS_DEFAULT);
 
     // play game
     auto mcts = new MonteCarloTreeSearch(900);
@@ -80,7 +65,7 @@ void officialMatch() {
 
     while (mcts->checkStatus() == State::IN_PROGRESS) {
         // wait for arbiter to send message
-        recvSerial(&buffer);
+        serial->Read(buffer, 1);
 
         switch (buffer[0]) {
             // init code answer with team id
@@ -88,37 +73,41 @@ void officialMatch() {
                 buffer = "1";
                 buffer += TEAM_ID;
                 break;
-            // ask for first move of the first player
+                // ask for first move of the first player
             case '2':
-                assert(buffer[1] == '5');
+                serial->Read(buffer, 1);
+                assert(buffer[0] == '5');
                 bestMove = mcts->findNextMove();
                 mcts->performNextMove(bestMove);
                 buffer = bestMove;
                 break;
-            // ask for second move of the second player
+                // ask for second move of the second player
             case '3':
-                assert(buffer[1] == 'A');
-                mcts->performNextMove(buffer.substr(2));
-                bestMove = mcts->findNextMove();
-                mcts->performNextMove(bestMove);
-                buffer = bestMove;
-                break;
-            // ask for move
-            case '4':
+                serial->Read(buffer, 5);
+                assert(buffer[0] == 'A');
                 mcts->performNextMove(buffer.substr(1));
                 bestMove = mcts->findNextMove();
                 mcts->performNextMove(bestMove);
                 buffer = bestMove;
                 break;
-            // finish game
+                // ask for move
+            case '4':
+                serial->Read(buffer, 4);
+                mcts->performNextMove(buffer);
+                bestMove = mcts->findNextMove();
+                mcts->performNextMove(bestMove);
+                buffer = bestMove;
+                break;
+                // finish game
             case '9':
                 goto end;
         }
 
-        sendSerial(buffer);
+        serial->Write(buffer);
     }
 
-    end: delete mcts;
+    end:
+    delete mcts;
 }
 
 int main(int argc, char **argv) {
