@@ -8,11 +8,16 @@
 #include <iostream>
 #include <cfloat>
 
-MonteCarloTreeSearch::MonteCarloTreeSearch(int moveDurationMillis) {
+MonteCarloTreeSearch::MonteCarloTreeSearch(int moveDurationMillis, bool exch_players) {
     this->moveDurationMillis = moveDurationMillis;
     this->gameTree = new Tree();
-    this->gameTree->getRoot()->getState()->setOpponent(new Player());
-    this->gameTree->getRoot()->getState()->setPlayer(new Player());
+    if (exch_players) {
+        this->gameTree->getRoot()->getState()->setPlayer(new Player());
+        this->gameTree->getRoot()->getState()->setOpponent(new Player());
+    } else {
+        this->gameTree->getRoot()->getState()->setOpponent(new Player());
+        this->gameTree->getRoot()->getState()->setPlayer(new Player());
+    }
 }
 
 MonteCarloTreeSearch::~MonteCarloTreeSearch() {

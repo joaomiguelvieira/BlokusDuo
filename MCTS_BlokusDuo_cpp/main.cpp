@@ -6,6 +6,7 @@
 
 #define SERIAL_PORT "/dev/ttyPS0"
 #define TEAM_ID "01"
+#define SIM_MILLIS 850
 
 void playGame(bool evalPerformance = false) {
     auto mcts = new MonteCarloTreeSearch();
@@ -59,7 +60,7 @@ void officialMatch() {
                                             LibSerial::StopBits::STOP_BITS_DEFAULT);
 
     // play game
-    auto mcts = new MonteCarloTreeSearch(900);
+    MonteCarloTreeSearch *mcts = nullptr;
 
     std::string bestMove, buffer;
 
@@ -76,7 +77,7 @@ void officialMatch() {
                 // ask for first move of the first player
             case '2':
                 serial->Read(buffer, 1);
-                assert(buffer[0] == '5');
+                mcts = (buffer[0] == '5') ? new MonteCarloTreeSearch(SIM_MILLIS) : new MonteCarloTreeSearch(SIM_MILLIS, true);
                 bestMove = mcts->findNextMove();
                 mcts->performNextMove(bestMove);
                 buffer = bestMove;
@@ -84,7 +85,7 @@ void officialMatch() {
                 // ask for second move of the second player
             case '3':
                 serial->Read(buffer, 5);
-                assert(buffer[0] == 'A');
+                mcts = (buffer[0] == 'A') ? new MonteCarloTreeSearch(SIM_MILLIS) : new MonteCarloTreeSearch(SIM_MILLIS, true);
                 mcts->performNextMove(buffer.substr(1));
                 bestMove = mcts->findNextMove();
                 mcts->performNextMove(bestMove);
@@ -92,6 +93,7 @@ void officialMatch() {
                 break;
                 // ask for move
             case '4':
+                assert(mcts != nullptr);
                 serial->Read(buffer, 4);
                 mcts->performNextMove(buffer);
                 bestMove = mcts->findNextMove();

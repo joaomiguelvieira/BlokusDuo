@@ -16,7 +16,7 @@ private:
     int moveDurationMillis{DEFAULT_DURATION_MILLIS};
     Tree *gameTree;
 public:
-    explicit MonteCarloTreeSearch(int moveDurationMillis = DEFAULT_DURATION_MILLIS);
+    explicit MonteCarloTreeSearch(int moveDurationMillis = DEFAULT_DURATION_MILLIS, bool exch_players = false);
 
     ~MonteCarloTreeSearch();
 

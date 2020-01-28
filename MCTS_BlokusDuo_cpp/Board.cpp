@@ -61,10 +61,10 @@ bool Board::checkValidMove(Player *player, GamePiece *gamePiece, Position *cente
 
 std::list<Move *> *Board::getAllValidMoves(Player *player) {
     // all valid moves cover 5, 5
-    if (!isOccupied(4, 4))
+    if (player->getPlayerId() == 1 && !isOccupied(4, 4))
         return getMovesCoveringPosition(player, 4, 4);
     // all valid moves cover a, a
-    if (!isOccupied(9, 9))
+    if (player->getPlayerId() == 2 && !isOccupied(9, 9))
         return getMovesCoveringPosition(player, 9, 9);
     // valid moves are attached to anchors
     else
