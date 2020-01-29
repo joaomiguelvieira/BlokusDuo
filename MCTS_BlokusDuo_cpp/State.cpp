@@ -9,22 +9,19 @@
 #include <cfloat>
 
 State::State() {
-    board = new Board();
+    board = std::unique_ptr<Board>(new Board());
 }
 
 State::State(Board *board) {
-    this->board = new Board(board);
+    this->board = std::unique_ptr<Board>(new Board(board));
 }
 
 State::~State() {
-    delete board;
-    delete player;
-    delete opponent;
     delete possibleMoves;
 }
 
 void State::setPlayer(Player *player) {
-    this->player = player;
+    this->player = std::unique_ptr<Player>(player);
 }
 
 int State::getVisitCount() {
@@ -32,11 +29,11 @@ int State::getVisitCount() {
 }
 
 Board *State::getBoard() {
-    return board;
+    return board.get();
 }
 
 Player *State::getPlayer() {
-    return player;
+    return player.get();
 }
 
 void State::setWinScore(double winScore) {
@@ -53,11 +50,11 @@ void State::addScore(double score) {
 }
 
 void State::setOpponent(Player *opponent) {
-    this->opponent = opponent;
+    this->opponent = std::unique_ptr<Player>(opponent);
 }
 
 Player *State::getOpponent() {
-    return opponent;
+    return opponent.get();
 }
 
 std::shared_ptr<Move> State::getMove() {

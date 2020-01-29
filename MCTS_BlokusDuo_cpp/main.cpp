@@ -74,7 +74,7 @@ void officialMatch() {
 #endif
 
 void playGame(bool evalPerformance = false) {
-    auto mcts = new MonteCarloTreeSearch();
+    auto mcts = new MonteCarloTreeSearch(100);
 
     while (mcts->checkStatus() == State::IN_PROGRESS) {
         auto bestMove = mcts->findNextMove();

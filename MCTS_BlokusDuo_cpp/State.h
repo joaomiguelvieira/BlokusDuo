@@ -11,8 +11,8 @@
 
 class State {
 private:
-    Board *board{nullptr};
-    Player *player{nullptr}, *opponent{nullptr};
+    std::unique_ptr<Board> board{nullptr};
+    std::unique_ptr<Player> player{nullptr}, opponent{nullptr};
     std::shared_ptr<Move> move{nullptr};
     std::list<std::shared_ptr<Move>> *possibleMoves{nullptr};
     int visitCount{0};
@@ -32,7 +32,6 @@ public:
     int getVisitCount();
 
     Board *getBoard();
-
 
     Player *getPlayer();
 
