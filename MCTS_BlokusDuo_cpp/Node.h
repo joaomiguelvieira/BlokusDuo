@@ -16,15 +16,21 @@ private:
     Node *parent{nullptr};
 public:
     Node();
+
     explicit Node(State *state);
 
     ~Node();
 
     State *getState();
+
     std::list<Node *> *getChildArray();
+
     void setParent(Node *node);
+
     Node *getRandomChildNode();
+
     Node *getParent();
+
     Node *getChildWithMaxScore();
 };
 

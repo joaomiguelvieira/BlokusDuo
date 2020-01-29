@@ -27,7 +27,7 @@ Player::Player(Player *player, GamePiece *removePiece) {
     playerId = player->playerId;
 
     remainingGamePieces = new std::list<std::vector<GamePiece *> *>();
-    for (auto & gamePiece : *player->remainingGamePieces)
+    for (auto &gamePiece : *player->remainingGamePieces)
         if ((*gamePiece)[0]->getCodeName() != removePiece->getCodeName())
             remainingGamePieces->push_back(gamePiece);
 
@@ -39,7 +39,7 @@ Player::Player(Player *player) {
 
     //remainingGamePieces = player->remainingGamePieces;
     remainingGamePieces = new std::list<std::vector<GamePiece *> *>();
-    for (auto & gamePiece : *player->remainingGamePieces)
+    for (auto &gamePiece : *player->remainingGamePieces)
         remainingGamePieces->push_back(gamePiece);
 
     quited = player->quited;
@@ -52,7 +52,7 @@ bool Player::getQuited() {
 int Player::getScore() {
     int score = 0;
 
-    for (auto & gamePiece : *remainingGamePieces)
+    for (auto &gamePiece : *remainingGamePieces)
         score += (*gamePiece)[0]->getSquares()->size();
 
     return score;
@@ -66,7 +66,8 @@ std::string Player::toString() {
     std::string text;
 
     text += "Player " + std::to_string(playerId) + ": { ";
-    text += "quited: "; if (quited) text += "true; "; else text += "false; ";
+    text += "quited: ";
+    if (quited) text += "true; "; else text += "false; ";
     text += "score: " + std::to_string(getScore()) + "; ";
     text += "remaining pieces: ";
     for (auto gamePiece : *remainingGamePieces) {

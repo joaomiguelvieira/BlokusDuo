@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.cpp
+iostream
+-
+Board.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.h
+
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.h
 cstdint
 -
@@ -26,11 +32,29 @@ vector
 Position.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Position.h
 
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.cpp
+chrono
+-
+MonteCarloTreeSearch.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.h
+UCT.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.h
+iostream
+-
+cfloat
+-
+
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/MonteCarloTreeSearch.h
 Tree.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.h
 Player.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.h
+
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Move.cpp
+sstream
+-
+Move.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Move.h
 
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Move.h
 string
@@ -41,6 +65,20 @@ GamePiece.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.h
 Player.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.h
+
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.cpp
+Node.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.h
+ctime
+-
+cstdlib
+-
+algorithm
+-
+iostream
+-
+cmath
+-
 
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.h
 list
@@ -58,13 +96,45 @@ GamePiece.h
 string
 -
 
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/State.cpp
+State.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/State.h
+Move.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Move.h
+cstdlib
+-
+cmath
+-
+cfloat
+-
+
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/State.h
 Board.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.h
 Player.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.h
 
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.cpp
+Tree.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.h
+
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Tree.h
+Node.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.h
+
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.cpp
+UCT.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.h
+algorithm
+-
+climits
+-
+cmath
+-
+cfloat
+-
+
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/UCT.h
 Node.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Node.h
 

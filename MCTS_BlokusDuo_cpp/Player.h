@@ -18,16 +18,23 @@ private:
     std::list<std::vector<GamePiece *> *> *remainingGamePieces;
 public:
     Player();
+
     Player(Player *player, GamePiece *removePiece);
+
     explicit Player(Player *player);
 
     ~Player();
 
     uint8_t getPlayerId();
+
     std::list<std::vector<GamePiece *> *> *getRemainingGamePieces();
+
     bool getQuited();
+
     int getScore();
+
     void setQuited(bool quited);
+
     std::string toString();
 };
 

@@ -20,7 +20,7 @@ Node::Node(State *state) {
 }
 
 Node::~Node() {
-    for (auto & child : *childArray)
+    for (auto &child : *childArray)
         delete child;
 
     delete state;
@@ -51,7 +51,10 @@ Node *Node::getParent() {
 }
 
 Node *Node::getChildWithMaxScore() {
-    return *max_element(childArray->begin(), childArray->end(), [] (Node *node1, Node *node2) -> bool {
-        return node1->getState()->getStateViability(node1->getParent() == nullptr ? nullptr : node1->getParent()->getState()) < node2->getState()->getStateViability(node2->getParent() == nullptr ? nullptr : node2->getParent()->getState());
+    return *max_element(childArray->begin(), childArray->end(), [](Node *node1, Node *node2) -> bool {
+        return node1->getState()->getStateViability(
+                node1->getParent() == nullptr ? nullptr : node1->getParent()->getState()) <
+               node2->getState()->getStateViability(
+                       node2->getParent() == nullptr ? nullptr : node2->getParent()->getState());
     });
 }

@@ -11,6 +11,7 @@
 class UCT {
 public:
     static Node *findBestNodeWithUCT(Node *node);
+
     static double uctValue(int totalVisit, double nodeWinScore, int nodeVisit);
 };
 

@@ -19,22 +19,35 @@ private:
     uint8_t board[BOARD_SIZE][BOARD_SIZE];
 public:
     Board();
+
     explicit Board(Board *board);
 
     bool isOccupied(int x, int y);
+
     static bool respectsBoundaries(int x, int y);
+
     bool hasCornerContact(int x, int y, int playerId);
+
     bool hasEdgeContact(int x, int y, int playerId);
+
     bool isAnchor(int x, int y, int playerId);
+
     std::list<Position *> *getAllAnchors(int playerId);
+
     std::string toString();
+
     void performMove(Player *player, Move *move);
+
     bool checkValidMove(Player *player, GamePiece *gamePiece, Position *center);
+
     std::list<Move *> *getMovesFromAnchors(Player *player, std::list<Position *> *boardAnchors);
+
     static std::list<Move *> *getMovesCoveringPosition(Player *player, int x, int y);
+
     std::list<Move *> *getAllValidMoves(Player *player);
+
     std::list<Move *> *getAllValidMoves(Player *player, std::list<Move *> *previouslyValidMoves,
-            Move *previouslyPlayedMove, Board *previousBoard);
+                                        Move *previouslyPlayedMove, Board *previousBoard);
 };
 
 

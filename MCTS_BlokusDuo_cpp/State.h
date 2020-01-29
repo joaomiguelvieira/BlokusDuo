@@ -24,31 +24,50 @@ public:
     static constexpr int DRAW = 0;
 
     State();
+
     explicit State(Board *board);
 
     ~State();
 
     int getVisitCount();
+
     Board *getBoard();
 
 
     Player *getPlayer();
+
     void setWinScore(double winScore);
+
     void incrementVisit();
+
     void addScore(double score);
+
     void setOpponent(Player *opponent);
+
     Player *getOpponent();
+
     Move *getMove();
+
     void setMove(Move *move);
+
     void setPlayer(Player *player);
+
     int checkStatus();
+
     double getStateViability(State *previousState);
+
     void incrementWinCount();
+
     double getWinCount();
+
     int getScore();
+
     int getMovesPlayed();
+
     void setMovesPlayed(int movesPlayed);
+
     void setPossibleMoves(std::list<Move *> *possibleMoves);
+
     std::list<Move *> *getPossibleMoves();
 };
 

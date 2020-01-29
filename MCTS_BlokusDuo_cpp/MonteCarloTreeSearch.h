@@ -21,15 +21,25 @@ public:
     ~MonteCarloTreeSearch();
 
     int checkStatus();
+
     std::string findNextMove();
+
     static Node *selectPromisingNode(Node *rootNode);
+
     static void expandNode(Node *node);
+
     int simulateRandomPlay(Node *node, int *score);
+
     static void backPropagation(Node *nodeToExplore, int playerId, int winScore);
-    int performNextMove(const std::string& move);
+
+    int performNextMove(const std::string &move);
+
     void printValidMoves();
+
     void printStatus();
+
     void printMove(bool printQuit = false);
+
     Tree *getGameTree();
 };
 

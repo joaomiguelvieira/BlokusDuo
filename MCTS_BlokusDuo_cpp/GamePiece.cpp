@@ -5,14 +5,14 @@
 #include "GamePiece.h"
 
 const int GamePiece::transformations[8][2][2] = {
-    {{ 1,  0}, { 0,  1}},
-    {{-1,  0}, { 0,  1}},
-    {{ 0, -1}, { 1,  0}},
-    {{ 0,  1}, { 1,  0}},
-    {{-1,  0}, { 0, -1}},
-    {{ 1,  0}, { 0, -1}},
-    {{ 0,  1}, {-1,  0}},
-    {{ 0, -1}, {-1,  0}}
+        {{1,  0},  {0,  1}},
+        {{-1, 0},  {0,  1}},
+        {{0,  -1}, {1,  0}},
+        {{0,  1},  {1,  0}},
+        {{-1, 0},  {0,  -1}},
+        {{1,  0},  {0,  -1}},
+        {{0,  1},  {-1, 0}},
+        {{0,  -1}, {-1, 0}}
 };
 
 // TODO optimize array allocation
@@ -21,20 +21,20 @@ GamePiece::GamePiece(char codeName, std::vector<std::vector<int>> squares, std::
     this->transformation = 0;
 
     this->squares = new std::vector<Position *>();
-    for (auto & square : squares)
+    for (auto &square : squares)
         this->squares->push_back(new Position(square[0], square[1]));
 
     this->anchors = new std::vector<Position *>();
-    for (auto & anchor : anchors)
+    for (auto &anchor : anchors)
         this->anchors->push_back(new Position(anchor[0], anchor[1]));
 }
 
 GamePiece::~GamePiece() {
-    for (auto & anchor : *anchors)
+    for (auto &anchor : *anchors)
         delete anchor;
     delete anchors;
 
-    for (auto & square : *squares)
+    for (auto &square : *squares)
         delete square;
     delete squares;
 }
@@ -42,7 +42,11 @@ GamePiece::~GamePiece() {
 std::list<std::vector<GamePiece *> *> *GamePiece::getInitialSetOfGamePieces() {
     auto initialSetOfGamePieces = new std::list<std::vector<GamePiece *> *>();
 
-    struct DefaultGamePiece {char codeName; std::vector<std::vector<int>> squares, anchors; std::vector<int> variants;};
+    struct DefaultGamePiece {
+        char codeName;
+        std::vector<std::vector<int>> squares, anchors;
+        std::vector<int> variants;
+    };
     std::vector<struct DefaultGamePiece> defaultGamePieces = {
             {.codeName = 'a', .squares = {{ 0,  0}},                                         .anchors = {{ 0,  0}},                                         .variants = {0}},
             {.codeName = 'b', .squares = {{ 0,  0}, { 0,  1}},                               .anchors = {{ 0,  0}, { 0,  1}},                               .variants = {0, 2}},
@@ -67,10 +71,10 @@ std::list<std::vector<GamePiece *> *> *GamePiece::getInitialSetOfGamePieces() {
             {.codeName = 'u', .squares = {{ 0,  0}, { 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}}, .anchors = {{ 1,  0}, { 0,  1}, {-1,  0}, { 0, -1}},           .variants = {0}}
     };
 
-    for (const auto& defaultGamePiece : defaultGamePieces) {
+    for (const auto &defaultGamePiece : defaultGamePieces) {
         auto gamePiece = new std::vector<GamePiece *>();
 
-        for (const auto& transformation : defaultGamePiece.variants) {
+        for (const auto &transformation : defaultGamePiece.variants) {
             auto variant = new GamePiece(defaultGamePiece.codeName, defaultGamePiece.squares, defaultGamePiece.anchors);
             variant->transformPiece(transformation);
             gamePiece->push_back(variant);
@@ -89,10 +93,10 @@ char GamePiece::getCodeName() {
 void GamePiece::transformPiece(int transformation) {
     this->transformation = transformation;
 
-    for (auto & square : *squares)
+    for (auto &square : *squares)
         square->transform(transformations[transformation]);
 
-    for (auto & anchor : *anchors)
+    for (auto &anchor : *anchors)
         anchor->transform(transformations[transformation]);
 }
 

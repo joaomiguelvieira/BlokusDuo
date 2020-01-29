@@ -6,8 +6,8 @@
 #include "Board.h"
 
 Board::Board() {
-    for (auto & i : board)
-        for (unsigned char & j : i)
+    for (auto &i : board)
+        for (unsigned char &j : i)
             j = 0;
 }
 
@@ -43,12 +43,13 @@ bool Board::hasEdgeContact(int x, int y, int playerId) {
 }
 
 void Board::performMove(Player *player, Move *move) {
-    for (auto & square : *move->getGamePiece()->getSquares())
-        board[square->getX() + move->getCenter()->getX()][square->getY() + move->getCenter()->getY()] = player->getPlayerId();
+    for (auto &square : *move->getGamePiece()->getSquares())
+        board[square->getX() + move->getCenter()->getX()][square->getY() +
+                                                          move->getCenter()->getY()] = player->getPlayerId();
 }
 
 bool Board::checkValidMove(Player *player, GamePiece *gamePiece, Position *center) {
-    for (auto & square : *gamePiece->getSquares()) {
+    for (auto &square : *gamePiece->getSquares()) {
         auto x = square->getX() + center->getX();
         auto y = square->getY() + center->getY();
 
@@ -66,7 +67,7 @@ std::list<Move *> *Board::getAllValidMoves(Player *player) {
     // all valid moves cover a, a
     if (player->getPlayerId() == 2 && !isOccupied(9, 9))
         return getMovesCoveringPosition(player, 9, 9);
-    // valid moves are attached to anchors
+        // valid moves are attached to anchors
     else
         return getMovesFromAnchors(player, getAllAnchors(player->getPlayerId()));
 }
@@ -80,7 +81,8 @@ bool Board::respectsBoundaries(int x, int y) {
 }
 
 bool Board::isAnchor(int x, int y, int playerId) {
-    return respectsBoundaries(x, y) && !isOccupied(x, y) && hasCornerContact(x, y, playerId) && !hasEdgeContact(x, y, playerId);
+    return respectsBoundaries(x, y) && !isOccupied(x, y) && hasCornerContact(x, y, playerId) &&
+           !hasEdgeContact(x, y, playerId);
 }
 
 std::string Board::toString() {
@@ -95,7 +97,7 @@ std::string Board::toString() {
     for (int i = 0; i < BOARD_SIZE; i++) {
         text += axis[i];
         text += " + ";
-        for (auto & j : board) {
+        for (auto &j : board) {
             if (j[i] == 0)
                 text += "  ";
             else

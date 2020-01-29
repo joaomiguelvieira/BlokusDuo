@@ -13,12 +13,17 @@ private:
     int x, y;
 public:
     Position(int x, int y);
+
     explicit Position(Position *position);
 
     int getX();
+
     int getY();
+
     void transform(const int transformation[2][2]);
+
     void subtract(Position *position);
+
     bool equals(Position *position);
 };
 

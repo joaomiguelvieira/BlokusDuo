@@ -77,7 +77,8 @@ void officialMatch() {
                 // ask for first move of the first player
             case '2':
                 serial->Read(buffer, 1);
-                mcts = (buffer[0] == '5') ? new MonteCarloTreeSearch(SIM_MILLIS) : new MonteCarloTreeSearch(SIM_MILLIS, true);
+                mcts = (buffer[0] == '5') ? new MonteCarloTreeSearch(SIM_MILLIS) : new MonteCarloTreeSearch(SIM_MILLIS,
+                                                                                                            true);
                 bestMove = mcts->findNextMove();
                 mcts->performNextMove(bestMove);
                 buffer = bestMove;
@@ -85,7 +86,8 @@ void officialMatch() {
                 // ask for second move of the second player
             case '3':
                 serial->Read(buffer, 5);
-                mcts = (buffer[0] == 'A') ? new MonteCarloTreeSearch(SIM_MILLIS) : new MonteCarloTreeSearch(SIM_MILLIS, true);
+                mcts = (buffer[0] == 'A') ? new MonteCarloTreeSearch(SIM_MILLIS) : new MonteCarloTreeSearch(SIM_MILLIS,
+                                                                                                            true);
                 mcts->performNextMove(buffer.substr(1));
                 bestMove = mcts->findNextMove();
                 mcts->performNextMove(bestMove);
