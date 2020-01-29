@@ -171,7 +171,7 @@ Board::getAllValidMoves(Player *player, std::list<std::shared_ptr<Move>> *previo
     for (const auto& previouslyValidMove : *previouslyValidMoves) {
         if (previouslyValidMove->getGamePiece()->getCodeName() != previouslyPlayedMove->getGamePiece()->getCodeName() &&
             checkValidMove(player, previouslyValidMove->getGamePiece(), previouslyValidMove->getCenter()))
-            validMoves->push_back(std::make_shared<Move>(previouslyValidMove));
+            validMoves->push_back(previouslyValidMove);
     }
 
     // calculate new anchors

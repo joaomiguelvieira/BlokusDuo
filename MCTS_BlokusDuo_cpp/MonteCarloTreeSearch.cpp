@@ -56,7 +56,7 @@ std::string MonteCarloTreeSearch::findNextMove() {
     } while (elapsed < moveDurationMillis);
 
     auto winnerNode = gameTree->getRoot()->getChildWithMaxScore();
-    return Move::moveToString(winnerNode->getState()->getMove());
+    return Move::moveToString(winnerNode->getState()->getMove().get());
 }
 
 Node *MonteCarloTreeSearch::selectPromisingNode(Node *rootNode) {
@@ -186,7 +186,7 @@ int MonteCarloTreeSearch::performNextMove(const std::string &move) {
         expandNode(gameTree->getRoot());
 
     for (auto &child : *gameTree->getRoot()->getChildArray()) {
-        if (Move::moveToString(child->getState()->getMove()) == move) {
+        if (Move::moveToString(child->getState()->getMove().get()) == move) {
             gameTree->setRoot(child);
 
             return 0;
@@ -213,7 +213,7 @@ void MonteCarloTreeSearch::printValidMoves() {
 
     std::cout << "Here's all valid moves: ";
     for (const auto& validMove : *possibleMoves)
-        std::cout << Move::moveToString(validMove) << " ";
+        std::cout << Move::moveToString(validMove.get()) << " ";
     std::cout << std::endl;
 }
 
@@ -236,7 +236,7 @@ void MonteCarloTreeSearch::printStatus() {
 
 void MonteCarloTreeSearch::printMove(bool printQuit) {
     auto actualState = gameTree->getRoot()->getState();
-    auto move = Move::moveToString(actualState->getMove());
+    auto move = Move::moveToString(actualState->getMove().get());
     if (move != "0000" || printQuit)
         std::cout << move << std::endl;
 }

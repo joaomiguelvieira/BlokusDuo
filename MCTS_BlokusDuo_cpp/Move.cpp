@@ -22,7 +22,7 @@ Position *Move::getCenter() {
     return center;
 }
 
-std::string Move::moveToString(std::shared_ptr<Move> move) {
+std::string Move::moveToString(Move *move) {
     std::stringstream text;
 
     if (move == nullptr) {
@@ -38,12 +38,13 @@ std::string Move::moveToString(std::shared_ptr<Move> move) {
     return text.str();
 }
 
-bool Move::equals(const std::shared_ptr<Move>& move) {
+bool Move::equals(Move *move) {
+    if (this == move) return true;
     if (move == nullptr) return false;
-    return move->center->equals(center) && move->gamePiece->equals(gamePiece);
+    return move->center->equals(center) && move->gamePiece->equals(gamePiece.get());
 }
 
-Move::Move(std::shared_ptr<Move> move) {
+Move::Move(Move *move) {
     gamePiece = move->gamePiece;
     center = new Position(move->center);
 }

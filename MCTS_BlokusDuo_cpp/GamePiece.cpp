@@ -112,7 +112,8 @@ int GamePiece::getTransformation() {
     return transformation;
 }
 
-bool GamePiece::equals(const std::shared_ptr<GamePiece>& gamePiece) {
+bool GamePiece::equals(GamePiece *gamePiece) {
+    if (this == gamePiece) return true;
     if (gamePiece == nullptr) return false;
     return codeName == gamePiece->codeName && transformation == gamePiece->transformation;
 }

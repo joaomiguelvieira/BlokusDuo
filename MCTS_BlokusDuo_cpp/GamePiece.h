@@ -37,7 +37,7 @@ public:
 
     int getTransformation();
 
-    bool equals(const std::shared_ptr<GamePiece> &gamePiece);
+    bool equals(GamePiece *gamePiece);
 };
 
 

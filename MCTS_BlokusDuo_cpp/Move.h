@@ -17,7 +17,7 @@ private:
     Position *center;
 public:
     Move(std::shared_ptr<GamePiece> gamePiece, Position *center);
-    explicit Move(std::shared_ptr<Move> move);
+    explicit Move(Move *move);
 
     ~Move();
 
@@ -25,9 +25,9 @@ public:
 
     Position *getCenter();
 
-    static std::string moveToString(std::shared_ptr<Move> move);
+    static std::string moveToString(Move *move);
 
-    bool equals(const std::shared_ptr<Move>& move);
+    bool equals(Move *move);
 };
 
 

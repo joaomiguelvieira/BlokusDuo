@@ -89,7 +89,7 @@ int State::getScore() {
 
 double State::getStateViability(State *previousState) {
     // if quit then node is not viable
-    if (Move::moveToString(move) == "0000")
+    if (Move::moveToString(move.get()) == "0000")
         return -DBL_MAX;
 
     // proximity to diagonal
