@@ -19,7 +19,6 @@ State::State(Board *board) {
 State::~State() {
     delete board;
     delete player;
-    delete move;
     delete opponent;
     delete possibleMoves;
 }
@@ -61,7 +60,7 @@ Player *State::getOpponent() {
     return opponent;
 }
 
-Move *State::getMove() {
+std::shared_ptr<Move> State::getMove() {
     return move;
 }
 
@@ -80,7 +79,7 @@ int State::checkStatus() {
     return IN_PROGRESS;
 }
 
-void State::setMove(Move *move) {
+void State::setMove(std::shared_ptr<Move> move) {
     this->move = move;
 }
 
@@ -147,10 +146,10 @@ void State::setMovesPlayed(int movesPlayed) {
     this->movesPlayed = movesPlayed;
 }
 
-void State::setPossibleMoves(std::list<Move *> *possibleMoves) {
+void State::setPossibleMoves(std::list<std::shared_ptr<Move>> *possibleMoves) {
     this->possibleMoves = possibleMoves;
 }
 
-std::list<Move *> *State::getPossibleMoves() {
+std::list<std::shared_ptr<Move>> *State::getPossibleMoves() {
     return possibleMoves;
 }

@@ -16,3 +16,10 @@ Node *Tree::getRoot() {
 void Tree::setRoot(Node *root) {
     this->root = root;
 }
+
+Tree::~Tree() {
+    auto realRoot = root;
+    while (realRoot->getParent()) realRoot = realRoot->getParent();
+
+    delete realRoot;
+}

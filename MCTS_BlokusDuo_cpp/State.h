@@ -13,8 +13,8 @@ class State {
 private:
     Board *board{nullptr};
     Player *player{nullptr}, *opponent{nullptr};
-    Move *move{nullptr};
-    std::list<Move *> *possibleMoves{nullptr};
+    std::shared_ptr<Move> move{nullptr};
+    std::list<std::shared_ptr<Move>> *possibleMoves{nullptr};
     int visitCount{0};
     double winScore{0};
     int winCount{0};
@@ -46,9 +46,9 @@ public:
 
     Player *getOpponent();
 
-    Move *getMove();
+    std::shared_ptr<Move> getMove();
 
-    void setMove(Move *move);
+    void setMove(std::shared_ptr<Move> move);
 
     void setPlayer(Player *player);
 
@@ -66,9 +66,9 @@ public:
 
     void setMovesPlayed(int movesPlayed);
 
-    void setPossibleMoves(std::list<Move *> *possibleMoves);
+    void setPossibleMoves(std::list<std::shared_ptr<Move>> *possibleMoves);
 
-    std::list<Move *> *getPossibleMoves();
+    std::list<std::shared_ptr<Move>> *getPossibleMoves();
 };
 
 

@@ -39,8 +39,8 @@ GamePiece::~GamePiece() {
     delete squares;
 }
 
-std::list<std::vector<GamePiece *> *> *GamePiece::getInitialSetOfGamePieces() {
-    auto initialSetOfGamePieces = new std::list<std::vector<GamePiece *> *>();
+std::list<std::shared_ptr<std::vector<std::shared_ptr<GamePiece>>>> *GamePiece::getInitialSetOfGamePieces() {
+    auto initialSetOfGamePieces = new std::list<std::shared_ptr<std::vector<std::shared_ptr<GamePiece>>>>();
 
     struct DefaultGamePiece {
         char codeName;
@@ -72,10 +72,10 @@ std::list<std::vector<GamePiece *> *> *GamePiece::getInitialSetOfGamePieces() {
     };
 
     for (const auto &defaultGamePiece : defaultGamePieces) {
-        auto gamePiece = new std::vector<GamePiece *>();
+        std::shared_ptr<std::vector<std::shared_ptr<GamePiece>>> gamePiece(new std::vector<std::shared_ptr<GamePiece>>());
 
         for (const auto &transformation : defaultGamePiece.variants) {
-            auto variant = new GamePiece(defaultGamePiece.codeName, defaultGamePiece.squares, defaultGamePiece.anchors);
+            std::shared_ptr<GamePiece> variant(new GamePiece(defaultGamePiece.codeName, defaultGamePiece.squares, defaultGamePiece.anchors));
             variant->transformPiece(transformation);
             gamePiece->push_back(variant);
         }
@@ -112,8 +112,7 @@ int GamePiece::getTransformation() {
     return transformation;
 }
 
-bool GamePiece::equals(GamePiece *gamePiece) {
-    if (this == gamePiece) return true;
+bool GamePiece::equals(const std::shared_ptr<GamePiece>& gamePiece) {
     if (gamePiece == nullptr) return false;
     return codeName == gamePiece->codeName && transformation == gamePiece->transformation;
 }

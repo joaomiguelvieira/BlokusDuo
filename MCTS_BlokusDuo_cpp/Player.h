@@ -15,11 +15,11 @@ private:
 
     uint8_t playerId;
     bool quited{false};
-    std::list<std::vector<GamePiece *> *> *remainingGamePieces;
+    std::list<std::shared_ptr<std::vector<std::shared_ptr<GamePiece>>>> *remainingGamePieces;
 public:
     Player();
 
-    Player(Player *player, GamePiece *removePiece);
+    Player(Player *player, std::shared_ptr<GamePiece> removePiece);
 
     explicit Player(Player *player);
 
@@ -27,7 +27,7 @@ public:
 
     uint8_t getPlayerId();
 
-    std::list<std::vector<GamePiece *> *> *getRemainingGamePieces();
+    std::list<std::shared_ptr<std::vector<std::shared_ptr<GamePiece>>>> *getRemainingGamePieces();
 
     bool getQuited();
 

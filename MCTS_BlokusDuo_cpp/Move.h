@@ -13,20 +13,21 @@
 
 class Move {
 private:
-    GamePiece *gamePiece;
+    std::shared_ptr<GamePiece> gamePiece;
     Position *center;
 public:
-    Move(GamePiece *gamePiece, Position *center);
+    Move(std::shared_ptr<GamePiece> gamePiece, Position *center);
+    explicit Move(std::shared_ptr<Move> move);
 
     ~Move();
 
-    GamePiece *getGamePiece();
+    std::shared_ptr<GamePiece> getGamePiece();
 
     Position *getCenter();
 
-    static std::string moveToString(Move *move);
+    static std::string moveToString(std::shared_ptr<Move> move);
 
-    bool equals(Move *move);
+    bool equals(const std::shared_ptr<Move>& move);
 };
 
 

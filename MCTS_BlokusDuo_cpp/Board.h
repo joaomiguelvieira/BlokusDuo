@@ -36,18 +36,18 @@ public:
 
     std::string toString();
 
-    void performMove(Player *player, Move *move);
+    void performMove(Player *player, const std::shared_ptr<Move>& move);
 
-    bool checkValidMove(Player *player, GamePiece *gamePiece, Position *center);
+    bool checkValidMove(Player *player, const std::shared_ptr<GamePiece>& gamePiece, Position *center);
 
-    std::list<Move *> *getMovesFromAnchors(Player *player, std::list<Position *> *boardAnchors);
+    std::list<std::shared_ptr<Move>> *getMovesFromAnchors(Player *player, std::list<Position *> *boardAnchors);
 
-    static std::list<Move *> *getMovesCoveringPosition(Player *player, int x, int y);
+    static std::list<std::shared_ptr<Move>> *getMovesCoveringPosition(Player *player, int x, int y);
 
-    std::list<Move *> *getAllValidMoves(Player *player);
+    std::list<std::shared_ptr<Move>> *getAllValidMoves(Player *player);
 
-    std::list<Move *> *getAllValidMoves(Player *player, std::list<Move *> *previouslyValidMoves,
-                                        Move *previouslyPlayedMove, Board *previousBoard);
+    std::list<std::shared_ptr<Move>> *getAllValidMoves(Player *player, std::list<std::shared_ptr<Move>> *previouslyValidMoves,
+                                        const std::shared_ptr<Move>& previouslyPlayedMove, Board *previousBoard);
 };
 
 

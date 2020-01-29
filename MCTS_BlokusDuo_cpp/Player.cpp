@@ -19,14 +19,14 @@ Player::~Player() {
     delete remainingGamePieces;
 }
 
-std::list<std::vector<GamePiece *> *> *Player::getRemainingGamePieces() {
+std::list<std::shared_ptr<std::vector<std::shared_ptr<GamePiece>>>> *Player::getRemainingGamePieces() {
     return remainingGamePieces;
 }
 
-Player::Player(Player *player, GamePiece *removePiece) {
+Player::Player(Player *player, std::shared_ptr<GamePiece> removePiece) {
     playerId = player->playerId;
 
-    remainingGamePieces = new std::list<std::vector<GamePiece *> *>();
+    remainingGamePieces = new std::list<std::shared_ptr<std::vector<std::shared_ptr<GamePiece>>>>();
     for (auto &gamePiece : *player->remainingGamePieces)
         if ((*gamePiece)[0]->getCodeName() != removePiece->getCodeName())
             remainingGamePieces->push_back(gamePiece);
@@ -38,7 +38,7 @@ Player::Player(Player *player) {
     playerId = player->playerId;
 
     //remainingGamePieces = player->remainingGamePieces;
-    remainingGamePieces = new std::list<std::vector<GamePiece *> *>();
+    remainingGamePieces = new std::list<std::shared_ptr<std::vector<std::shared_ptr<GamePiece>>>>();
     for (auto &gamePiece : *player->remainingGamePieces)
         remainingGamePieces->push_back(gamePiece);
 

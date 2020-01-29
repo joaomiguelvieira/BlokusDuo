@@ -70,19 +70,21 @@ Node *MonteCarloTreeSearch::selectPromisingNode(Node *rootNode) {
 void MonteCarloTreeSearch::expandNode(Node *node) {
     if (!node->getState()->getOpponent()->getQuited()) {
         // calculate all valid moves
-        std::list<Move *> *possibleMoves;
+        std::list<std::shared_ptr<Move>> *possibleMoves = node->getState()->getPossibleMoves();
 
-        if (node->getState()->getMovesPlayed() < 4)
-            possibleMoves = node->getState()->getBoard()->getAllValidMoves(node->getState()->getOpponent());
-        else
-            possibleMoves = node->getState()->getBoard()->getAllValidMoves(node->getState()->getOpponent(),
-                                                                           node->getParent()->getParent()->getState()->getPossibleMoves(),
-                                                                           node->getParent()->getState()->getMove(),
-                                                                           node->getParent()->getParent()->getState()->getBoard());
+        if (!possibleMoves) {
+            if (node->getState()->getMovesPlayed() < 4)
+                possibleMoves = node->getState()->getBoard()->getAllValidMoves(node->getState()->getOpponent());
+            else
+                possibleMoves = node->getState()->getBoard()->getAllValidMoves(node->getState()->getOpponent(),
+                                                                               node->getParent()->getParent()->getState()->getPossibleMoves(),
+                                                                               node->getParent()->getState()->getMove(),
+                                                                               node->getParent()->getParent()->getState()->getBoard());
+        }
 
         node->getState()->setPossibleMoves(possibleMoves);
 
-        for (auto possibleMove : *possibleMoves) {
+        for (const auto& possibleMove : *possibleMoves) {
             // create new state for each valid move
             auto newState = new State(node->getState()->getBoard());
             newState->setPlayer(new Player(node->getState()->getOpponent(), possibleMove->getGamePiece()));
@@ -125,7 +127,7 @@ int MonteCarloTreeSearch::simulateRandomPlay(Node *node, int *score) {
         newNode->getState()->setOpponent(new Player(actualNode->getState()->getPlayer()));
         newNode->setParent(actualNode);
 
-        std::list<Move *> *possibleMoves;
+        std::list<std::shared_ptr<Move>> *possibleMoves;
         if (actualNode->getState()->getMovesPlayed() < 4)
             possibleMoves = actualNode->getState()->getBoard()->getAllValidMoves(actualNode->getState()->getOpponent());
         else
@@ -151,10 +153,18 @@ int MonteCarloTreeSearch::simulateRandomPlay(Node *node, int *score) {
         }
 
         status = newNode->getState()->checkStatus();
+        //actualNode->getParent()->getChildArray()->push_back(newNode);
         actualNode = newNode;
     }
 
     *score = actualNode->getState()->getScore();
+
+    while (actualNode != node) {
+        auto parent = actualNode->getParent();
+        delete actualNode;
+        actualNode = parent;
+    }
+
     return status;
 }
 
@@ -191,7 +201,7 @@ int MonteCarloTreeSearch::performNextMove(const std::string &move) {
 void MonteCarloTreeSearch::printValidMoves() {
     auto node = gameTree->getRoot();
 
-    std::list<Move *> *possibleMoves;
+    std::list<std::shared_ptr<Move>> *possibleMoves;
 
     if (node->getState()->getMovesPlayed() < 4)
         possibleMoves = node->getState()->getBoard()->getAllValidMoves(node->getState()->getOpponent());
@@ -202,7 +212,7 @@ void MonteCarloTreeSearch::printValidMoves() {
                                                                        node->getParent()->getParent()->getState()->getBoard());
 
     std::cout << "Here's all valid moves: ";
-    for (auto validMove : *possibleMoves)
+    for (const auto& validMove : *possibleMoves)
         std::cout << Move::moveToString(validMove) << " ";
     std::cout << std::endl;
 }

@@ -8,6 +8,7 @@
 
 #include <list>
 #include <vector>
+#include <memory>
 #include "Position.h"
 
 class GamePiece {
@@ -24,7 +25,7 @@ public:
 
     ~GamePiece();
 
-    static std::list<std::vector<GamePiece *> *> *getInitialSetOfGamePieces();
+    static std::list<std::shared_ptr<std::vector<std::shared_ptr<GamePiece>>>> *getInitialSetOfGamePieces();
 
     char getCodeName();
 
@@ -36,7 +37,7 @@ public:
 
     int getTransformation();
 
-    bool equals(GamePiece *gamePiece);
+    bool equals(const std::shared_ptr<GamePiece> &gamePiece);
 };
 
 

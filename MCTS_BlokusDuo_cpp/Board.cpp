@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <memory>
 #include "Board.h"
 
 Board::Board() {
@@ -42,13 +43,13 @@ bool Board::hasEdgeContact(int x, int y, int playerId) {
 
 }
 
-void Board::performMove(Player *player, Move *move) {
+void Board::performMove(Player *player, const std::shared_ptr<Move>& move) {
     for (auto &square : *move->getGamePiece()->getSquares())
         board[square->getX() + move->getCenter()->getX()][square->getY() +
                                                           move->getCenter()->getY()] = player->getPlayerId();
 }
 
-bool Board::checkValidMove(Player *player, GamePiece *gamePiece, Position *center) {
+bool Board::checkValidMove(Player *player, const std::shared_ptr<GamePiece>& gamePiece, Position *center) {
     for (auto &square : *gamePiece->getSquares()) {
         auto x = square->getX() + center->getX();
         auto y = square->getY() + center->getY();
@@ -60,7 +61,7 @@ bool Board::checkValidMove(Player *player, GamePiece *gamePiece, Position *cente
     return true;
 }
 
-std::list<Move *> *Board::getAllValidMoves(Player *player) {
+std::list<std::shared_ptr<Move>> *Board::getAllValidMoves(Player *player) {
     // all valid moves cover 5, 5
     if (player->getPlayerId() == 1 && !isOccupied(4, 4))
         return getMovesCoveringPosition(player, 4, 4);
@@ -68,8 +69,16 @@ std::list<Move *> *Board::getAllValidMoves(Player *player) {
     if (player->getPlayerId() == 2 && !isOccupied(9, 9))
         return getMovesCoveringPosition(player, 9, 9);
         // valid moves are attached to anchors
-    else
-        return getMovesFromAnchors(player, getAllAnchors(player->getPlayerId()));
+    else {
+        auto allAnchors = getAllAnchors(player->getPlayerId());
+        auto validMoves = getMovesFromAnchors(player, allAnchors);
+
+        for (auto anchor : *allAnchors)
+            delete anchor;
+        delete allAnchors;
+
+        return validMoves;
+    }
 }
 
 bool Board::isOccupied(int x, int y) {
@@ -110,18 +119,20 @@ std::string Board::toString() {
     return text;
 }
 
-std::list<Move *> *Board::getMovesFromAnchors(Player *player, std::list<Position *> *boardAnchors) {
-    auto validMoves = new std::list<Move *>();
+std::list<std::shared_ptr<Move>> *Board::getMovesFromAnchors(Player *player, std::list<Position *> *boardAnchors) {
+    auto validMoves = new std::list<std::shared_ptr<Move>>();
 
     for (auto boardAnchor : *boardAnchors) {
-        for (auto gamePiece : *player->getRemainingGamePieces()) {
-            for (auto variant : *gamePiece) {
+        for (const auto& gamePiece : *player->getRemainingGamePieces()) {
+            for (const auto& variant : *gamePiece) {
                 for (auto anchor : *variant->getAnchors()) {
                     auto center = new Position(boardAnchor);
                     center->subtract(anchor);
 
                     if (checkValidMove(player, variant, center))
-                        validMoves->push_back(new Move(variant, center));
+                        validMoves->push_back(std::make_shared<Move>(variant, center));
+                    else
+                        delete center;
                 }
             }
         }
@@ -130,16 +141,16 @@ std::list<Move *> *Board::getMovesFromAnchors(Player *player, std::list<Position
     return validMoves;
 }
 
-std::list<Move *> *Board::getMovesCoveringPosition(Player *player, int x, int y) {
-    auto validMoves = new std::list<Move *>();
+std::list<std::shared_ptr<Move>> *Board::getMovesCoveringPosition(Player *player, int x, int y) {
+    auto validMoves = new std::list<std::shared_ptr<Move>>();
 
-    for (auto gamePiece : *player->getRemainingGamePieces()) {
-        for (auto variant : *gamePiece) {
+    for (const auto& gamePiece : *player->getRemainingGamePieces()) {
+        for (const auto& variant : *gamePiece) {
             for (auto square : *variant->getSquares()) {
                 auto center = new Position(x, y);
                 center->subtract(square);
 
-                validMoves->push_back(new Move(variant, center));
+                validMoves->push_back(std::make_shared<Move>(variant, center));
             }
         }
     }
@@ -147,20 +158,20 @@ std::list<Move *> *Board::getMovesCoveringPosition(Player *player, int x, int y)
     return validMoves;
 }
 
-std::list<Move *> *
-Board::getAllValidMoves(Player *player, std::list<Move *> *previouslyValidMoves, Move *previouslyPlayedMove,
+std::list<std::shared_ptr<Move>> *
+Board::getAllValidMoves(Player *player, std::list<std::shared_ptr<Move>> *previouslyValidMoves, const std::shared_ptr<Move>& previouslyPlayedMove,
                         Board *previousBoard) {
-    auto validMoves = new std::list<Move *>();
+    auto validMoves = new std::list<std::shared_ptr<Move>>();
 
     // in case the player has quited return empty list
     if (player->getQuited())
         return validMoves;
 
     // delete obsolete moves
-    for (auto previouslyValidMove : *previouslyValidMoves) {
+    for (const auto& previouslyValidMove : *previouslyValidMoves) {
         if (previouslyValidMove->getGamePiece()->getCodeName() != previouslyPlayedMove->getGamePiece()->getCodeName() &&
             checkValidMove(player, previouslyValidMove->getGamePiece(), previouslyValidMove->getCenter()))
-            validMoves->push_back(previouslyValidMove);
+            validMoves->push_back(std::make_shared<Move>(previouslyValidMove));
     }
 
     // calculate new anchors
@@ -189,9 +200,15 @@ Board::getAllValidMoves(Player *player, std::list<Move *> *previouslyValidMoves,
     // get valid moves from new anchors only
     auto newPossibleMoves = getMovesFromAnchors(player, newAnchors);
 
+    for (auto anchor : *newAnchors)
+        delete anchor;
+    delete newAnchors;
+
     // TODO optimize list merge
-    for (auto validMove : *newPossibleMoves)
+    for (const auto& validMove : *newPossibleMoves)
         validMoves->push_back(validMove);
+
+    delete newPossibleMoves;
 
     return validMoves;
 }

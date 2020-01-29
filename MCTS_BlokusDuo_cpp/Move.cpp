@@ -5,16 +5,16 @@
 #include <sstream>
 #include "Move.h"
 
-Move::Move(GamePiece *gamePiece, Position *center) {
+Move::Move(std::shared_ptr<GamePiece> gamePiece, Position *center) {
     this->gamePiece = gamePiece;
-    this->center = new Position(center);
+    this->center = center;
 }
 
 Move::~Move() {
     delete center;
 }
 
-GamePiece *Move::getGamePiece() {
+std::shared_ptr<GamePiece> Move::getGamePiece() {
     return gamePiece;
 }
 
@@ -22,7 +22,7 @@ Position *Move::getCenter() {
     return center;
 }
 
-std::string Move::moveToString(Move *move) {
+std::string Move::moveToString(std::shared_ptr<Move> move) {
     std::stringstream text;
 
     if (move == nullptr) {
@@ -38,7 +38,12 @@ std::string Move::moveToString(Move *move) {
     return text.str();
 }
 
-bool Move::equals(Move *move) {
+bool Move::equals(const std::shared_ptr<Move>& move) {
     if (move == nullptr) return false;
     return move->center->equals(center) && move->gamePiece->equals(gamePiece);
+}
+
+Move::Move(std::shared_ptr<Move> move) {
+    gamePiece = move->gamePiece;
+    center = new Position(move->center);
 }

@@ -9,6 +9,8 @@
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.cpp
 iostream
 -
+memory
+-
 Board.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Board.h
 
@@ -24,10 +26,16 @@ Player.h
 Move.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Move.h
 
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.cpp
+GamePiece.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.h
+
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/GamePiece.h
 list
 -
 vector
+-
+memory
 -
 Position.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Position.h
@@ -85,6 +93,10 @@ list
 -
 State.h
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/State.h
+
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.cpp
+Player.h
+/home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.h
 
 /home/joaovieira/Desktop/BlokusDuo/MCTS_BlokusDuo_cpp/Player.h
 cstdint
